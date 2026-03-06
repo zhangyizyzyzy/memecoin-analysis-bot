@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEME INTEL // 链上情报站</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020408;
+      --surface: #060d14;
+      --surface2: #0a1628;
+      --border: #0d2137;
+      --accent: #00f5c4;
+      --accent2: #f5a623;
+      --accent3: #e84393;
+      --red: #ff3366;
+      --green: #00f5c4;
+      --text: #c8e6f0;
+      --muted: #4a7a94;
+      --glow: 0 0 20px rgba(0,245,196,0.3);
+      --glow2: 0 0 20px rgba(245,166,35,0.3);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans SC', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Scanline effect */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,245,196,0.015) 2px,
+        rgba(0,245,196,0.015) 4px
+      );
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Grid background */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0,245,196,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,196,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(2,4,8,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-shadow: var(--glow);
+    }
+
+    .logo span { color: var(--accent2); }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Hero / Last Update */
+    .hero {
+      padding: 40px 0 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .hero-title {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .line1 { color: var(--text); }
+    .hero-title .line2 { 
+      color: var(--accent); 
+      text-shadow: var(--glow);
+    }
+
+    .hero-subtitle {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .update-time {
+      text-align: right;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .update-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .update-value { font-size: 1.1rem; color: var(--accent2); margin-top: 4px; }
+
+    /* Chain tabs */
+    .chain-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .chain-tab {
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .chain-tab:hover, .chain-tab.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,245,196,0.05);
+      box-shadow: var(--glow);
+    }
+
+    /* Main layout */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+      padding: 24px 0;
+    }
+
+    /* AI Report Panel */
+    .panel {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface2);
+    }
+
+    .panel-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .panel-badge {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .panel-body { padding: 20px; }
+
+    /* AI Report */
+    .ai-report {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre-wrap;
+    }
+
+    .ai-report strong { color: var(--accent2); }
+
+    /* Token Cards */
+    .token-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .token-card {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px;
+      align-items: center;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .token-card:hover { background: rgba(0,245,196,0.03); }
+    .token-card:last-child { border-bottom: none; }
+
+    .token-rank {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      width: 24px;
+      text-align: center;
+    }
+
+    .token-info {}
+    .token-symbol {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .token-chain {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    .token-metrics { text-align: right; }
+
+    .token-price {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .token-change {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      margin-top: 2px;
+    }
+
+    .pos { color: var(--green); }
+    .neg { color: var(--red); }
+
+    .token-vol {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+    /* News items */
+    .news-item {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .news-item:last-child { border-bottom: none; }
+
+    .news-source {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+
+    .news-title {
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .news-title a { 
+      color: inherit; 
+      text-decoration: none; 
+    }
+    .news-title a:hover { color: var(--accent); }
+
+    .news-time {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* Twitter items */
+    .tweet-item {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tweet-author {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent2);
+      margin-bottom: 6px;
+    }
+
+    .tweet-text {
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .tweet-metrics {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .tweet-metric {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+    }
+
+    .tweet-metric span { color: var(--accent); }
+
+    /* Smart money */
+    .okx-item {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .okx-symbol {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .okx-change {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    /* Loading state */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .loading-spinner {
+      width: 32px; height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Empty state */
+    .empty {
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    .disclaimer {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: #2a4a5a;
+      max-width: 500px;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* Glitch animation for title */
+    @keyframes glitch {
+      0%, 100% { text-shadow: var(--glow); }
+      92% { text-shadow: var(--glow); }
+      93% { text-shadow: -2px 0 var(--accent3), 2px 0 var(--accent2); }
+      94% { text-shadow: var(--glow); }
+      96% { text-shadow: 2px 0 var(--accent3), -2px 0 var(--accent2); }
+      97% { text-shadow: var(--glow); }
+    }
+
+    .hero-title .line2 { animation: glitch 8s infinite; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .update-time { text-align: left; }
+    }
+
+    /* Number formatting helpers */
+    .highlight { color: var(--accent2); font-weight: 700; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* Chain color indicators */
+    .chain-sol { color: #9945FF; }
+    .chain-eth { color: #627EEA; }
+    .chain-base { color: #0052FF; }
+    .chain-bsc { color: #F3BA2F; }
+
+    .chain-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">MEME<span>INTEL</span> //</div>
+        <div class="status-bar">
+          <div class="status-dot" id="statusDot"></div>
+          <span id="headerStatus">正在加载数据...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-title">
+            <div class="line1">链上情报</div>
+            <div class="line2">MEMECOIN INTEL</div>
+          </div>
+          <div class="hero-subtitle">Solana · Ethereum · Base · BSC // 每小时自动更新</div>
+        </div>
+        <div class="update-time">
+          <div class="update-label">最后更新</div>
+          <div class="update-value" id="lastUpdate">--:--</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chain filter tabs -->
+    <div class="chain-tabs">
+      <button class="chain-tab active" onclick="filterChain('all')">全部链</button>
+      <button class="chain-tab" onclick="filterChain('solana')">◎ Solana</button>
+      <button class="chain-tab" onclick="filterChain('ethereum')">Ξ Ethereum</button>
+      <button class="chain-tab" onclick="filterChain('base')">⬡ Base</button>
+      <button class="chain-tab" onclick="filterChain('bsc')">♦ BSC</button>
+    </div>
+
+    <div class="main-grid">
+      <!-- Left: AI Report + Token List -->
+      <div>
+        <!-- AI Analysis Report -->
+        <div class="panel" style="margin-bottom: 20px;">
+          <div class="panel-header">
+            <div class="panel-title">🤖 AI 情报分析</div>
+            <div class="panel-badge" id="reportTime">--</div>
+          </div>
+          <div class="panel-body">
+            <div id="aiReport" class="ai-report">
+              <div class="loading">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">正在加载AI分析报告...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Token List -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">📊 热门代币</div>
+            <div class="panel-badge" id="tokenCount">-- tokens</div>
+          </div>
+          <div class="token-grid" id="tokenGrid">
+            <div class="loading">
+              <div class="loading-spinner"></div>
+              <div class="loading-text">加载代币数据...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="sidebar">
+        <!-- OKX Smart Money -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">🐋 聪明钱信号</div>
+            <div class="panel-badge">OKX</div>
+          </div>
+          <div id="okxSignals">
+            <div class="loading" style="padding: 30px;">
+              <div class="loading-spinner"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Twitter Feed -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">🐦 Twitter 热度</div>
+            <div class="panel-badge" id="tweetCount">-- tweets</div>
+          </div>
+          <div id="twitterFeed">
+            <div class="loading" style="padding: 30px;">
+              <div class="loading-spinner"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Feed -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">📰 新闻动态</div>
+            <div class="panel-badge" id="newsCount">-- articles</div>
+          </div>
+          <div id="newsFeed">
+            <div class="loading" style="padding: 30px;">
+              <div class="loading-spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-text">MEME INTEL // AUTO-UPDATED EVERY HOUR</div>
+        <div class="disclaimer">⚠️ 本报告仅供参考，不构成投资建议。Memecoin 风险极高，请量力而行。</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let allTokens = [];
+    let currentChain = 'all';
+
+    // Format numbers
+    function fmtNum(n) {
+      n = parseFloat(n) || 0;
+      if (n >= 1e9) return (n/1e9).toFixed(2) + 'B';
+      if (n >= 1e6) return (n/1e6).toFixed(2) + 'M';
+      if (n >= 1e3) return (n/1e3).toFixed(2) + 'K';
+      return n.toFixed(2);
+    }
+
+    function fmtPrice(p) {
+      p = parseFloat(p) || 0;
+      if (p < 0.000001) return p.toExponential(2);
+      if (p < 0.001) return p.toFixed(8);
+      if (p < 1) return p.toFixed(6);
+      return p.toFixed(4);
+    }
+
+    function chainDot(chain) {
+      const colors = { solana: '#9945FF', ethereum: '#627EEA', base: '#0052FF', bsc: '#F3BA2F' };
+      const color = colors[chain.toLowerCase()] || '#4a7a94';
+      return `<span class="chain-dot" style="background:${color}"></span>`;
+    }
+
+    // Time formatter
+    function fmtTime(iso) {
+      if (!iso) return '--';
+      const d = new Date(iso);
+      return d.toLocaleString('zh-CN', { 
+        month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit',
+        hour12: false
+      });
+    }
+
+    // Load report data
+    async function loadReport() {
+      try {
+        const resp = await fetch('data/latest.json?t=' + Date.now());
+        if (!resp.ok) throw new Error('No report yet');
+        const data = await resp.json();
+        renderAll(data);
+      } catch (e) {
+        console.warn('Could not load report:', e);
+        document.getElementById('aiReport').innerHTML = 
+          '<div class="empty">暂无数据。GitHub Actions 将在下一个整点运行并生成第一份报告。</div>';
+        document.getElementById('tokenGrid').innerHTML = '<div class="empty">等待数据...</div>';
+        document.getElementById('twitterFeed').innerHTML = '<div class="empty">等待数据...</div>';
+        document.getElementById('newsFeed').innerHTML = '<div class="empty">等待数据...</div>';
+        document.getElementById('okxSignals').innerHTML = '<div class="empty">等待数据...</div>';
+        document.getElementById('headerStatus').textContent = '等待首次运行...';
+      }
+    }
+
+    function renderAll(data) {
+      // Update header
+      document.getElementById('lastUpdate').textContent = fmtTime(data.timestamp);
+      document.getElementById('reportTime').textContent = fmtTime(data.timestamp);
+      document.getElementById('headerStatus').textContent = '数据已更新 · 每小时刷新';
+
+      // AI Report
+      const reportEl = document.getElementById('aiReport');
+      if (data.ai_report) {
+        // Convert markdown-like formatting
+        let html = data.ai_report
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/^(#{1,3} .+)$/gm, '<span class="highlight">$1</span>');
+        reportEl.innerHTML = html;
+      } else {
+        reportEl.innerHTML = '<div class="empty">AI分析未生成</div>';
+      }
+
+      // Tokens
+      allTokens = data.tokens || [];
+      document.getElementById('tokenCount').textContent = allTokens.length + ' tokens';
+      renderTokens();
+
+      // Twitter
+      const tweets = data.twitter?.general_sentiment || [];
+      document.getElementById('tweetCount').textContent = tweets.length + ' tweets';
+      renderTwitter(tweets);
+
+      // News
+      const articles = data.news?.articles || [];
+      document.getElementById('newsCount').textContent = articles.length + ' articles';
+      renderNews(articles);
+
+      // OKX
+      const signals = data.okx?.smart_money_signals || [];
+      renderOKX(signals);
+    }
+
+    function filterChain(chain) {
+      currentChain = chain;
+      document.querySelectorAll('.chain-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      renderTokens();
+    }
+
+    function renderTokens() {
+      const filtered = currentChain === 'all' 
+        ? allTokens 
+        : allTokens.filter(t => t.chain?.toLowerCase() === currentChain);
+      
+      const grid = document.getElementById('tokenGrid');
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty">该链暂无数据</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.slice(0, 20).map((t, i) => {
+        const ch24 = parseFloat(t.price_change_24h) || 0;
+        const ch1h = parseFloat(t.price_change_1h) || 0;
+        const symbol = t.symbol || t.address?.slice(0,6) || '???';
+        
+        return `
+          <div class="token-card" onclick="window.open('${t.dex_url || '#'}', '_blank')">
+            <div class="token-rank">${String(i+1).padStart(2,'0')}</div>
+            <div class="token-info">
+              <div class="token-symbol">${symbol}</div>
+              <div class="token-chain">${chainDot(t.chain || '')}${(t.chain||'').toUpperCase()}</div>
+            </div>
+            <div class="token-metrics">
+              <div class="token-price">$${fmtPrice(t.price_usd)}</div>
+              <div class="token-change ${ch24 >= 0 ? 'pos' : 'neg'}">
+                ${ch24 >= 0 ? '+' : ''}${ch24.toFixed(1)}% 24h
+              </div>
+              <div class="token-vol">Vol $${fmtNum(t.volume_24h)}</div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function renderTwitter(tweets) {
+      const el = document.getElementById('twitterFeed');
+      if (!tweets.length) {
+        el.innerHTML = '<div class="empty">暂无Twitter数据</div>';
+        return;
+      }
+
+      el.innerHTML = tweets.slice(0, 8).map(t => `
+        <div class="tweet-item">
+          <div class="tweet-author">@${t.author || 'anonymous'} · ${t.author_followers >= 1000 ? fmtNum(t.author_followers) + ' 粉丝' : ''}</div>
+          <div class="tweet-text">${t.text?.slice(0, 140) || ''}${(t.text?.length > 140) ? '...' : ''}</div>
+          <div class="tweet-metrics">
+            <div class="tweet-metric">❤ <span>${fmtNum(t.likes)}</span></div>
+            <div class="tweet-metric">🔁 <span>${fmtNum(t.retweets)}</span></div>
+            <div class="tweet-metric">💬 <span>${fmtNum(t.replies)}</span></div>
+          </div>
+        </div>`).join('');
+    }
+
+    function renderNews(articles) {
+      const el = document.getElementById('newsFeed');
+      if (!articles.length) {
+        el.innerHTML = '<div class="empty">暂无新闻数据</div>';
+        return;
+      }
+
+      el.innerHTML = articles.slice(0, 8).map(a => `
+        <div class="news-item">
+          <div class="news-source">${a.source || 'News'}</div>
+          <div class="news-title">
+            <a href="${a.url || '#'}" target="_blank" rel="noopener">${a.title || ''}</a>
+          </div>
+          <div class="news-time">${fmtTime(a.published_at)}</div>
+        </div>`).join('');
+    }
+
+    function renderOKX(signals) {
+      const el = document.getElementById('okxSignals');
+      if (!signals.length) {
+        el.innerHTML = '<div class="empty">暂无聪明钱信号</div>';
+        return;
+      }
+
+      el.innerHTML = signals.slice(0, 10).map(s => {
+        const ch = parseFloat(s.price_change) || 0;
+        return `
+          <div class="okx-item">
+            <div>
+              <div class="okx-symbol">${s.symbol}</div>
+              <div class="token-vol">Vol $${fmtNum(s.volume_24h)}</div>
+            </div>
+            <div class="okx-change ${ch >= 0 ? 'pos' : 'neg'}">
+              ${ch >= 0 ? '+' : ''}${ch.toFixed(1)}%
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    // Auto-refresh every 5 minutes
+    loadReport();
+    setInterval(loadReport, 5 * 60 * 1000);
+  </script>
+</body>
+</html>
