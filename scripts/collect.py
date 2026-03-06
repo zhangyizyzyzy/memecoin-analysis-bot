@@ -1,556 +1,856 @@
 #!/usr/bin/env python3
 """
-Memecoin Intelligence Collector
-Collects data from Twitter, News, DexScreener, OKX, and generates AI analysis reports.
+Memecoin Intelligence Collector v3
+热门币数据源:
+  - Binance Skills Hub: meme-rush (新发/迁移 meme 榜) + crypto-market-rank (聪明钱/社交热度)
+  - OKX OnchainOS: Token Ranking API (链上热度榜)
+  - DexScreener: 补充安全验证 (流动性/买卖压)
+  - Twitter / NewsAPI: 社区 & 新闻情报
+  - OpenRouter AI: 综合分析报告
 """
 
-import os
-import json
-import time
-import hmac
-import hashlib
-import base64
-import asyncio
-import aiohttp
-import requests
+import os, json, time, hmac, hashlib, base64, requests
 from datetime import datetime, timezone
 from pathlib import Path
 
-# ─── CONFIG ────────────────────────────────────────────────────────────────────
-OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
+# ─── 环境变量 ──────────────────────────────────────────────────────────────────
+OPENROUTER_API_KEY   = os.environ.get("OPENROUTER_API_KEY", "")
 TWITTER_BEARER_TOKEN = os.environ.get("TWITTER_BEARER_TOKEN", "")
-NEWS_API_KEY = os.environ.get("NEWS_API_KEY", "")
-OKX_API_KEY = os.environ.get("OKX_API_KEY", "")
-OKX_SECRET = os.environ.get("OKX_SECRET", "")
-OKX_PASSPHRASE = os.environ.get("OKX_PASSPHRASE", "")
+NEWS_API_KEY         = os.environ.get("NEWS_API_KEY", "")
+OKX_API_KEY          = os.environ.get("OKX_API_KEY", "")
+OKX_SECRET           = os.environ.get("OKX_SECRET", "")
+OKX_PASSPHRASE       = os.environ.get("OKX_PASSPHRASE", "")
 
-# Chains to monitor
-CHAINS = ["solana", "ethereum", "base", "bsc"]
-
-# DEX Screener chain IDs
-DEXSCREENER_CHAINS = {
-    "solana": "solana",
-    "ethereum": "ethereum",
-    "base": "base",
-    "bsc": "bsc",
-}
-
-# Output directory for GitHub Pages
 DOCS_DIR = Path(__file__).parent.parent / "docs"
 DATA_DIR = DOCS_DIR / "data"
 
-# ─── DEXSCREENER ───────────────────────────────────────────────────────────────
+WEB3_HEADERS = {
+    "Accept-Encoding": "identity",
+    "Content-Type": "application/json",
+    "User-Agent": "Mozilla/5.0",
+}
 
-def fetch_dexscreener_trending(chain: str) -> list:
-    """Fetch trending tokens from DexScreener for a given chain."""
-    try:
-        url = f"https://api.dexscreener.com/token-boosts/top/v1"
-        resp = requests.get(url, timeout=15)
-        resp.raise_for_status()
-        data = resp.json()
-        
-        # Filter by chain
-        chain_tokens = [t for t in data if t.get("chainId", "").lower() == chain.lower()]
-        
-        results = []
-        for token in chain_tokens[:10]:
-            results.append({
-                "symbol": token.get("tokenAddress", "")[:8],
-                "address": token.get("tokenAddress", ""),
-                "chain": chain,
-                "url": token.get("url", ""),
-                "boostAmount": token.get("totalAmount", 0),
-                "source": "dexscreener_boost"
-            })
-        return results
-    except Exception as e:
-        print(f"[DEX] Error fetching trending for {chain}: {e}")
-        return []
+# ══════════════════════════════════════════════════════════════════════════════
+# BINANCE SKILLS HUB — meme-rush skill
+# Ref: github.com/binance/binance-skills-hub/skills/binance-web3/meme-rush
+# ══════════════════════════════════════════════════════════════════════════════
 
-def fetch_dexscreener_token_detail(token_address: str, chain: str) -> dict:
-    """Fetch detailed token data from DexScreener."""
+MEME_RUSH_URL  = "https://web3.binance.com/bapi/defi/v1/public/wallet-direct/buw/wallet/market/token/pulse/rank/list"
+TOPIC_RUSH_URL = "https://web3.binance.com/bapi/defi/v1/public/wallet-direct/buw/wallet/market/token/social-rush/rank/list"
+
+def fetch_meme_rush(chain_id: str, rank_type: int, limit: int = 30) -> list:
+    """
+    Binance meme-rush 发射台代币榜
+    rank_type: 10=新建, 20=即将毕业(bonding curve快满), 30=已迁移到DEX
+    chain_id:  "56"=BSC, "CT_501"=Solana
+    """
+    chain_name = {"56": "bsc", "CT_501": "solana"}.get(chain_id, chain_id)
+    stage_name = {10: "新建", 20: "即将毕业", 30: "已迁移"}.get(rank_type, "")
     try:
-        chain_id = DEXSCREENER_CHAINS.get(chain, chain)
-        url = f"https://api.dexscreener.com/tokens/v1/{chain_id}/{token_address}"
-        resp = requests.get(url, timeout=15)
-        resp.raise_for_status()
-        data = resp.json()
-        
-        if not data or len(data) == 0:
-            return {}
-        
-        pair = data[0]
-        base = pair.get("baseToken", {})
-        
-        return {
-            "symbol": base.get("symbol", "UNKNOWN"),
-            "name": base.get("name", ""),
-            "address": token_address,
-            "chain": chain,
-            "price_usd": pair.get("priceUsd", "0"),
-            "price_change_5m": pair.get("priceChange", {}).get("m5", 0),
-            "price_change_1h": pair.get("priceChange", {}).get("h1", 0),
-            "price_change_6h": pair.get("priceChange", {}).get("h6", 0),
-            "price_change_24h": pair.get("priceChange", {}).get("h24", 0),
-            "volume_24h": pair.get("volume", {}).get("h24", 0),
-            "liquidity_usd": pair.get("liquidity", {}).get("usd", 0),
-            "market_cap": pair.get("marketCap", 0),
-            "fdv": pair.get("fdv", 0),
-            "txns_24h_buys": pair.get("txns", {}).get("h24", {}).get("buys", 0),
-            "txns_24h_sells": pair.get("txns", {}).get("h24", {}).get("sells", 0),
-            "dex_url": pair.get("url", ""),
-            "source": "dexscreener"
+        payload = {
+            "chainId": chain_id,
+            "rankType": rank_type,
+            "limit": limit,
+            "liquidityMin": "1000",       # 过滤零流动性垃圾
+            "excludeDevWashTrading": 1,   # 排除dev洗盘
         }
-    except Exception as e:
-        print(f"[DEX] Error fetching detail for {token_address}: {e}")
-        return {}
-
-def fetch_dexscreener_new_pairs(chain: str) -> list:
-    """Fetch latest token pairs from DexScreener."""
-    try:
-        url = f"https://api.dexscreener.com/token-profiles/latest/v1"
-        resp = requests.get(url, timeout=15)
+        resp = requests.post(MEME_RUSH_URL, json=payload, headers=WEB3_HEADERS, timeout=15)
         resp.raise_for_status()
         data = resp.json()
-        
-        chain_tokens = [t for t in data if t.get("chainId", "").lower() == chain.lower()]
-        
-        results = []
-        for token in chain_tokens[:5]:
-            addr = token.get("tokenAddress", "")
-            detail = fetch_dexscreener_token_detail(addr, chain)
-            if detail:
-                detail["is_new"] = True
-                results.append(detail)
-            time.sleep(0.3)  # Rate limit
-        return results
-    except Exception as e:
-        print(f"[DEX] Error fetching new pairs for {chain}: {e}")
-        return []
-
-# ─── TWITTER / OPENTWITTER-MCP ──────────────────────────────────────────────────
-
-def search_twitter_memecoin(query: str) -> list:
-    """Search Twitter for memecoin mentions via bearer token."""
-    try:
-        headers = {"Authorization": f"Bearer {TWITTER_BEARER_TOKEN}"}
-        params = {
-            "query": f"{query} -is:retweet lang:en",
-            "max_results": 20,
-            "tweet.fields": "public_metrics,created_at,author_id",
-            "expansions": "author_id",
-            "user.fields": "username,public_metrics"
-        }
-        url = "https://api.twitter.com/2/tweets/search/recent"
-        resp = requests.get(url, headers=headers, params=params, timeout=15)
-        
-        if resp.status_code == 200:
-            data = resp.json()
-            tweets = data.get("data", [])
-            users = {u["id"]: u for u in data.get("includes", {}).get("users", [])}
-            
-            results = []
-            for tweet in tweets:
-                author = users.get(tweet.get("author_id", ""), {})
-                metrics = tweet.get("public_metrics", {})
-                user_metrics = author.get("public_metrics", {})
-                results.append({
-                    "text": tweet.get("text", ""),
-                    "likes": metrics.get("like_count", 0),
-                    "retweets": metrics.get("retweet_count", 0),
-                    "replies": metrics.get("reply_count", 0),
-                    "author": author.get("username", "unknown"),
-                    "author_followers": user_metrics.get("followers_count", 0),
-                    "created_at": tweet.get("created_at", ""),
-                    "engagement": metrics.get("like_count", 0) + metrics.get("retweet_count", 0) * 3
-                })
-            # Sort by engagement
-            results.sort(key=lambda x: x["engagement"], reverse=True)
-            return results
-        else:
-            print(f"[Twitter] API error {resp.status_code}: {resp.text[:200]}")
+        if data.get("code") != "000000":
+            print(f"  [MemeRush] API error: {data.get('message','')}")
             return []
+
+        tokens = (data.get("data") or {}).get("tokens", [])
+        results = []
+        for t in tokens:
+            buy   = int(t.get("countBuy",  0) or 0)
+            sell  = int(t.get("countSell", 0) or 0)
+            total = buy + sell
+            results.append({
+                "symbol":            t.get("symbol", ""),
+                "name":              t.get("name", ""),
+                "address":           t.get("contractAddress", ""),
+                "chain":             chain_name,
+                "price_usd":         t.get("price", "0"),
+                "price_change_24h":  float(t.get("priceChange", 0) or 0),
+                "market_cap":        float(t.get("marketCap", 0) or 0),
+                "liquidity_usd":     float(t.get("liquidity", 0) or 0),
+                "volume_24h":        float(t.get("volume", 0) or 0),
+                "holders":           int(t.get("holders", 0) or 0),
+                "buys_24h":          buy,
+                "sells_24h":         sell,
+                "buy_pct":           round(buy / total * 100, 1) if total else 0,
+                "bonding_progress":  t.get("progress", ""),
+                "stage":             stage_name,
+                "dev_sell_pct":      t.get("devSellPercent", "0"),
+                "top10_holder_pct":  t.get("holdersTop10Percent", ""),
+                "kol_holders":       int(t.get("kolHolders", 0) or 0),
+                "narrative_cn":      (t.get("narrativeText") or {}).get("cn", ""),
+                "has_twitter":       "twitter" in str(t.get("socials", {})),
+                "risk_dev_wash":     bool(t.get("tagDevWashTrading")),
+                "risk_insider_wash": bool(t.get("tagInsiderWashTrading")),
+                "source":            f"binance_meme_rush_r{rank_type}",
+            })
+        return results
     except Exception as e:
-        print(f"[Twitter] Error: {e}")
+        print(f"  [MemeRush] chain={chain_id} rank={rank_type} error: {e}")
         return []
 
-def collect_twitter_intelligence(tokens: list) -> dict:
-    """Collect Twitter intelligence for token list + general memecoin trends."""
-    results = {}
-    
-    # General memecoin sentiment
-    general_queries = [
-        "memecoin 100x",
-        "new memecoin launch solana",
-        "memecoin gem ethereum",
-        "BSC memecoin pump",
-    ]
-    
-    general_tweets = []
-    for q in general_queries[:2]:  # Limit API calls
-        tweets = search_twitter_memecoin(q)
-        general_tweets.extend(tweets)
-        time.sleep(1)
-    
-    results["general_sentiment"] = general_tweets[:15]
-    
-    # Per-token Twitter search
-    token_intel = {}
-    for token in tokens[:5]:  # Top 5 tokens
-        symbol = token.get("symbol", "")
-        if not symbol or len(symbol) < 2:
-            continue
-        tweets = search_twitter_memecoin(f"${symbol} memecoin")
-        token_intel[symbol] = {
-            "tweets": tweets[:5],
-            "total_engagement": sum(t.get("engagement", 0) for t in tweets),
-            "tweet_count": len(tweets)
-        }
-        time.sleep(1.5)
-    
-    results["token_intel"] = token_intel
-    return results
 
-# ─── NEWS / OPENNEWS-MCP ────────────────────────────────────────────────────────
-
-def search_news_memecoin(query: str) -> list:
-    """Search news for memecoin via NewsAPI."""
+def fetch_topic_rush(chain_id: str, rank_type: int = 30) -> list:
+    """
+    Binance topic-rush: AI 生成的热门叙事话题 + 关联代币净流入
+    rank_type=30 (Viral, 净流入最高)
+    """
+    chain_name = {"56": "bsc", "CT_501": "solana"}.get(chain_id, chain_id)
     try:
-        url = "https://newsapi.org/v2/everything"
-        params = {
-            "q": query,
-            "language": "en",
-            "sortBy": "publishedAt",
-            "pageSize": 10,
-            "apiKey": NEWS_API_KEY
-        }
-        resp = requests.get(url, params=params, timeout=15)
+        params = {"chainId": chain_id, "rankType": rank_type, "sort": 30, "asc": "false"}
+        resp = requests.get(TOPIC_RUSH_URL, params=params, headers=WEB3_HEADERS, timeout=15)
         resp.raise_for_status()
         data = resp.json()
-        
-        articles = []
-        for article in data.get("articles", []):
-            articles.append({
-                "title": article.get("title", ""),
-                "description": article.get("description", ""),
-                "source": article.get("source", {}).get("name", ""),
-                "url": article.get("url", ""),
-                "published_at": article.get("publishedAt", "")
-            })
-        return articles
+        if data.get("code") != "000000":
+            return []
+
+        results = []
+        for topic in (data.get("data") or [])[:10]:
+            topic_name = ((topic.get("name") or {}).get("topicNameCn") or
+                          (topic.get("name") or {}).get("topicNameEn", ""))
+            for token in (topic.get("tokenList") or [])[:3]:
+                results.append({
+                    "symbol":           token.get("symbol", ""),
+                    "address":          token.get("contractAddress", ""),
+                    "chain":            chain_name,
+                    "price_change_24h": float(str(token.get("priceChange24h","0")).replace("%","") or 0),
+                    "market_cap":       float(token.get("marketCap", 0) or 0),
+                    "liquidity_usd":    float(token.get("liquidity", 0) or 0),
+                    "net_inflow_1h":    float(token.get("netInflow1h", 0) or 0),
+                    "net_inflow_total": float(token.get("netInflow", 0) or 0),
+                    "kol_holders":      int(token.get("kolHolders", 0) or 0),
+                    "smart_money_holders": int(token.get("smartMoneyHolders", 0) or 0),
+                    "holders":          int(token.get("holders", 0) or 0),
+                    "topic_name":       topic_name,
+                    "topic_inflow_1h":  topic.get("topicNetInflow1h", "0"),
+                    "source":           "binance_topic_rush",
+                })
+        return results
     except Exception as e:
-        print(f"[News] Error: {e}")
+        print(f"  [TopicRush] chain={chain_id} error: {e}")
         return []
 
-def collect_news_intelligence() -> dict:
-    """Collect news intelligence for memecoins."""
-    queries = [
-        "memecoin cryptocurrency",
-        "solana memecoin",
-        "new crypto token launch"
-    ]
-    
-    all_articles = []
-    for q in queries:
-        articles = search_news_memecoin(q)
-        all_articles.extend(articles)
-        time.sleep(0.5)
-    
-    # Deduplicate by title
-    seen = set()
-    unique_articles = []
-    for a in all_articles:
-        if a["title"] not in seen:
-            seen.add(a["title"])
-            unique_articles.append(a)
-    
-    return {
-        "articles": unique_articles[:20],
-        "total_count": len(unique_articles)
-    }
 
-# ─── OKX API ───────────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# BINANCE SKILLS HUB — crypto-market-rank skill
+# Ref: github.com/binance/binance-skills-hub/skills/binance-web3/crypto-market-rank
+# ══════════════════════════════════════════════════════════════════════════════
 
-def okx_sign(timestamp: str, method: str, path: str, body: str = "") -> str:
-    """Generate OKX API signature."""
-    message = timestamp + method + path + body
-    mac = hmac.new(OKX_SECRET.encode(), message.encode(), hashlib.sha256)
-    return base64.b64encode(mac.digest()).decode()
+UNIFIED_RANK_URL = "https://web3.binance.com/bapi/defi/v1/public/wallet-direct/buw/wallet/market/token/pulse/unified/rank/list"
+SMART_MONEY_URL  = "https://web3.binance.com/bapi/defi/v1/public/wallet-direct/tracker/wallet/token/inflow/rank/query"
+SOCIAL_HYPE_URL  = "https://web3.binance.com/bapi/defi/v1/public/wallet-direct/buw/wallet/market/token/pulse/social/hype/rank/leaderboard"
 
-def okx_headers(method: str, path: str, body: str = "") -> dict:
-    """Generate OKX API headers."""
-    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-    sig = okx_sign(timestamp, method, path, body)
+CHAIN_NAME = {"1": "ethereum", "56": "bsc", "8453": "base", "CT_501": "solana"}
+
+def fetch_unified_rank(chain_id: str) -> list:
+    """Binance 综合排行榜 — 交易量/流动性/社区综合评分 Top20"""
+    try:
+        payload = {
+            "rankType": 10, "chainId": chain_id,
+            "period": 50, "sortBy": 70,
+            "orderAsc": False, "page": 1, "size": 20,
+        }
+        resp = requests.post(UNIFIED_RANK_URL, json=payload, headers=WEB3_HEADERS, timeout=15)
+        data = resp.json()
+        if data.get("code") != "000000":
+            return []
+        results = []
+        for t in ((data.get("data") or {}).get("tokens") or []):
+            results.append({
+                "symbol":           t.get("symbol", ""),
+                "name":             t.get("name", ""),
+                "address":          t.get("contractAddress", ""),
+                "chain":            CHAIN_NAME.get(chain_id, chain_id),
+                "price_usd":        t.get("price", "0"),
+                "price_change_24h": float(t.get("priceChange24h", 0) or 0),
+                "price_change_1h":  float(t.get("priceChange1h", 0) or 0),
+                "market_cap":       float(t.get("marketCap", 0) or 0),
+                "liquidity_usd":    float(t.get("liquidity", 0) or 0),
+                "volume_24h":       float(t.get("volume24h", 0) or 0),
+                "holders":          int(t.get("holders", 0) or 0),
+                "source":           "binance_unified_rank",
+            })
+        return results
+    except Exception as e:
+        print(f"  [UnifiedRank] chain={chain_id} error: {e}")
+        return []
+
+
+def fetch_smart_money_inflow(chain_id: str) -> list:
+    """Binance 聪明钱流入排名 — tagType=2 (smart money)"""
+    try:
+        resp = requests.post(
+            SMART_MONEY_URL,
+            json={"chainId": chain_id, "period": "24h", "tagType": 2},
+            headers=WEB3_HEADERS, timeout=15
+        )
+        data = resp.json()
+        if data.get("code") != "000000":
+            return []
+        results = []
+        for t in (data.get("data") or [])[:15]:
+            results.append({
+                "symbol":                  t.get("symbol", ""),
+                "address":                 t.get("contractAddress", ""),
+                "chain":                   CHAIN_NAME.get(chain_id, chain_id),
+                "smart_money_inflow_24h":  float(t.get("netInflow", 0) or 0),
+                "smart_money_buyers":      int(t.get("buyerCount", 0) or 0),
+                "price_change_24h":        float(t.get("priceChange24h", 0) or 0),
+                "source":                  "binance_smart_money",
+            })
+        return results
+    except Exception as e:
+        print(f"  [SmartMoney] chain={chain_id} error: {e}")
+        return []
+
+
+def fetch_social_hype(chain_id: str) -> list:
+    """Binance 社交热度排行 — KOL/社区情绪 1小时维度"""
+    try:
+        resp = requests.get(
+            SOCIAL_HYPE_URL,
+            params={"chainId": chain_id, "sentiment": "All",
+                    "socialLanguage": "ALL", "targetLanguage": "en", "timeRange": 1},
+            headers=WEB3_HEADERS, timeout=15
+        )
+        data = resp.json()
+        if data.get("code") != "000000":
+            return []
+        results = []
+        for t in ((data.get("data") or {}).get("leaderboard") or [])[:15]:
+            results.append({
+                "symbol":        t.get("symbol", ""),
+                "address":       t.get("contractAddress", ""),
+                "chain":         CHAIN_NAME.get(chain_id, chain_id),
+                "social_score":  float(t.get("hypeScore", 0) or 0),
+                "sentiment":     t.get("sentiment", ""),
+                "mention_count": int(t.get("mentionCount", 0) or 0),
+                "source":        "binance_social_hype",
+            })
+        return results
+    except Exception as e:
+        print(f"  [SocialHype] chain={chain_id} error: {e}")
+        return []
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# OKX OnchainOS — Token Ranking + Price Info
+# Ref: web3.okx.com/onchainos/dev-docs/market/market-token-reference
+# ══════════════════════════════════════════════════════════════════════════════
+
+OKX_CHAIN_INDEX = {"ethereum": "1", "bsc": "56", "base": "8453", "solana": "501"}
+
+def _okx_sign(ts, method, path, body=""):
+    msg = ts + method + path + body
+    return base64.b64encode(hmac.new(OKX_SECRET.encode(), msg.encode(), hashlib.sha256).digest()).decode()
+
+def _okx_headers(method, path, body=""):
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     return {
         "OK-ACCESS-KEY": OKX_API_KEY,
-        "OK-ACCESS-SIGN": sig,
-        "OK-ACCESS-TIMESTAMP": timestamp,
+        "OK-ACCESS-SIGN": _okx_sign(ts, method, path, body),
+        "OK-ACCESS-TIMESTAMP": ts,
         "OK-ACCESS-PASSPHRASE": OKX_PASSPHRASE,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
 
-def fetch_okx_smart_money() -> dict:
-    """Fetch OKX on-chain smart money signals."""
+def fetch_okx_token_ranking(chain: str) -> list:
+    """OKX OnchainOS 链上代币排行榜"""
+    chain_index = OKX_CHAIN_INDEX.get(chain, "1")
+    path = f"/api/v6/dex/market/token/ranking-list?chainIndex={chain_index}&limit=20&page=1"
     try:
-        base_url = "https://www.okx.com"
-        
-        # Try OKX DEX market data - public endpoint
-        path = "/api/v5/market/tickers?instType=SPOT"
-        resp = requests.get(f"{base_url}{path}", timeout=15)
-        
-        if resp.status_code == 200:
-            data = resp.json()
-            tickers = data.get("data", [])
-            
-            # Find high-volume small cap tokens (potential smart money targets)
-            interesting = []
-            for t in tickers:
-                try:
-                    vol = float(t.get("volCcy24h", 0))
-                    last = float(t.get("last", 0))
-                    change = float(t.get("sodUtc8", 0)) if t.get("sodUtc8") else 0
-                    inst_id = t.get("instId", "")
-                    
-                    # Filter: USDT pairs, high % change
-                    if (inst_id.endswith("-USDT") and 
-                        last < 0.01 and  # Low price = potential memecoin
-                        vol > 100000 and  # Decent volume
-                        abs(change) > 10):  # Significant price movement
-                        interesting.append({
-                            "symbol": inst_id.replace("-USDT", ""),
-                            "price": last,
-                            "volume_24h": vol,
-                            "price_change": change,
-                            "exchange": "OKX"
-                        })
-                except:
-                    pass
-            
-            # Sort by absolute price change
-            interesting.sort(key=lambda x: abs(x.get("price_change", 0)), reverse=True)
-            return {
-                "smart_money_signals": interesting[:10],
-                "source": "okx_market"
-            }
-        else:
-            print(f"[OKX] Error {resp.status_code}")
-            return {"smart_money_signals": [], "source": "okx_market"}
+        resp = requests.get(f"https://www.okx.com{path}", headers=_okx_headers("GET", path), timeout=15)
+        data = resp.json()
+        if data.get("code") != "0":
+            print(f"  [OKX Ranking] {chain}: {data.get('msg','')}")
+            return []
+        results = []
+        for t in ((data.get("data") or {}).get("tokenList") or []):
+            results.append({
+                "symbol":           t.get("symbol", ""),
+                "name":             t.get("tokenName", ""),
+                "address":          t.get("tokenContractAddress", ""),
+                "chain":            chain,
+                "price_usd":        t.get("price", "0"),
+                "price_change_24h": float(t.get("priceChange24h", 0) or 0),
+                "price_change_1h":  float(t.get("priceChange1h", 0) or 0),
+                "market_cap":       float(t.get("marketCap", 0) or 0),
+                "liquidity_usd":    float(t.get("liquidity", 0) or 0),
+                "volume_24h":       float(t.get("volume24h", 0) or 0),
+                "holders":          int(t.get("holderCount", 0) or 0),
+                "source":           "okx_onchainos_ranking",
+            })
+        return results
     except Exception as e:
-        print(f"[OKX] Error: {e}")
-        return {"smart_money_signals": [], "source": "okx_market"}
+        print(f"  [OKX Ranking] {chain} error: {e}")
+        return []
 
-# ─── AI ANALYSIS ───────────────────────────────────────────────────────────────
 
-def generate_ai_report(all_data: dict) -> str:
-    """Generate AI analysis report using OpenRouter."""
+def fetch_okx_price_info(tokens: list) -> dict:
+    """OKX 批量价格详情: 5m/1h/4h/24h 变化 + 交易笔数"""
+    if not tokens or not OKX_API_KEY:
+        return {}
+    path = "/api/v6/dex/market/price-info"
+    by_chain: dict[str, list] = {}
+    for t in tokens:
+        ci   = OKX_CHAIN_INDEX.get(t.get("chain",""), "1")
+        addr = t.get("address","")
+        if addr:
+            by_chain.setdefault(ci, []).append(addr)
+    enriched = {}
+    for ci, addrs in by_chain.items():
+        for i in range(0, min(len(addrs), 100), 50):
+            batch = addrs[i:i+50]
+            body  = json.dumps({"chainIndex": ci, "tokenContractAddresses": batch})
+            try:
+                resp = requests.post(f"https://www.okx.com{path}", data=body,
+                                     headers=_okx_headers("POST", path, body), timeout=15)
+                d = resp.json()
+                if d.get("code") == "0":
+                    for item in (d.get("data") or []):
+                        addr_key = (item.get("tokenContractAddress","")).lower()
+                        enriched[addr_key] = {
+                            "price_change_5m":  float(item.get("priceChange5m", 0) or 0),
+                            "price_change_1h":  float(item.get("priceChange1h", 0) or 0),
+                            "price_change_4h":  float(item.get("priceChange4h", 0) or 0),
+                            "price_change_24h": float(item.get("priceChange24h", 0) or 0),
+                            "volume_24h":       float(item.get("volume24h", 0) or 0),
+                            "tx_count_24h":     int(item.get("txCount24h", 0) or 0),
+                            "liquidity_usd":    float(item.get("liquidity", 0) or 0),
+                            "holders":          int(item.get("holderCount", 0) or 0),
+                        }
+            except Exception as e:
+                print(f"  [OKX PriceInfo] error: {e}")
+            time.sleep(0.3)
+    return enriched
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DexScreener — 安全验证层
+# ══════════════════════════════════════════════════════════════════════════════
+
+def dex_verify(symbol: str) -> dict:
     try:
-        # Prepare summary for AI
-        tokens_summary = json.dumps(all_data.get("tokens", [])[:8], indent=2, ensure_ascii=False)
-        twitter_summary = json.dumps(all_data.get("twitter", {}).get("general_sentiment", [])[:5], indent=2, ensure_ascii=False)
-        news_summary = json.dumps(all_data.get("news", {}).get("articles", [])[:5], indent=2, ensure_ascii=False)
-        okx_summary = json.dumps(all_data.get("okx", {}).get("smart_money_signals", [])[:5], indent=2, ensure_ascii=False)
-        
-        prompt = f"""You are a professional cryptocurrency memecoin analyst. Based on the following real-time data, generate a comprehensive intelligence report in Chinese.
-
-## Chain Data (DexScreener)
-{tokens_summary}
-
-## Twitter Intelligence
-{twitter_summary}
-
-## News Intelligence
-{news_summary}
-
-## OKX Smart Money Signals
-{okx_summary}
-
-Generate a report in Chinese with the following sections:
-1. 🔥 **市场总览** - Overall market sentiment (2-3 sentences)
-2. 🚀 **热门代币分析** - Top 3-5 tokens worth watching with reasons
-3. 📱 **社区热度** - Twitter & social sentiment analysis
-4. 📰 **新闻动态** - Key news affecting memecoins
-5. 🐋 **聪明钱信号** - Smart money/whale movements detected
-6. ⚠️ **风险提示** - Key risks to watch
-7. 🎯 **操作建议** - Actionable insights (NOT financial advice, educational only)
-
-Format with clear headers, emojis, and be specific about tokens and data points. Keep it concise but data-driven."""
-
-        headers = {
-            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-            "Content-Type": "application/json",
-            "HTTP-Referer": "https://zhangyizyzyzy.github.io/memecoin-reports/",
+        resp = requests.get(f"https://api.dexscreener.com/latest/dex/search?q={symbol}", timeout=12)
+        pairs = resp.json().get("pairs", [])
+        if not pairs:
+            return {}
+        pairs.sort(key=lambda p: float((p.get("liquidity") or {}).get("usd", 0)), reverse=True)
+        best  = pairs[0]
+        txns  = best.get("txns", {}).get("h24", {})
+        buys  = int(txns.get("buys", 0))
+        sells = int(txns.get("sells", 0))
+        total = buys + sells
+        liq   = float((best.get("liquidity") or {}).get("usd", 0))
+        mcap  = float(best.get("marketCap") or 0)
+        return {
+            "dex_url":       best.get("url", ""),
+            "liquidity_usd": liq,
+            "buy_pct":       round(buys / total * 100, 1) if total else 0,
+            "liq_ratio":     round(mcap / liq, 1) if liq else 999,
         }
+    except Exception:
+        return {}
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 综合评分 (100分制)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def compute_score(t: dict) -> float:
+    score = 0.0
+    ch1h  = float(t.get("price_change_1h", 0) or 0)
+    ch24h = float(t.get("price_change_24h", 0) or 0)
+    vol   = float(t.get("volume_24h", 0) or 0)
+    liq   = float(t.get("liquidity_usd", 0) or 0)
+
+    # 1. 价格动能 (35分)
+    score += min(ch1h / 15 * 20, 20) if ch1h > 0 else 0
+    score += min(ch24h / 80 * 15, 15) if ch24h > 0 else max(ch24h / 40 * 5, -8)
+
+    # 2. 成交量 (20分)
+    if   vol >= 5_000_000: score += 20
+    elif vol >= 1_000_000: score += 15
+    elif vol >= 200_000:   score += 10
+    elif vol >= 50_000:    score += 5
+
+    # 3. 买压 (15分)
+    bp = float(t.get("buy_pct", 50) or 50)
+    if   bp >= 70: score += 15
+    elif bp >= 60: score += 10
+    elif bp >= 50: score += 5
+    elif bp < 35:  score -= 10
+
+    # 4. 净流入信号 (15分)
+    inflow_1h = float(t.get("net_inflow_1h", 0) or 0)
+    sm_inflow = float(t.get("smart_money_inflow_24h", 0) or 0)
+    if inflow_1h > 50_000:   score += 10
+    elif inflow_1h > 10_000: score += 5
+    if sm_inflow > 20_000:   score += 5
+
+    # 5. 聪明钱/KOL持仓 (10分)
+    kol = int(t.get("kol_holders", 0) or 0)
+    sm  = int(t.get("smart_money_holders", 0) or 0)
+    if kol + sm >= 5:  score += 10
+    elif kol + sm >= 2: score += 5
+
+    # 6. 社交热度 (5分)
+    if t.get("social_score") or t.get("mention_count"):
+        score += 5
+
+    # 加分: 多信号源交叉验证
+    nsrc = len(set(t.get("sources", [])))
+    score += 8 if nsrc >= 3 else (4 if nsrc >= 2 else 0)
+
+    # 加分: 已迁移到DEX (更成熟)
+    if t.get("stage") == "已迁移":
+        score += 5
+
+    # 风险扣分
+    if liq < 10_000:              score -= 25
+    elif liq < 50_000:            score -= 10
+    liq_ratio = float(t.get("liq_ratio", 10) or 10)
+    if liq_ratio > 100:           score -= 15
+    if t.get("risk_dev_wash"):    score -= 10
+    if t.get("risk_insider_wash"): score -= 8
+
+    return round(max(score, 0), 1)
+
+
+def score_label(s: float) -> str:
+    if s >= 70: return "🔥🔥🔥 极热"
+    if s >= 50: return "🔥🔥 热门"
+    if s >= 30: return "🔥 关注"
+    return "❄️ 冷淡"
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 主数据整合流水线
+# ══════════════════════════════════════════════════════════════════════════════
+
+def collect_all_tokens() -> list:
+    # ── Binance meme-rush ────────────────────────────────────────────────────
+    print("\n  [1/4] Binance meme-rush...")
+    raw = []
+    for chain_id, label in [("CT_501","SOL"), ("56","BSC")]:
+        for rank_type, stage in [(10,"新建"),(30,"迁移")]:
+            r = fetch_meme_rush(chain_id, rank_type, 25)
+            raw += r
+            print(f"    {label} {stage}: {len(r)}")
+            time.sleep(0.3)
+
+    # ── Binance market-rank ──────────────────────────────────────────────────
+    print("  [2/4] Binance market-rank...")
+    for cid in ["1","56","8453","CT_501"]:
+        r = fetch_unified_rank(cid)
+        raw += r
+        time.sleep(0.2)
+    for cid in ["CT_501","56"]:
+        raw += fetch_smart_money_inflow(cid)
+        raw += fetch_social_hype(cid)
+        raw += fetch_topic_rush(cid, 30)
+        time.sleep(0.3)
+    print(f"    合计 market-rank 数据: {len(raw)} 条")
+
+    # ── OKX OnchainOS ────────────────────────────────────────────────────────
+    print("  [3/4] OKX OnchainOS ranking...")
+    if OKX_API_KEY:
+        for chain in ["solana","ethereum","bsc","base"]:
+            r = fetch_okx_token_ranking(chain)
+            raw += r
+            print(f"    OKX {chain}: {len(r)}")
+            time.sleep(0.3)
+    else:
+        print("    ⚠️ OKX_API_KEY 未配置，跳过")
+
+    # ── 合并去重 ─────────────────────────────────────────────────────────────
+    merged: dict[str, dict] = {}
+    for t in raw:
+        sym = (t.get("symbol") or "").upper().strip()
+        if not sym or len(sym) < 2 or len(sym) > 12:
+            continue
+        if sym not in merged:
+            merged[sym] = {**t, "sources": [t.get("source","")]}
+        else:
+            e = merged[sym]
+            e["sources"].append(t.get("source",""))
+            for f in ["volume_24h","liquidity_usd","holders","kol_holders",
+                      "smart_money_holders","net_inflow_1h","smart_money_inflow_24h",
+                      "social_score","mention_count"]:
+                if float(t.get(f,0) or 0) > float(e.get(f,0) or 0):
+                    e[f] = t[f]
+            for f in ["price_usd","price_change_1h","price_change_24h","market_cap",
+                      "buy_pct","stage","narrative_cn","topic_name","dex_url","address","chain"]:
+                if not e.get(f) and t.get(f):
+                    e[f] = t[f]
+
+    # ── OKX 批量价格补充 ─────────────────────────────────────────────────────
+    if OKX_API_KEY:
+        print("  [3b] OKX price-info 补充...")
+        price_map = fetch_okx_price_info(list(merged.values()))
+        for sym, entry in merged.items():
+            key = (entry.get("address") or "").lower()
+            if key in price_map:
+                for k, v in price_map[key].items():
+                    if not entry.get(k):
+                        entry[k] = v
+
+    # ── 评分 ─────────────────────────────────────────────────────────────────
+    candidates = []
+    for sym, entry in merged.items():
+        entry["sources"]     = list(set(entry.get("sources",[])))
+        entry["score"]       = compute_score(entry)
+        entry["score_label"] = score_label(entry["score"])
+        candidates.append(entry)
+    candidates.sort(key=lambda x: x["score"], reverse=True)
+    print(f"\n  合并去重: {len(candidates)} 个候选币")
+
+    # ── DexScreener 安全验证 Top20 ───────────────────────────────────────────
+    print("  [4/4] DexScreener 安全验证 Top20...")
+    final = []
+    for token in candidates[:20]:
+        sym = token.get("symbol","")
+        if sym:
+            dex = dex_verify(sym)
+            if dex:
+                for k,v in dex.items():
+                    if not token.get(k):
+                        token[k] = v
+                liq = float(dex.get("liquidity_usd",0))
+                bp  = float(dex.get("buy_pct",50))
+                if liq < 10_000: token["score"] = max(token["score"] - 25, 0)
+                if bp >= 65:     token["score"] = min(token["score"] + 8, 100)
+                elif bp < 35:    token["score"] = max(token["score"] - 8, 0)
+                token["score_label"] = score_label(token["score"])
+            time.sleep(0.4)
+        final.append(token)
+
+    final.sort(key=lambda x: x["score"], reverse=True)
+    return final + candidates[20:30]
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# Twitter
+# ══════════════════════════════════════════════════════════════════════════════
+
+def search_twitter(query: str) -> list:
+    try:
+        resp = requests.post(
+            "https://ai.6551.io/open/twitter_search",
+            headers={"Authorization": f"Bearer {TWITTER_BEARER_TOKEN}"},
+            json={"query": f"{query} -is:retweet lang:en", "max_results": 15},
+            timeout=30
+        )
+        if resp.status_code != 200:
+            return []
+        data = resp.json().get("data", [])
+        if isinstance(data, str):
+            try: data = json.loads(data)
+            except: data = []
+        if isinstance(data, dict):
+            # Sometimes data comes wrapped in another object structure
+            if "data" in data and isinstance(data["data"], list):
+                # Try to map inner data with includes/users if MCP mimics raw API
+                users = {u["id"]: u for u in data.get("includes",{}).get("users",[])}
+                out = []
+                for tw in data.get("data",[]):
+                    m = tw.get("public_metrics",{})
+                    au = users.get(tw.get("author_id",""),{})
+                    out.append({
+                        "text": tw.get("text",""),
+                        "likes": m.get("like_count",0),
+                        "retweets": m.get("retweet_count",0),
+                        "author": au.get("username", tw.get("author_id", "unknown")),
+                        "author_followers": au.get("public_metrics",{}).get("followers_count",0),
+                        "engagement": m.get("like_count",0) + m.get("retweet_count",0) * 3,
+                    })
+                return sorted(out, key=lambda x: x["engagement"], reverse=True)
+            return []
+
+        if not isinstance(data, list):
+            return []
+            
+        out = []
+        for tw in data:
+            if isinstance(tw, dict):
+                likes = tw.get("likes", tw.get("like_count", 0))
+                retweets = tw.get("retweets", tw.get("retweet_count", 0))
+                out.append({
+                    "text":             tw.get("text",""),
+                    "likes":            likes,
+                    "retweets":         retweets,
+                    "author":           tw.get("author","unknown"),
+                    "author_followers": tw.get("author_followers", 0),
+                    "engagement":       likes + retweets * 3,
+                })
+        return sorted(out, key=lambda x: x["engagement"], reverse=True)
+    except Exception as e:
+        print(f"  [Twitter MCP] {e}")
+        return []
+
+def collect_twitter_intel(tokens: list) -> dict:
+    general = []
+    for q in ["memecoin 100x solana", "new memecoin launch"]:
+        general += search_twitter(q); time.sleep(1.2)
+    token_intel = {}
+    for t in tokens[:5]:
+        sym = t.get("symbol","")
+        if not sym: continue
+        tweets = search_twitter(f"${sym} crypto")
+        token_intel[sym] = {"tweets": tweets[:4],
+                             "total_engagement": sum(tw["engagement"] for tw in tweets)}
+        time.sleep(1.5)
+    return {"general_sentiment": general[:12], "token_intel": token_intel}
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# News
+# ══════════════════════════════════════════════════════════════════════════════
+
+def search_news(query: str) -> list:
+    try:
+        resp = requests.post(
+            "https://ai.6551.io/open/news_search",
+            headers={"Authorization": f"Bearer {NEWS_API_KEY}"},
+            json={"query": query},
+            timeout=30
+        )
+        if resp.status_code != 200:
+            return []
         
-        payload = {
-            "model": "anthropic/claude-3.5-sonnet",
-            "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": 2000,
-            "temperature": 0.7
-        }
+        data = resp.json().get("data", [])
+        if isinstance(data, str):
+            try: data = json.loads(data)
+            except: data = []
+        if isinstance(data, dict):
+            data = data.get("articles", [])
+        if not isinstance(data, list):
+            return []
+            
+        articles = []
+        for a in data:
+            if isinstance(a, dict):
+                src = a.get("source", {})
+                if isinstance(src, dict):
+                    source_name = src.get("name", "Unknown")
+                else:
+                    source_name = str(src)
+                articles.append({
+                    "title": a.get("title", ""),
+                    "source": source_name,
+                    "url": a.get("url", ""),
+                    "published_at": a.get("publishedAt", a.get("published_at", ""))
+                })
+        return articles
+    except Exception as e:
+        print(f"  [News MCP] {e}")
+        return []
+
+def collect_news_intel() -> dict:
+    articles = []
+    for q in ["memecoin cryptocurrency", "solana memecoin", "new crypto token launch"]:
+        articles += search_news(q)
+        time.sleep(0.5)
+    seen, unique = set(), []
+    for a in articles:
+        if a["title"] not in seen:
+            seen.add(a["title"]); unique.append(a)
+    return {"articles": unique[:20], "total_count": len(unique)}
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# AI 报告
+# ══════════════════════════════════════════════════════════════════════════════
+
+def generate_token_ai_analysis(token: dict, twitter_tweets: list, news_articles: list) -> str:
+    if not OPENROUTER_API_KEY:
+        return ""
+
+    try:
+        ca_address = token.get("address", "")
+        symbol = token.get("symbol", "")
+        twitter_str = json.dumps(twitter_tweets[:8], indent=2, ensure_ascii=False)
+        news_str = json.dumps(news_articles[:5], indent=2, ensure_ascii=False)
         
+        prompt = f"""以下是通过 6551 MCP 底座搜集到的针对 CA: [{ca_address}] ({symbol}) 的全网推特和媒体新闻原始数据：
+
+【Twitter 讨论流】
+{twitter_str}
+
+【加密媒体通稿】
+{news_str}
+
+----------------------------------------
+
+⚠️ 防幻觉铁律（最高优先级）：
+1. 你只能基于上面传入的【Twitter 讨论流】和【加密媒体通稿】中的实际数据进行分析。
+2. 如果某项数据为空或不足，你必须在对应的分析板块明确写出"数据不足，无法判断"。
+3. 不要假装自己能独立访问链上数据或推特，信息来源仅限于上方数据。
+
+执行如下指令分析：作为 6551 Memecoin 分析师，为中国受众深度解码 CA 的起源和叙事（尽量简练）。
+
+输出格式：
+1. 起源与硬核证据
+2. 叙事深度剖析&文化破壁
+3. 影响力地图
+4. 风险预警
+
+综合评分：叙事新鲜度 / 跨文化爆发力 / 叙事天花板
+"""
         resp = requests.post(
             "https://openrouter.ai/api/v1/chat/completions",
-            headers=headers,
-            json=payload,
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://zhangyizyzyzy.github.io/memecoin-analysis-bot/",
+            },
+            json={
+                "model": "anthropic/claude-3.5-sonnet",
+                "messages": [{"role": "user", "content": prompt}],
+                "max_tokens": 800,
+                "temperature": 0.5
+            },
+            timeout=120
+        )
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"  [AI Token] Error for {symbol}: {e}")
+        return ""
+
+def generate_ai_report(data: dict) -> str:
+    try:
+        top = data.get("tokens",[])[:8]
+        prompt = f"""你是专业的 Memecoin 链上情报分析师。基于以下实时数据生成简洁有力的中文情报报告。
+
+## 热门代币 Top8
+{json.dumps(top, indent=2, ensure_ascii=False)}
+
+## Twitter 动态（前5条）
+{json.dumps(data.get("twitter",{}).get("general_sentiment",[])[:5], indent=2, ensure_ascii=False)}
+
+## 新闻（前5条）
+{json.dumps(data.get("news",{}).get("articles",[])[:5], indent=2, ensure_ascii=False)}
+
+报告结构（言简意赅，数字具体）：
+1. 🔥 **市场总览** — 整体 memecoin 情绪
+2. 🚀 **Top 热门币** — 评分最高3-5个：为什么上榜？
+3. ⚡ **1小时异动** — 资金流入及价格信号
+4. 🐋 **聪明钱动向** — smart_money_holders 等动向
+5. 🎯 **热门叙事** — 当下的话题梗
+6. ⚠️ **风险警告** — 异常点名
+7. 💡 **操作思路** — 仅供参考"""
+
+        resp = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                     "Content-Type": "application/json",
+                     "HTTP-Referer": "https://zhangyizyzyzy.github.io/memecoin-analysis-bot/"},
+            json={"model": "anthropic/claude-3.5-sonnet",
+                  "messages": [{"role": "user", "content": prompt}],
+                  "max_tokens": 1200},
             timeout=60
         )
         resp.raise_for_status()
-        data = resp.json()
-        return data["choices"][0]["message"]["content"]
+        return resp.json()["choices"][0]["message"]["content"]
     except Exception as e:
-        print(f"[AI] Error generating report: {e}")
-        return f"⚠️ AI分析生成失败: {str(e)}\n\n请检查OpenRouter API配置。"
+        return f"⚠️ AI报告生成失败: {e}"
 
-# ─── MAIN COLLECTION PIPELINE ──────────────────────────────────────────────────
 
-def collect_all_chain_tokens() -> list:
-    """Collect trending tokens across all chains."""
-    all_tokens = []
-    
-    for chain in CHAINS:
-        print(f"[DEX] Fetching trending tokens for {chain}...")
-        
-        # Get trending/boosted tokens
-        boosted = fetch_dexscreener_trending(chain)
-        
-        # Get details for boosted tokens
-        for token_stub in boosted[:5]:
-            addr = token_stub.get("address", "")
-            if addr:
-                detail = fetch_dexscreener_token_detail(addr, chain)
-                if detail and detail.get("volume_24h", 0) > 1000:
-                    all_tokens.append(detail)
-                time.sleep(0.5)
-        
-        # Get new pairs
-        print(f"[DEX] Fetching new pairs for {chain}...")
-        new_pairs = fetch_dexscreener_new_pairs(chain)
-        all_tokens.extend(new_pairs)
-        
-        time.sleep(1)
-    
-    # Sort by volume
-    all_tokens.sort(key=lambda x: float(x.get("volume_24h", 0)), reverse=True)
-    
-    # Deduplicate by address
-    seen = set()
-    unique_tokens = []
-    for t in all_tokens:
-        addr = t.get("address", "")
-        if addr and addr not in seen:
-            seen.add(addr)
-            unique_tokens.append(t)
-    
-    return unique_tokens[:30]
-
-def run_collection():
-    """Main collection pipeline."""
-    print(f"\n{'='*60}")
-    print(f"🚀 Memecoin Intelligence Collector")
-    print(f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
-    print(f"{'='*60}\n")
-    
-    timestamp = datetime.now(timezone.utc).isoformat()
-    report_data = {
-        "timestamp": timestamp,
-        "tokens": [],
-        "twitter": {},
-        "news": {},
-        "okx": {},
-        "ai_report": ""
-    }
-    
-    # 1. Collect chain tokens
-    print("📊 Step 1/5: Collecting chain data from DexScreener...")
-    tokens = collect_all_chain_tokens()
-    report_data["tokens"] = tokens
-    print(f"  ✅ Found {len(tokens)} tokens across {len(CHAINS)} chains")
-    
-    # 2. Twitter intelligence
-    print("\n🐦 Step 2/5: Collecting Twitter intelligence...")
-    if TWITTER_BEARER_TOKEN:
-        twitter_data = collect_twitter_intelligence(tokens)
-        report_data["twitter"] = twitter_data
-        tweet_count = len(twitter_data.get("general_sentiment", []))
-        print(f"  ✅ Collected {tweet_count} relevant tweets")
-    else:
-        print("  ⚠️ Twitter token not configured, skipping")
-    
-    # 3. News intelligence
-    print("\n📰 Step 3/5: Collecting news intelligence...")
-    if NEWS_API_KEY:
-        news_data = collect_news_intelligence()
-        report_data["news"] = news_data
-        print(f"  ✅ Collected {news_data.get('total_count', 0)} news articles")
-    else:
-        print("  ⚠️ News API key not configured, skipping")
-    
-    # 4. OKX smart money
-    print("\n🐋 Step 4/5: Fetching OKX smart money signals...")
-    if OKX_API_KEY:
-        okx_data = fetch_okx_smart_money()
-        report_data["okx"] = okx_data
-        print(f"  ✅ Found {len(okx_data.get('smart_money_signals', []))} smart money signals")
-    else:
-        print("  ⚠️ OKX API not configured, skipping")
-    
-    # 5. Generate AI report
-    print("\n🤖 Step 5/5: Generating AI analysis report...")
-    if OPENROUTER_API_KEY:
-        ai_report = generate_ai_report(report_data)
-        report_data["ai_report"] = ai_report
-        print(f"  ✅ AI report generated ({len(ai_report)} chars)")
-    else:
-        print("  ⚠️ OpenRouter API key not configured, skipping AI analysis")
-    
-    # Save data
-    save_report(report_data)
-    
-    print(f"\n{'='*60}")
-    print(f"✅ Collection complete!")
-    print(f"{'='*60}\n")
-    
-    return report_data
+# ══════════════════════════════════════════════════════════════════════════════
+# 保存报告
+# ══════════════════════════════════════════════════════════════════════════════
 
 def save_report(data: dict):
-    """Save report data to docs directory for GitHub Pages."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    
-    timestamp = datetime.now(timezone.utc)
-    
-    # Save latest report
-    latest_path = DATA_DIR / "latest.json"
-    with open(latest_path, "w", encoding="utf-8") as f:
+    with open(DATA_DIR / "latest.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"\n💾 Saved: {latest_path}")
-    
-    # Save timestamped archive
-    archive_name = timestamp.strftime("%Y%m%d_%H%M%S") + ".json"
-    archive_path = DATA_DIR / "archive" / archive_name
-    archive_path.parent.mkdir(exist_ok=True)
-    with open(archive_path, "w", encoding="utf-8") as f:
+    ts  = datetime.now(timezone.utc)
+    arc = DATA_DIR / "archive" / (ts.strftime("%Y%m%d_%H%M%S") + ".json")
+    arc.parent.mkdir(exist_ok=True)
+    with open(arc, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    
-    # Update reports index
-    index_path = DATA_DIR / "index.json"
-    try:
-        with open(index_path) as f:
-            index = json.load(f)
-    except:
-        index = {"reports": []}
-    
-    index["reports"].insert(0, {
-        "filename": archive_name,
-        "timestamp": data["timestamp"],
-        "token_count": len(data.get("tokens", [])),
-    })
-    index["reports"] = index["reports"][:48]  # Keep last 48 reports (2 days)
-    index["last_updated"] = data["timestamp"]
-    
-    with open(index_path, "w", encoding="utf-8") as f:
-        json.dump(index, f, ensure_ascii=False, indent=2)
-    
-    print(f"💾 Archive saved: {archive_path}")
+    idx_path = DATA_DIR / "index.json"
+    try:    idx = json.loads(idx_path.read_text())
+    except: idx = {"reports": []}
+    idx["reports"].insert(0, {"filename": arc.name, "timestamp": data["timestamp"],
+                               "token_count": len(data.get("tokens",[]))})
+    idx["reports"]      = idx["reports"][:48]
+    idx["last_updated"] = data["timestamp"]
+    idx_path.write_text(json.dumps(idx, ensure_ascii=False, indent=2))
+    print(f"\n💾 Saved: latest.json + {arc.name}")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# MAIN
+# ══════════════════════════════════════════════════════════════════════════════
+
+def run():
+    print(f"\n{'='*65}")
+    print(f"🚀 Memecoin Intelligence Collector v3")
+    print(f"   数据源: Binance Skills Hub (meme-rush + market-rank)")
+    print(f"           OKX OnchainOS | DexScreener | Twitter | News")
+    print(f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
+    print(f"{'='*65}\n")
+
+    report = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "tokens": [], "twitter": {}, "news": {}, "ai_report": "",
+        "data_sources": {
+            "binance_meme_rush":   True,
+            "binance_market_rank": True,
+            "okx_onchainos":       bool(OKX_API_KEY),
+            "dexscreener":         True,
+            "twitter":             bool(TWITTER_BEARER_TOKEN),
+            "news":                bool(NEWS_API_KEY),
+        }
+    }
+
+    print("📡 收集链上数据...")
+    tokens = collect_all_tokens()
+    report["tokens"] = tokens
+    top1 = tokens[0].get("symbol","?") if tokens else "无"
+    print(f"\n✅ 最终 {len(tokens)} 个候选币  Top1={top1} ({tokens[0].get('score',0) if tokens else 0}分)")
+
+    if TWITTER_BEARER_TOKEN:
+        print("\n🐦 Twitter 情报...")
+        report["twitter"] = collect_twitter_intel(tokens)
+        print(f"  ✅ {len(report['twitter'].get('general_sentiment',[]))} tweets")
+
+    if NEWS_API_KEY:
+        print("\n📰 新闻情报...")
+        report["news"] = collect_news_intel()
+        print(f"  ✅ {report['news']['total_count']} articles")
+
+    if OPENROUTER_API_KEY:
+        print("\n🤖 单币分析与总报告生成...")
+        if TWITTER_BEARER_TOKEN:
+            for t in tokens[:3]:
+                sym = t.get("symbol", "")
+                ca = t.get("address", "")
+                if not sym or not ca: continue
+                print(f"  ⚡ 生成单币深度分析: {sym}")
+                t_tweets = search_twitter(f"{ca} OR {sym}")
+                t_news = search_news(f"{ca} OR {sym}") if NEWS_API_KEY else []
+                t["ai_analysis"] = generate_token_ai_analysis(t, t_tweets, t_news)
+                time.sleep(2)
+        else:
+            print("  ⚠️ 缺少 Twitter Token，跳过单币 AI 分析。")
+
+        report["ai_report"] = generate_ai_report(report)
+        print(f"  ✅ 总报告生成 ({len(report['ai_report'])} chars)")
+
+    save_report(report)
+    print(f"\n{'='*65}\n✅ 全部完成！\n{'='*65}\n")
+    return report
 
 if __name__ == "__main__":
-    run_collection()
+    run()
