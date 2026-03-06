@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MEME INTEL // 链上情报站</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #020408;
@@ -18,11 +21,16 @@
       --green: #00f5c4;
       --text: #c8e6f0;
       --muted: #4a7a94;
-      --glow: 0 0 20px rgba(0,245,196,0.3);
-      --glow2: 0 0 20px rgba(245,166,35,0.3);
+      --glow: 0 0 20px rgba(0, 245, 196, 0.3);
+      --glow2: 0 0 20px rgba(245, 166, 35, 0.3);
+      --glow3: 0 0 20px rgba(232, 67, 147, 0.4);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       background: var(--bg);
@@ -32,44 +40,40 @@
       overflow-x: hidden;
     }
 
-    /* Scanline effect */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,245,196,0.015) 2px,
-        rgba(0,245,196,0.015) 4px
-      );
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 245, 196, 0.015) 2px, rgba(0, 245, 196, 0.015) 4px);
       pointer-events: none;
       z-index: 1000;
     }
 
-    /* Grid background */
     body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: 
-        linear-gradient(rgba(0,245,196,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,245,196,0.03) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(0, 245, 196, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 245, 196, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
       pointer-events: none;
       z-index: 0;
     }
 
-    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
 
-    /* Header */
+    /* ── Header ── */
     header {
       border-bottom: 1px solid var(--border);
       padding: 20px 0;
       position: sticky;
       top: 0;
-      background: rgba(2,4,8,0.95);
+      background: rgba(2, 4, 8, 0.95);
       backdrop-filter: blur(10px);
       z-index: 100;
     }
@@ -84,24 +88,27 @@
       font-family: 'Orbitron', monospace;
       font-size: 1.4rem;
       font-weight: 900;
-      letter-spacing: 0.15em;
+      letter-spacing: .15em;
       color: var(--accent);
       text-shadow: var(--glow);
     }
 
-    .logo span { color: var(--accent2); }
+    .logo span {
+      color: var(--accent2);
+    }
 
     .status-bar {
       display: flex;
       align-items: center;
       gap: 20px;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
+      font-size: .75rem;
       color: var(--muted);
     }
 
     .status-dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 8px var(--accent);
@@ -109,11 +116,18 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .4
+      }
     }
 
-    /* Hero / Last Update */
+    /* ── Hero ── */
     .hero {
       padding: 40px 0 20px;
       border-bottom: 1px solid var(--border);
@@ -131,20 +145,47 @@
       font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       line-height: 1;
-      letter-spacing: -0.02em;
     }
 
-    .hero-title .line1 { color: var(--text); }
-    .hero-title .line2 { 
-      color: var(--accent); 
+    .hero-title .line1 {
+      color: var(--text);
+    }
+
+    .hero-title .line2 {
+      color: var(--accent);
       text-shadow: var(--glow);
+      animation: glitch 8s infinite;
+    }
+
+    @keyframes glitch {
+
+      0%,
+      100% {
+        text-shadow: var(--glow)
+      }
+
+      93% {
+        text-shadow: -2px 0 var(--accent3), 2px 0 var(--accent2)
+      }
+
+      94% {
+        text-shadow: var(--glow)
+      }
+
+      96% {
+        text-shadow: 2px 0 var(--accent3), -2px 0 var(--accent2)
+      }
+
+      97% {
+        text-shadow: var(--glow)
+      }
     }
 
     .hero-subtitle {
       margin-top: 12px;
-      font-size: 0.85rem;
+      font-size: .85rem;
       color: var(--muted);
-      letter-spacing: 0.1em;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
 
@@ -153,10 +194,20 @@
       font-family: 'Share Tech Mono', monospace;
     }
 
-    .update-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
-    .update-value { font-size: 1.1rem; color: var(--accent2); margin-top: 4px; }
+    .update-label {
+      font-size: .7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
 
-    /* Chain tabs */
+    .update-value {
+      font-size: 1.1rem;
+      color: var(--accent2);
+      margin-top: 4px;
+    }
+
+    /* ── Chain tabs ── */
     .chain-tabs {
       display: flex;
       gap: 8px;
@@ -170,23 +221,24 @@
       border: 1px solid var(--border);
       border-radius: 2px;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
+      font-size: .75rem;
       cursor: pointer;
-      letter-spacing: 0.1em;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      transition: all 0.2s;
+      transition: all .2s;
       background: transparent;
       color: var(--muted);
     }
 
-    .chain-tab:hover, .chain-tab.active {
+    .chain-tab:hover,
+    .chain-tab.active {
       border-color: var(--accent);
       color: var(--accent);
-      background: rgba(0,245,196,0.05);
+      background: rgba(0, 245, 196, .05);
       box-shadow: var(--glow);
     }
 
-    /* Main layout */
+    /* ── Layout ── */
     .main-grid {
       display: grid;
       grid-template-columns: 1fr 380px;
@@ -194,7 +246,6 @@
       padding: 24px 0;
     }
 
-    /* AI Report Panel */
     .panel {
       border: 1px solid var(--border);
       background: var(--surface);
@@ -213,140 +264,518 @@
 
     .panel-title {
       font-family: 'Orbitron', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      font-size: .7rem;
+      letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--accent);
     }
 
     .panel-badge {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: .65rem;
       color: var(--muted);
-      letter-spacing: 0.05em;
     }
 
-    .panel-body { padding: 20px; }
+    .panel-body {
+      padding: 20px;
+    }
 
-    /* AI Report */
+    /* ── AI Report ── */
     .ai-report {
-      font-size: 0.88rem;
+      font-size: .88rem;
       line-height: 1.8;
       color: var(--text);
       white-space: pre-wrap;
     }
 
-    .ai-report strong { color: var(--accent2); }
+    .ai-report strong {
+      color: var(--accent2);
+    }
 
-    /* Token Cards */
+    /* ── Token Cards ── */
     .token-grid {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
     .token-card {
-      padding: 16px 20px;
       border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+
+    .token-card:last-child {
+      border-bottom: none;
+    }
+
+    .token-card:hover {
+      background: rgba(0, 245, 196, .03);
+    }
+
+    .token-card-main {
+      padding: 14px 20px;
       display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 16px;
+      grid-template-columns: 28px 1fr auto auto;
+      gap: 12px;
       align-items: center;
-      transition: background 0.2s;
       cursor: pointer;
     }
 
-    .token-card:hover { background: rgba(0,245,196,0.03); }
-    .token-card:last-child { border-bottom: none; }
-
     .token-rank {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
+      font-size: .7rem;
       color: var(--muted);
-      width: 24px;
       text-align: center;
     }
 
     .token-info {}
+
     .token-symbol {
       font-family: 'Orbitron', monospace;
-      font-size: 0.85rem;
+      font-size: .85rem;
       font-weight: 700;
-      color: var(--text);
     }
 
     .token-chain {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: .65rem;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-top: 2px;
     }
 
-    .token-metrics { text-align: right; }
+    .token-stage {
+      display: inline-block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .55rem;
+      padding: 1px 5px;
+      border-radius: 2px;
+      margin-top: 3px;
+      border: 1px solid;
+    }
+
+    .stage-new {
+      color: #00f5c4;
+      border-color: #00f5c4;
+    }
+
+    .stage-graduate {
+      color: #f5a623;
+      border-color: #f5a623;
+    }
+
+    .stage-migrated {
+      color: #9945FF;
+      border-color: #9945FF;
+    }
+
+    .token-metrics {
+      text-align: right;
+    }
 
     .token-price {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--text);
+      font-size: .85rem;
     }
 
     .token-change {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
+      font-size: .75rem;
       margin-top: 2px;
     }
 
-    .pos { color: var(--green); }
-    .neg { color: var(--red); }
-
     .token-vol {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: .65rem;
       color: var(--muted);
       margin-top: 2px;
     }
 
-    /* Sidebar */
-    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .pos {
+      color: var(--green);
+    }
 
-    /* News items */
+    .neg {
+      color: var(--red);
+    }
+
+    .token-score {
+      text-align: right;
+    }
+
+    .score-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .score-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .6rem;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* ── AI Dive Button ── */
+    .token-ai-bar {
+      padding: 0 20px 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-ai-dive {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid var(--accent3);
+      border-radius: 2px;
+      background: rgba(232, 67, 147, .08);
+      color: var(--accent3);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: all .2s;
+      text-transform: uppercase;
+    }
+
+    .btn-ai-dive:hover {
+      background: rgba(232, 67, 147, .18);
+      box-shadow: var(--glow3);
+    }
+
+    .btn-ai-dive .btn-icon {
+      font-size: .8rem;
+    }
+
+    .btn-ai-dive.loading {
+      opacity: .6;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .token-sources {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .58rem;
+      color: var(--muted);
+    }
+
+    .source-badge {
+      display: inline-block;
+      padding: 1px 5px;
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      margin-right: 3px;
+      color: #3a6a84;
+      font-size: .55rem;
+    }
+
+    /* ── Modal Overlay ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 4, 8, .92);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 20px;
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid var(--accent3);
+      background: var(--surface);
+      border-radius: 3px;
+      box-shadow: 0 0 60px rgba(232, 67, 147, .25);
+      transform: translateY(20px);
+      transition: transform .3s;
+      position: relative;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-token-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .modal-ca {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .65rem;
+      color: var(--muted);
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    .modal-ca span {
+      color: var(--accent3);
+      cursor: pointer;
+    }
+
+    .modal-ca span:hover {
+      text-decoration: underline;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .modal-body {
+      padding: 24px;
+    }
+
+    /* ── Modal Loading ── */
+    .modal-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 60px;
+    }
+
+    .modal-spinner {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent3);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .modal-loading-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .modal-step {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .72rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .3s;
+    }
+
+    .modal-step.active {
+      color: var(--accent3);
+    }
+
+    .modal-step.done {
+      color: var(--accent);
+    }
+
+    .modal-step-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── Modal Report Content ── */
+    .modal-report {
+      font-size: .88rem;
+      line-height: 1.9;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .modal-report strong {
+      color: var(--accent2);
+    }
+
+    .modal-report-section {
+      margin-bottom: 24px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface2);
+    }
+
+    .modal-error {
+      padding: 24px;
+      border: 1px solid var(--red);
+      border-radius: 2px;
+      background: rgba(255, 51, 102, .06);
+      color: var(--red);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .8rem;
+      line-height: 1.6;
+    }
+
+    .modal-data-preview {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: rgba(0, 0, 0, .3);
+    }
+
+    .modal-data-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 6px;
+    }
+
+    .modal-data-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .modal-data-item {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .65rem;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+    }
+
+    /* ── Score bar ── */
+    .score-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .score-item {
+      flex: 1;
+      min-width: 140px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface2);
+      text-align: center;
+    }
+
+    .score-item-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: .6rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .score-item-val {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .score-item-sub {
+      font-size: .65rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
     .news-item {
       padding: 14px 20px;
       border-bottom: 1px solid var(--border);
     }
-    .news-item:last-child { border-bottom: none; }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
 
     .news-source {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: .6rem;
       color: var(--accent3);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: .1em;
       margin-bottom: 6px;
     }
 
     .news-title {
-      font-size: 0.8rem;
+      font-size: .8rem;
       line-height: 1.4;
-      color: var(--text);
     }
 
-    .news-title a { 
-      color: inherit; 
-      text-decoration: none; 
+    .news-title a {
+      color: var(--text);
+      text-decoration: none;
     }
-    .news-title a:hover { color: var(--accent); }
+
+    .news-title a:hover {
+      color: var(--accent);
+    }
 
     .news-time {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: .6rem;
       color: var(--muted);
       margin-top: 6px;
     }
 
-    /* Twitter items */
     .tweet-item {
       padding: 14px 20px;
       border-bottom: 1px solid var(--border);
@@ -354,15 +783,14 @@
 
     .tweet-author {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: .65rem;
       color: var(--accent2);
       margin-bottom: 6px;
     }
 
     .tweet-text {
-      font-size: 0.78rem;
+      font-size: .78rem;
       line-height: 1.5;
-      color: var(--text);
     }
 
     .tweet-metrics {
@@ -373,13 +801,14 @@
 
     .tweet-metric {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: .6rem;
       color: var(--muted);
     }
 
-    .tweet-metric span { color: var(--accent); }
+    .tweet-metric span {
+      color: var(--accent);
+    }
 
-    /* Smart money */
     .okx-item {
       padding: 12px 20px;
       border-bottom: 1px solid var(--border);
@@ -390,16 +819,16 @@
 
     .okx-symbol {
       font-family: 'Orbitron', monospace;
-      font-size: 0.75rem;
+      font-size: .75rem;
       font-weight: 700;
     }
 
     .okx-change {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem;
+      font-size: .8rem;
     }
 
-    /* Loading state */
+    /* ── Misc ── */
     .loading {
       display: flex;
       align-items: center;
@@ -410,31 +839,41 @@
     }
 
     .loading-spinner {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border: 2px solid var(--border);
       border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
-
     .loading-text {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem;
+      font-size: .8rem;
       color: var(--muted);
     }
 
-    /* Empty state */
     .empty {
       padding: 30px 20px;
       text-align: center;
       color: var(--muted);
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
+      font-size: .75rem;
     }
 
-    /* Footer */
+    .highlight {
+      color: var(--accent2);
+      font-weight: 700;
+    }
+
+    .chain-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 20px 0;
@@ -449,68 +888,69 @@
 
     .footer-text {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: .65rem;
       color: var(--muted);
     }
 
     .disclaimer {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: .6rem;
       color: #2a4a5a;
       max-width: 500px;
       text-align: right;
       line-height: 1.6;
     }
 
-    /* Glitch animation for title */
-    @keyframes glitch {
-      0%, 100% { text-shadow: var(--glow); }
-      92% { text-shadow: var(--glow); }
-      93% { text-shadow: -2px 0 var(--accent3), 2px 0 var(--accent2); }
-      94% { text-shadow: var(--glow); }
-      96% { text-shadow: 2px 0 var(--accent3), -2px 0 var(--accent2); }
-      97% { text-shadow: var(--glow); }
+    ::-webkit-scrollbar {
+      width: 4px;
     }
 
-    .hero-title .line2 { animation: glitch 8s infinite; }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .main-grid { grid-template-columns: 1fr; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .update-time { text-align: left; }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
     }
 
-    /* Number formatting helpers */
-    .highlight { color: var(--accent2); font-weight: 700; }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
 
-    /* Chain color indicators */
-    .chain-sol { color: #9945FF; }
-    .chain-eth { color: #627EEA; }
-    .chain-base { color: #0052FF; }
-    .chain-bsc { color: #F3BA2F; }
+    @media (max-width:900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .chain-dot {
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      margin-right: 4px;
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .update-time {
+        text-align: left;
+      }
+
+      .token-card-main {
+        grid-template-columns: 24px 1fr auto;
+      }
+
+      .token-score {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
+
+  <!-- ── Header ── -->
   <header>
     <div class="container">
       <div class="header-inner">
         <div class="logo">MEME<span>INTEL</span> //</div>
         <div class="status-bar">
-          <div class="status-dot" id="statusDot"></div>
+          <div class="status-dot"></div>
           <span id="headerStatus">正在加载数据...</span>
         </div>
       </div>
@@ -534,35 +974,33 @@
       </div>
     </div>
 
-    <!-- Chain filter tabs -->
     <div class="chain-tabs">
-      <button class="chain-tab active" onclick="filterChain('all')">全部链</button>
-      <button class="chain-tab" onclick="filterChain('solana')">◎ Solana</button>
-      <button class="chain-tab" onclick="filterChain('ethereum')">Ξ Ethereum</button>
-      <button class="chain-tab" onclick="filterChain('base')">⬡ Base</button>
-      <button class="chain-tab" onclick="filterChain('bsc')">♦ BSC</button>
+      <button class="chain-tab active" onclick="filterChain('all',this)">全部链</button>
+      <button class="chain-tab" onclick="filterChain('solana',this)">◎ Solana</button>
+      <button class="chain-tab" onclick="filterChain('ethereum',this)">Ξ Ethereum</button>
+      <button class="chain-tab" onclick="filterChain('base',this)">⬡ Base</button>
+      <button class="chain-tab" onclick="filterChain('bsc',this)">♦ BSC</button>
     </div>
 
     <div class="main-grid">
-      <!-- Left: AI Report + Token List -->
       <div>
-        <!-- AI Analysis Report -->
-        <div class="panel" style="margin-bottom: 20px;">
+        <!-- 全局 AI 报告 -->
+        <div class="panel" style="margin-bottom:20px;">
           <div class="panel-header">
-            <div class="panel-title">🤖 AI 情报分析</div>
+            <div class="panel-title">🤖 AI 市场总览</div>
             <div class="panel-badge" id="reportTime">--</div>
           </div>
           <div class="panel-body">
             <div id="aiReport" class="ai-report">
               <div class="loading">
                 <div class="loading-spinner"></div>
-                <div class="loading-text">正在加载AI分析报告...</div>
+                <div class="loading-text">正在加载报告...</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Token List -->
+        <!-- 热门代币列表 -->
         <div class="panel">
           <div class="panel-header">
             <div class="panel-title">📊 热门代币</div>
@@ -577,42 +1015,37 @@
         </div>
       </div>
 
-      <!-- Right Sidebar -->
+      <!-- 侧边栏 -->
       <div class="sidebar">
-        <!-- OKX Smart Money -->
         <div class="panel">
           <div class="panel-header">
             <div class="panel-title">🐋 聪明钱信号</div>
-            <div class="panel-badge">OKX</div>
+            <div class="panel-badge">Binance + OKX</div>
           </div>
-          <div id="okxSignals">
-            <div class="loading" style="padding: 30px;">
+          <div id="smartMoneyFeed">
+            <div class="loading" style="padding:30px;">
               <div class="loading-spinner"></div>
             </div>
           </div>
         </div>
-
-        <!-- Twitter Feed -->
         <div class="panel">
           <div class="panel-header">
             <div class="panel-title">🐦 Twitter 热度</div>
             <div class="panel-badge" id="tweetCount">-- tweets</div>
           </div>
           <div id="twitterFeed">
-            <div class="loading" style="padding: 30px;">
+            <div class="loading" style="padding:30px;">
               <div class="loading-spinner"></div>
             </div>
           </div>
         </div>
-
-        <!-- News Feed -->
         <div class="panel">
           <div class="panel-header">
             <div class="panel-title">📰 新闻动态</div>
             <div class="panel-badge" id="newsCount">-- articles</div>
           </div>
           <div id="newsFeed">
-            <div class="loading" style="padding: 30px;">
+            <div class="loading" style="padding:30px;">
               <div class="loading-spinner"></div>
             </div>
           </div>
@@ -624,209 +1057,555 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-text">MEME INTEL // AUTO-UPDATED EVERY HOUR</div>
+        <div class="footer-text">MEME INTEL // AUTO-UPDATED EVERY HOUR // POWERED BY BINANCE SKILLS HUB + OKX ONCHAINOS
+        </div>
         <div class="disclaimer">⚠️ 本报告仅供参考，不构成投资建议。Memecoin 风险极高，请量力而行。</div>
       </div>
     </div>
   </footer>
 
+  <!-- ══ AI 深度分析 Modal ══ -->
+  <div class="modal-overlay" id="aiModal" onclick="handleModalOverlayClick(event)">
+    <div class="modal" id="aiModalContent">
+      <div class="modal-header">
+        <div>
+          <div class="modal-token-name" id="modalTokenName">--</div>
+          <div class="modal-ca">
+            CA: <span id="modalCA" onclick="copyCA()" title="点击复制">--</span>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- 内容动态注入 -->
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ══════════════════════════════════════════════════════
+    // 全局状态
+    // ══════════════════════════════════════════════════════
     let allTokens = [];
     let currentChain = 'all';
+    let currentCA = '';
 
-    // Format numbers
-    function fmtNum(n) {
+    // OpenRouter key 从 latest.json 里读取（报告生成时服务端写入），
+    // 或者也可以在这里硬写（前端直接调用 OpenRouter）
+    // 注意: 前端暴露 API key 有安全风险，仅适用于个人使用场景
+    const OPENROUTER_KEY = ''; // 留空则用 GitHub Actions 后端生成逻辑
+
+    // ══════════════════════════════════════════════════════
+    // 工具函数
+    // ══════════════════════════════════════════════════════
+    const fmtNum = n => {
       n = parseFloat(n) || 0;
-      if (n >= 1e9) return (n/1e9).toFixed(2) + 'B';
-      if (n >= 1e6) return (n/1e6).toFixed(2) + 'M';
-      if (n >= 1e3) return (n/1e3).toFixed(2) + 'K';
+      if (n >= 1e9) return (n / 1e9).toFixed(2) + 'B';
+      if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M';
+      if (n >= 1e3) return (n / 1e3).toFixed(2) + 'K';
       return n.toFixed(2);
-    }
-
-    function fmtPrice(p) {
+    };
+    const fmtPrice = p => {
       p = parseFloat(p) || 0;
       if (p < 0.000001) return p.toExponential(2);
       if (p < 0.001) return p.toFixed(8);
       if (p < 1) return p.toFixed(6);
       return p.toFixed(4);
-    }
-
-    function chainDot(chain) {
-      const colors = { solana: '#9945FF', ethereum: '#627EEA', base: '#0052FF', bsc: '#F3BA2F' };
-      const color = colors[chain.toLowerCase()] || '#4a7a94';
-      return `<span class="chain-dot" style="background:${color}"></span>`;
-    }
-
-    // Time formatter
-    function fmtTime(iso) {
+    };
+    const fmtTime = iso => {
       if (!iso) return '--';
-      const d = new Date(iso);
-      return d.toLocaleString('zh-CN', { 
-        month: '2-digit', day: '2-digit',
-        hour: '2-digit', minute: '2-digit',
-        hour12: false
-      });
-    }
+      return new Date(iso).toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
+    };
+    const chainDot = chain => {
+      const c = { solana: '#9945FF', ethereum: '#627EEA', base: '#0052FF', bsc: '#F3BA2F' }[chain?.toLowerCase()] || '#4a7a94';
+      return `<span class="chain-dot" style="background:${c}"></span>`;
+    };
+    const escHtml = s => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const md2html = s => (s || '')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/^#{1,3} (.+)$/gm, '<span class="highlight">$1</span>');
 
-    // Load report data
+    // ══════════════════════════════════════════════════════
+    // 加载报告
+    // ══════════════════════════════════════════════════════
     async function loadReport() {
       try {
         const resp = await fetch('data/latest.json?t=' + Date.now());
-        if (!resp.ok) throw new Error('No report yet');
+        if (!resp.ok) throw new Error('no data');
         const data = await resp.json();
         renderAll(data);
       } catch (e) {
-        console.warn('Could not load report:', e);
-        document.getElementById('aiReport').innerHTML = 
-          '<div class="empty">暂无数据。GitHub Actions 将在下一个整点运行并生成第一份报告。</div>';
+        console.warn(e);
+        document.getElementById('aiReport').innerHTML = '<div class="empty">暂无数据。GitHub Actions 将在下一个整点运行并生成第一份报告。</div>';
         document.getElementById('tokenGrid').innerHTML = '<div class="empty">等待数据...</div>';
         document.getElementById('twitterFeed').innerHTML = '<div class="empty">等待数据...</div>';
         document.getElementById('newsFeed').innerHTML = '<div class="empty">等待数据...</div>';
-        document.getElementById('okxSignals').innerHTML = '<div class="empty">等待数据...</div>';
+        document.getElementById('smartMoneyFeed').innerHTML = '<div class="empty">等待数据...</div>';
         document.getElementById('headerStatus').textContent = '等待首次运行...';
       }
     }
 
     function renderAll(data) {
-      // Update header
       document.getElementById('lastUpdate').textContent = fmtTime(data.timestamp);
       document.getElementById('reportTime').textContent = fmtTime(data.timestamp);
       document.getElementById('headerStatus').textContent = '数据已更新 · 每小时刷新';
 
-      // AI Report
-      const reportEl = document.getElementById('aiReport');
-      if (data.ai_report) {
-        // Convert markdown-like formatting
-        let html = data.ai_report
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/^(#{1,3} .+)$/gm, '<span class="highlight">$1</span>');
-        reportEl.innerHTML = html;
-      } else {
-        reportEl.innerHTML = '<div class="empty">AI分析未生成</div>';
-      }
+      const rep = document.getElementById('aiReport');
+      rep.innerHTML = data.ai_report ? md2html(data.ai_report) : '<div class="empty">AI分析未生成</div>';
 
-      // Tokens
       allTokens = data.tokens || [];
       document.getElementById('tokenCount').textContent = allTokens.length + ' tokens';
       renderTokens();
 
-      // Twitter
       const tweets = data.twitter?.general_sentiment || [];
       document.getElementById('tweetCount').textContent = tweets.length + ' tweets';
       renderTwitter(tweets);
 
-      // News
       const articles = data.news?.articles || [];
       document.getElementById('newsCount').textContent = articles.length + ' articles';
       renderNews(articles);
 
-      // OKX
-      const signals = data.okx?.smart_money_signals || [];
-      renderOKX(signals);
+      renderSmartMoney(allTokens);
     }
 
-    function filterChain(chain) {
+    // ══════════════════════════════════════════════════════
+    // 渲染代币列表（含 AI 分析按钮）
+    // ══════════════════════════════════════════════════════
+    function filterChain(chain, el) {
       currentChain = chain;
       document.querySelectorAll('.chain-tab').forEach(t => t.classList.remove('active'));
-      event.target.classList.add('active');
+      el.classList.add('active');
       renderTokens();
     }
 
     function renderTokens() {
-      const filtered = currentChain === 'all' 
-        ? allTokens 
+      const filtered = currentChain === 'all'
+        ? allTokens
         : allTokens.filter(t => t.chain?.toLowerCase() === currentChain);
-      
+
       const grid = document.getElementById('tokenGrid');
-      if (filtered.length === 0) {
-        grid.innerHTML = '<div class="empty">该链暂无数据</div>';
-        return;
-      }
+      if (!filtered.length) { grid.innerHTML = '<div class="empty">该链暂无数据</div>'; return; }
 
       grid.innerHTML = filtered.slice(0, 20).map((t, i) => {
         const ch24 = parseFloat(t.price_change_24h) || 0;
-        const ch1h = parseFloat(t.price_change_1h) || 0;
-        const symbol = t.symbol || t.address?.slice(0,6) || '???';
-        
+        const score = t.score || 0;
+        const sym = t.symbol || t.address?.slice(0, 8) || '???';
+        const ca = t.address || '';
+        const stage = t.stage || '';
+        const stageClass = { '新建': 'stage-new', '即将毕业': 'stage-graduate', '已迁移': 'stage-migrated' }[stage] || '';
+        const stageBadge = stage ? `<span class="token-stage ${stageClass}">${stage}</span>` : '';
+        const sources = (t.sources || []).slice(0, 3).map(s => `<span class="source-badge">${s.replace('binance_', 'B·').replace('okx_', 'O·')}</span>`).join('');
+
         return `
-          <div class="token-card" onclick="window.open('${t.dex_url || '#'}', '_blank')">
-            <div class="token-rank">${String(i+1).padStart(2,'0')}</div>
-            <div class="token-info">
-              <div class="token-symbol">${symbol}</div>
-              <div class="token-chain">${chainDot(t.chain || '')}${(t.chain||'').toUpperCase()}</div>
-            </div>
-            <div class="token-metrics">
-              <div class="token-price">$${fmtPrice(t.price_usd)}</div>
-              <div class="token-change ${ch24 >= 0 ? 'pos' : 'neg'}">
-                ${ch24 >= 0 ? '+' : ''}${ch24.toFixed(1)}% 24h
-              </div>
-              <div class="token-vol">Vol $${fmtNum(t.volume_24h)}</div>
-            </div>
-          </div>`;
+      <div class="token-card" id="card-${i}">
+        <div class="token-card-main" onclick="window.open('${escHtml(t.dex_url || '#')}','_blank')">
+          <div class="token-rank">${String(i + 1).padStart(2, '0')}</div>
+          <div class="token-info">
+            <div class="token-symbol">${escHtml(sym)}</div>
+            <div class="token-chain">${chainDot(t.chain || '')}${(t.chain || '').toUpperCase()}</div>
+            ${stageBadge}
+          </div>
+          <div class="token-metrics">
+            <div class="token-price">$${fmtPrice(t.price_usd)}</div>
+            <div class="token-change ${ch24 >= 0 ? 'pos' : 'neg'}">${ch24 >= 0 ? '+' : ''}${ch24.toFixed(1)}% 24h</div>
+            <div class="token-vol">Vol $${fmtNum(t.volume_24h)}</div>
+          </div>
+          <div class="token-score">
+            <div class="score-num">${score}</div>
+            <div class="score-label">${t.score_label || ''}</div>
+          </div>
+        </div>
+        <div class="token-ai-bar">
+          <button class="btn-ai-dive" id="btn-${i}" onclick="openAIDive(event, ${i})">
+            <span class="btn-icon">🔬</span> 6551 深度考古
+          </button>
+          <div class="token-sources">${sources}</div>
+        </div>
+      </div>`;
+      }).join('');
+    }
+
+    // ══════════════════════════════════════════════════════
+    // AI 深度分析 Modal
+    // ══════════════════════════════════════════════════════
+    function openAIDive(e, tokenIdx) {
+      e.stopPropagation();
+      const filtered = currentChain === 'all'
+        ? allTokens
+        : allTokens.filter(t => t.chain?.toLowerCase() === currentChain);
+      const token = filtered[tokenIdx];
+      if (!token) return;
+
+      currentCA = token.address || '';
+      document.getElementById('modalTokenName').textContent = `${token.symbol || '?'} // ${(token.chain || '').toUpperCase()}`;
+      document.getElementById('modalCA').textContent = currentCA || 'N/A';
+
+      showModal();
+      runAIDive(token);
+    }
+
+    function showModal() {
+      document.getElementById('aiModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('aiModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function handleModalOverlayClick(e) {
+      if (e.target.id === 'aiModal') closeModal();
+    }
+    function copyCA() {
+      if (!currentCA) return;
+      navigator.clipboard.writeText(currentCA).then(() => {
+        document.getElementById('modalCA').textContent = '✅ 已复制！';
+        setTimeout(() => { document.getElementById('modalCA').textContent = currentCA; }, 1500);
+      });
+    }
+
+    // ── 步骤状态管理 ──
+    function setStep(id, state) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('active', 'done');
+      if (state === 'active') el.classList.add('active');
+      if (state === 'done') el.classList.add('done');
+    }
+
+    // ── 主流程 ──
+    async function runAIDive(token) {
+      const body = document.getElementById('modalBody');
+
+      // 渲染 loading UI
+      body.innerHTML = `
+    <div class="modal-loading">
+      <div class="modal-spinner"></div>
+      <div class="modal-loading-steps">
+        <div class="modal-step active" id="step1"><span class="modal-step-dot"></span>正在搜索 Twitter 数据...</div>
+        <div class="modal-step"        id="step2"><span class="modal-step-dot"></span>正在搜索加密媒体新闻...</div>
+        <div class="modal-step"        id="step3"><span class="modal-step-dot"></span>注入 6551 数据流...</div>
+        <div class="modal-step"        id="step4"><span class="modal-step-dot"></span>AI 深度分析中...</div>
+      </div>
+    </div>`;
+
+      try {
+        // Step 1: 搜 Twitter
+        const twitterData = await fetchTwitterForToken(token);
+        setStep('step1', 'done'); setStep('step2', 'active');
+
+        // Step 2: 搜新闻
+        const newsData = await fetchNewsForToken(token);
+        setStep('step2', 'done'); setStep('step3', 'active');
+
+        // Step 3: 组装 prompt
+        await sleep(400);
+        setStep('step3', 'done'); setStep('step4', 'active');
+
+        // Step 4: 调用 AI
+        const report = await callAI6551(token, twitterData, newsData);
+        setStep('step4', 'done');
+
+        // 渲染结果
+        renderAIResult(body, token, twitterData, newsData, report);
+
+      } catch (err) {
+        body.innerHTML = `
+      <div class="modal-error">
+        ⚠️ 分析过程中出现错误：<br><br>${escHtml(err.message)}
+        <br><br>可能原因：Twitter API / News API / OpenRouter 未配置，或者网络超时。
+      </div>`;
+      }
+    }
+
+    // ── 搜 Twitter ──
+    async function fetchTwitterForToken(token) {
+      const sym = token.symbol || '';
+      const ca = token.address || '';
+      const queries = [sym ? `$${sym} crypto` : null, ca ? ca.slice(0, 20) : null].filter(Boolean);
+
+      // 使用 GitHub Pages 部署时，Twitter API 不能从浏览器直接调用（CORS）
+      // 所以我们用 latest.json 里已有的 twitter token_intel 数据 + 全局数据兜底
+      const latestData = window._latestData;
+      const tokenIntel = latestData?.twitter?.token_intel?.[sym.toUpperCase()];
+      if (tokenIntel?.tweets?.length) {
+        return tokenIntel.tweets;
+      }
+      // 兜底: 返回全局推文里提到该 symbol 的
+      const general = latestData?.twitter?.general_sentiment || [];
+      return general.filter(t => (t.text || '').toUpperCase().includes(sym.toUpperCase())).slice(0, 8);
+    }
+
+    // ── 搜新闻 ──
+    async function fetchNewsForToken(token) {
+      const sym = token.symbol || '';
+      const latestData = window._latestData;
+      const articles = latestData?.news?.articles || [];
+      // 过滤出提到该代币的新闻
+      const relevant = articles.filter(a => (a.title || '').toUpperCase().includes(sym.toUpperCase()));
+      return relevant.length ? relevant : articles.slice(0, 5);
+    }
+
+    // ── 调用 OpenRouter AI（6551 prompt）──
+    async function callAI6551(token, twitterData, newsData) {
+      if (token.ai_analysis) {
+        return token.ai_analysis;
+      }
+
+      const ca = token.address || 'N/A';
+      const sym = token.symbol || 'UNKNOWN';
+
+      // 格式化 Twitter 数据
+      const twitterStr = twitterData.length
+        ? twitterData.map((t, i) => `[推文${i + 1}] @${t.author || 'unknown'} (${t.author_followers || 0}粉): "${t.text || ''}" | ❤${t.likes || 0} 🔁${t.retweets || 0}`).join('\n')
+        : '【数据不足】该代币在本次抓取周期内未发现相关 Twitter 讨论，数据为空。';
+
+      // 格式化新闻数据
+      const newsStr = newsData.length
+        ? newsData.map((a, i) => `[新闻${i + 1}] ${a.source || '媒体'}: "${a.title || ''}" | 时间: ${a.published_at || '未知'} | 链接: ${a.url || 'N/A'}`).join('\n')
+        : '【数据不足】未发现相关加密媒体报道，数据为空。';
+
+      // 链上数据补充
+      const onchainStr = `
+代币基本信息:
+- Symbol: ${sym}
+- CA: ${ca}
+- Chain: ${(token.chain || '').toUpperCase()}
+- Price: $${fmtPrice(token.price_usd)}
+- 24h变化: ${parseFloat(token.price_change_24h || 0).toFixed(2)}%
+- 1h变化: ${parseFloat(token.price_change_1h || 0).toFixed(2)}%
+- 交易量(24h): $${fmtNum(token.volume_24h)}
+- 流动性: $${fmtNum(token.liquidity_usd)}
+- 持有人: ${token.holders || 'N/A'}
+- KOL持仓数: ${token.kol_holders || 0}
+- 聪明钱持仓: ${token.smart_money_holders || 0}
+- 阶段: ${token.stage || 'DEX'}
+- 叙事(AI): ${token.narrative_cn || token.topic_name || '暂无'}
+- 来源平台: ${(token.sources || []).join(', ')}
+- 综合评分: ${token.score || 0}分 ${token.score_label || ''}
+- DexScreener: ${token.dex_url || '未知'}
+`.trim();
+
+      // ══ 6551 系统 Prompt ══
+      const prompt = `以下是通过 6551 MCP 底座搜集到的针对 CA: [${ca}] 的全网推特和媒体新闻原始数据：
+
+【链上基础档案】
+${onchainStr}
+
+【Twitter 讨论流】
+${twitterStr}
+
+【加密媒体通稿】
+${newsStr}
+
+----------------------------------------
+
+⚠️ 防幻觉铁律（最高优先级）：
+1. 你只能基于上面传入的【Twitter 讨论流】和【加密媒体通稿】中的实际数据进行分析。
+2. 如果某项数据为空或不足，你必须在对应的分析板块明确写出"数据不足，无法判断"，绝对不能编造、猜测或虚构任何推文链接、账号、事件。
+3. 所有你引用的推文链接、账号名称、新闻标题必须来源于上方传入的原始数据。如果数据中没有，就写"未在数据中发现"。
+4. 不要假装自己能独立访问链上数据或推特，你的所有信息来源仅限于上方传入的数据。
+
+请严格基于以上数据，执行如下系统指令对 CA 进行分析：
+
+角色设定：
+你是一个接入了 6551 实时数据流的链上 Memecoin 顶级分析师。你的目标是利用 6551 的 X 数据源、全网新闻源及链上监控技能，为中国受众深度解码 CA 的起源真相、叙事逻辑，并重点穿透中英文化差异。
+
+操作流程 (考古实战标准)：
+
+1. 基础检索：调用 6551 链上工具，提取该 CA 的基础元数据，特别是关联的社交矩阵（X、Website、TG）。
+2. 硬核溯源：
+   • 必须执行：利用 sinceDate 配合 CA，回溯该币诞生当周的推文。
+   • 判定标准：从传入的推特搜索和新闻搜索数据中，寻找全网第一条提及该 CA 的推文。
+   • 转折点锁定：识别市值从"战壕(Trench)"进入"暴涨期"的关键点火推文。
+3. 文化对齐：检索该叙事在西方世界（X/TikTok/4chan）真实的梗来源或政治背景，并解释其与中文环境的差异。
+
+───
+
+输出格式 (全中文输出)：
+
+📊 基础档案 & 社交矩阵
+• 📈 战场看板 (DexScreener): ${token.dex_url || '[链接未找到]'}
+• CA: ${ca}
+• 社交矩阵: X (推特): [如数据中有则填入] | 官网: [如数据中有则填入] | 电报 (TG): [已执行硬核屏蔽]
+
+🔍 深度剖析报告
+1. 起源与硬核证据：
+   • 始作俑者 (Instigator): [账号] | 证据链接: [必须附上最早推文链接或写"未在数据中发现"]
+   • 点火时刻 (Ignition): [关键转折点推文链接或写"数据不足，无法判断"]
+   • 性质判定: 纯蹭热度 / 社区接管 (CTO) / 庄家埋伏 / 协议创新
+
+2. 叙事深度剖析 & 文化破壁：
+   • 核心钩子 (一定要详细): 它是靠什么逻辑吸引英文圈 Degen 掏钱的？
+   • 文化共鸣与差异: 重点项。该叙事在西方文化中究竟对应什么梗？国内受众可能会产生哪些误读？
+   • 叙事生命力: 它是基于瞬时流量，还是具备文化图腾潜质的长期课题？
+
+3. 影响力地图：
+   • 早期旗手: [账号] | 旗手证据: [必须附上诞生初期最早喊单的推文链接或写"未在数据中发现"]
+   • 势力分布: 分析是职业土狗团还是真实社区。已自动剔除带 TG 链接的同步引流僵尸。
+
+4. 风险预警与数据脱水：
+   • 筹码透视: 链上大户买入频率与推特热度是否匹配？
+   • 收割风险: 开发者动向、是否有同步矩阵派发迹象。
+
+📊 综合评分 (满分 10 分)
+• 1. 叙事新鲜度: [分数]/10 | 2. 跨文化爆发力: [分数]/10 | 3. 叙事天花板: [分数]/10
+总分：[得分]/30`;
+
+      // 调用 OpenRouter
+      const key = OPENROUTER_KEY || window._openrouterKey || '';
+      if (!key) {
+        // 没有前端 key → 返回提示（用户需配置前端 key 或通过后端）
+        throw new Error('前端 OpenRouter API Key 未配置。\n\n请在 index.html 顶部的 OPENROUTER_KEY 变量中填入你的 OpenRouter key，或等待后端定时报告生成。');
+      }
+
+      const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${key}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://zhangyizyzyzy.github.io/memecoin-reports/',
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3.5-sonnet',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 2500,
+          temperature: 0.7,
+        })
+      });
+
+      if (!resp.ok) {
+        const err = await resp.text();
+        throw new Error(`OpenRouter API 错误 ${resp.status}: ${err.slice(0, 200)}`);
+      }
+      const data = await resp.json();
+      return data.choices?.[0]?.message?.content || '⚠️ AI 返回内容为空';
+    }
+
+    // ── 渲染分析结果 ──
+    function renderAIResult(body, token, twitterData, newsData, report) {
+      const ch24 = parseFloat(token.price_change_24h || 0);
+
+      body.innerHTML = `
+    <div class="score-row">
+      <div class="score-item">
+        <div class="score-item-label">综合热度评分</div>
+        <div class="score-item-val">${token.score || 0}</div>
+        <div class="score-item-sub">${token.score_label || ''}</div>
+      </div>
+      <div class="score-item">
+        <div class="score-item-label">24h 涨跌幅</div>
+        <div class="score-item-val ${ch24 >= 0 ? 'pos' : 'neg'}">${ch24 >= 0 ? '+' : ''}${ch24.toFixed(1)}%</div>
+        <div class="score-item-sub">价格动能</div>
+      </div>
+      <div class="score-item">
+        <div class="score-item-label">流动性</div>
+        <div class="score-item-val">$${fmtNum(token.liquidity_usd)}</div>
+        <div class="score-item-sub">${token.chain?.toUpperCase() || '--'}</div>
+      </div>
+      <div class="score-item">
+        <div class="score-item-label">KOL + 聪明钱</div>
+        <div class="score-item-val">${(token.kol_holders || 0) + (token.smart_money_holders || 0)}</div>
+        <div class="score-item-sub">持仓地址数</div>
+      </div>
+    </div>
+
+    <div class="modal-data-preview" style="margin-top:16px;">
+      <div class="modal-data-label">📡 本次注入数据</div>
+      <div class="modal-data-items">
+        <div class="modal-data-item">Twitter: ${twitterData.length} 条</div>
+        <div class="modal-data-item">新闻: ${newsData.length} 条</div>
+        <div class="modal-data-item">阶段: ${token.stage || 'DEX'}</div>
+        <div class="modal-data-item">来源: ${(token.sources || []).length} 个平台</div>
+        ${token.narrative_cn ? `<div class="modal-data-item">叙事: ${escHtml(token.narrative_cn.slice(0, 30))}</div>` : ''}
+      </div>
+    </div>
+
+    <div class="modal-report-section" style="margin-top:20px;">
+      <div class="modal-data-label" style="margin-bottom:12px;">🤖 6551 深度分析报告</div>
+      <div class="modal-report">${md2html(report)}</div>
+    </div>`;
+    }
+
+    // ══════════════════════════════════════════════════════
+    // 侧边栏渲染
+    // ══════════════════════════════════════════════════════
+    function renderSmartMoney(tokens) {
+      const el = document.getElementById('smartMoneyFeed');
+      const smTokens = tokens
+        .filter(t => (t.smart_money_inflow_24h || 0) > 0 || (t.kol_holders || 0) > 0 || (t.smart_money_holders || 0) > 0)
+        .slice(0, 8);
+      if (!smTokens.length) { el.innerHTML = '<div class="empty">暂无聪明钱信号</div>'; return; }
+      el.innerHTML = smTokens.map(t => {
+        const ch = parseFloat(t.price_change_24h || 0);
+        const sm = (t.smart_money_inflow_24h || 0);
+        return `
+      <div class="okx-item">
+        <div>
+          <div class="okx-symbol">${escHtml(t.symbol || '?')}</div>
+          <div class="token-vol">${chainDot(t.chain || '')}${sm > 0 ? '净流入 $' + fmtNum(sm) : 'KOL+聪明钱 ' + (parseInt(t.kol_holders || 0) + parseInt(t.smart_money_holders || 0)) + '个'}</div>
+        </div>
+        <div class="okx-change ${ch >= 0 ? 'pos' : 'neg'}">${ch >= 0 ? '+' : ''}${ch.toFixed(1)}%</div>
+      </div>`;
       }).join('');
     }
 
     function renderTwitter(tweets) {
       const el = document.getElementById('twitterFeed');
-      if (!tweets.length) {
-        el.innerHTML = '<div class="empty">暂无Twitter数据</div>';
-        return;
-      }
-
+      if (!tweets.length) { el.innerHTML = '<div class="empty">暂无Twitter数据</div>'; return; }
       el.innerHTML = tweets.slice(0, 8).map(t => `
-        <div class="tweet-item">
-          <div class="tweet-author">@${t.author || 'anonymous'} · ${t.author_followers >= 1000 ? fmtNum(t.author_followers) + ' 粉丝' : ''}</div>
-          <div class="tweet-text">${t.text?.slice(0, 140) || ''}${(t.text?.length > 140) ? '...' : ''}</div>
-          <div class="tweet-metrics">
-            <div class="tweet-metric">❤ <span>${fmtNum(t.likes)}</span></div>
-            <div class="tweet-metric">🔁 <span>${fmtNum(t.retweets)}</span></div>
-            <div class="tweet-metric">💬 <span>${fmtNum(t.replies)}</span></div>
-          </div>
-        </div>`).join('');
+    <div class="tweet-item">
+      <div class="tweet-author">@${escHtml(t.author || 'anonymous')} · ${t.author_followers >= 1000 ? fmtNum(t.author_followers) + ' 粉' : ''}</div>
+      <div class="tweet-text">${escHtml((t.text || '').slice(0, 140))}${(t.text || '').length > 140 ? '...' : ''}</div>
+      <div class="tweet-metrics">
+        <div class="tweet-metric">❤ <span>${fmtNum(t.likes)}</span></div>
+        <div class="tweet-metric">🔁 <span>${fmtNum(t.retweets)}</span></div>
+        <div class="tweet-metric">💬 <span>${fmtNum(t.replies || 0)}</span></div>
+      </div>
+    </div>`).join('');
     }
 
     function renderNews(articles) {
       const el = document.getElementById('newsFeed');
-      if (!articles.length) {
-        el.innerHTML = '<div class="empty">暂无新闻数据</div>';
-        return;
-      }
-
+      if (!articles.length) { el.innerHTML = '<div class="empty">暂无新闻数据</div>'; return; }
       el.innerHTML = articles.slice(0, 8).map(a => `
-        <div class="news-item">
-          <div class="news-source">${a.source || 'News'}</div>
-          <div class="news-title">
-            <a href="${a.url || '#'}" target="_blank" rel="noopener">${a.title || ''}</a>
-          </div>
-          <div class="news-time">${fmtTime(a.published_at)}</div>
-        </div>`).join('');
+    <div class="news-item">
+      <div class="news-source">${escHtml(a.source || 'News')}</div>
+      <div class="news-title"><a href="${escHtml(a.url || '#')}" target="_blank" rel="noopener">${escHtml(a.title || '')}</a></div>
+      <div class="news-time">${fmtTime(a.published_at)}</div>
+    </div>`).join('');
     }
 
-    function renderOKX(signals) {
-      const el = document.getElementById('okxSignals');
-      if (!signals.length) {
-        el.innerHTML = '<div class="empty">暂无聪明钱信号</div>';
-        return;
+    // ══════════════════════════════════════════════════════
+    // 工具
+    // ══════════════════════════════════════════════════════
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    // ESC 关闭 modal
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ══════════════════════════════════════════════════════
+    // 启动
+    // ══════════════════════════════════════════════════════
+    async function init() {
+      try {
+        const resp = await fetch('data/latest.json?t=' + Date.now());
+        if (resp.ok) {
+          window._latestData = await resp.json();
+          renderAll(window._latestData);
+        } else throw new Error();
+      } catch {
+        loadReport();
       }
-
-      el.innerHTML = signals.slice(0, 10).map(s => {
-        const ch = parseFloat(s.price_change) || 0;
-        return `
-          <div class="okx-item">
-            <div>
-              <div class="okx-symbol">${s.symbol}</div>
-              <div class="token-vol">Vol $${fmtNum(s.volume_24h)}</div>
-            </div>
-            <div class="okx-change ${ch >= 0 ? 'pos' : 'neg'}">
-              ${ch >= 0 ? '+' : ''}${ch.toFixed(1)}%
-            </div>
-          </div>`;
-      }).join('');
     }
 
-    // Auto-refresh every 5 minutes
-    loadReport();
-    setInterval(loadReport, 5 * 60 * 1000);
+    init();
+    setInterval(() => {
+      fetch('data/latest.json?t=' + Date.now())
+        .then(r => r.json())
+        .then(d => { window._latestData = d; renderAll(d); })
+        .catch(() => { });
+    }, 5 * 60 * 1000);
   </script>
 </body>
+
 </html>
