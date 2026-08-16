@@ -11,6 +11,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: memecoin-intelligence-collector
+  cancel-in-progress: false
+
 jobs:
   collect-and-publish:
     runs-on: ubuntu-latest
@@ -52,8 +56,23 @@ jobs:
           git push
         
       - name: 🌐 Deploy to GitHub Pages
+        id: deploy_pages
         uses: peaceiris/actions-gh-pages@v4
         if: success()
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          keep_files: true
+          commit_message: "🚀 Deploy memecoin report $(date -u '+%Y-%m-%d %H:%M UTC')"
+
+      - name: ⏳ Wait before retrying Pages deployment
+        if: steps.deploy_pages.outcome == 'failure'
+        run: sleep 5
+
+      - name: 🔁 Retry GitHub Pages deployment
+        if: steps.deploy_pages.outcome == 'failure'
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
