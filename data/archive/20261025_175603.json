@@ -1,0 +1,846 @@
+{
+  "timestamp": "2026-10-25T17:55:10.798401+00:00",
+  "tokens": [
+    {
+      "symbol": "PUMP",
+      "name": "",
+      "address": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+      "chain": "solana",
+      "price_usd": "0.004339510118427047",
+      "price_change_24h": 489.2,
+      "price_change_1h": 0.0,
+      "market_cap": 3584474777.560147,
+      "liquidity_usd": 36790266.22162037,
+      "volume_24h": 10471564.394313332,
+      "holders": 394581,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_topic_rush",
+        "binance_unified_rank"
+      ],
+      "net_inflow_1h": 16408.232374239946,
+      "topic_name": "Solana头像Meme趋势",
+      "kol_holders": 2,
+      "smart_money_holders": 1,
+      "score": 54.0,
+      "score_label": "🔥🔥 热门",
+      "dex_url": "https://dexscreener.com/solana/2uf4xh61rdwxng9woyxsvqp7zua6klfpb3nvnrqeoisd",
+      "buy_pct": 55.4,
+      "liq_ratio": 85.8,
+      "ai_analysis": ""
+    },
+    {
+      "symbol": "利他主义者",
+      "address": "0x3805e1ce7edde3eb2f3613485cc6f42a7a3d7777",
+      "chain": "bsc",
+      "price_change_24h": 1896.53,
+      "market_cap": 1152301.0956334944,
+      "liquidity_usd": 104770.88809878773,
+      "net_inflow_1h": 0.0,
+      "net_inflow_total": 41167.36293035329,
+      "kol_holders": 6,
+      "smart_money_holders": 1,
+      "holders": 11639,
+      "topic_name": "Altruists",
+      "topic_inflow_1h": "-442.9556656107678",
+      "source": "binance_topic_rush",
+      "sources": [
+        "binance_topic_rush"
+      ],
+      "score": 38.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/bsc/0x13c7c900fd913cde67d33934c8c847a1a59a4983",
+      "buy_pct": 66.1,
+      "liq_ratio": 11.0,
+      "ai_analysis": ""
+    },
+    {
+      "symbol": "USDG",
+      "name": "",
+      "address": "0xe343167631d89b6ffc58b88d6b7fb0228795491d",
+      "chain": "ethereum",
+      "price_usd": "1.0013744726452534",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 393940036.548386,
+      "liquidity_usd": 4399805.877344685,
+      "volume_24h": 5105653.886765598,
+      "holders": 9700,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/ethereum/0xc061caa073f3d95f80f8e5428d32d2d76f5e1622",
+      "buy_pct": 71.4,
+      "liq_ratio": 154.3,
+      "ai_analysis": ""
+    },
+    {
+      "symbol": "ZIG",
+      "name": "",
+      "address": "0x8c907e0a72c3d55627e853f4ec6a96b0c8771145",
+      "chain": "bsc",
+      "price_usd": "0.041850766194158125",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 83701531.2452944,
+      "liquidity_usd": 850036.545541599,
+      "volume_24h": 46377891.952657215,
+      "holders": 19739,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/solana/fkbnjfvnmeqqmsjmq5cgo9sjxsfitzng9xknjm8nzqod",
+      "buy_pct": 100.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "DNA",
+      "name": "",
+      "address": "0xa991f61940095aea0724ef54077223b048c5cf7b",
+      "chain": "bsc",
+      "price_usd": "0.18744670444971348",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 187446704.40440607,
+      "liquidity_usd": 1893158.6115408407,
+      "volume_24h": 37272649.73400721,
+      "holders": 13391,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/solana/c8mqc2ap5zmyykglmnvscm1euqb8zavwjcbaypmqw8dn",
+      "buy_pct": 100.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "IRYS",
+      "name": "",
+      "address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+      "chain": "bsc",
+      "price_usd": "0.03686613137000624",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 2382165.2880626116,
+      "liquidity_usd": 1219892.6133652695,
+      "volume_24h": 27821203.773744732,
+      "holders": 8862,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/ethereum/0x8d52b0145787bdfcddcc8b02eb17cb51773d9593",
+      "buy_pct": 100.0,
+      "liq_ratio": 1.3
+    },
+    {
+      "symbol": "CNPY",
+      "name": "",
+      "address": "0xc69b16cf18cea1e5d0bb6a1a9db802097790ddd2",
+      "chain": "bsc",
+      "price_usd": "0.24938889607835543",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 8009112.747712476,
+      "liquidity_usd": 1215254.173439611,
+      "volume_24h": 15188780.914553946,
+      "holders": 14688,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/base/0x5f53ffc5545c8dffcf3c92620fc5cb8fae86143a6c39283bc5da6945b2c3cac0",
+      "buy_pct": 100.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "CAP",
+      "name": "",
+      "address": "0x99991c6aabba5a096f24f250b73580f5179b9999",
+      "chain": "bsc",
+      "price_usd": "0.10688613377401184",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 21099882.401130196,
+      "liquidity_usd": 1339858.8909715323,
+      "volume_24h": 11935577.77852909,
+      "holders": 4488,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/solana/aedpju685ebfrw52wdppzqoiahat5q7yja2viwcmpmdy",
+      "buy_pct": 89.4,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "TAG",
+      "name": "",
+      "address": "0x208bf3e7da9639f1eaefa2de78c23396b0682025",
+      "chain": "bsc",
+      "price_usd": "0.000497580221877923",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 201707363.02547464,
+      "liquidity_usd": 1835590.883682473,
+      "volume_24h": 7869681.46745809,
+      "holders": 51369,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/solana/c1uyixufczg8zre4cmw3cssiw75o8ncnvazkbjbixp9x",
+      "buy_pct": 100.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "quq",
+      "name": "",
+      "address": "0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf",
+      "chain": "bsc",
+      "price_usd": "0.001670232135234821",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1323257.5115419433,
+      "liquidity_usd": 1325627.8839229858,
+      "volume_24h": 145058302.56812394,
+      "holders": 52992,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/9xyigqzwyvnm2cxusdzfeldseapwcwzqqtui2kgxslyl",
+      "buy_pct": 50.0,
+      "liq_ratio": 2.0
+    },
+    {
+      "symbol": "LIGHT",
+      "name": "",
+      "address": "0x477c2c0459004e3354ba427fa285d7c053203c0e",
+      "chain": "bsc",
+      "price_usd": "0.2389263662111155",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 100349073.80789271,
+      "liquidity_usd": 1463943.7678142497,
+      "volume_24h": 24483584.221755676,
+      "holders": 28772,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/bsc/0x079c94e99272501fb925d24540a621f8e52c75a5",
+      "buy_pct": 46.2,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "AGT",
+      "name": "",
+      "address": "0x5dbde81fce337ff4bcaaee4ca3466c00aecae274",
+      "chain": "bsc",
+      "price_usd": "0.05897938051303883",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 294896894.12506336,
+      "liquidity_usd": 2565226.1767030316,
+      "volume_24h": 22798962.226855207,
+      "holders": 190235,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/bsc/0x345efadcf5569e9cbe56a40c011d4b7a30eb516a",
+      "buy_pct": 46.2,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "APR",
+      "name": "",
+      "address": "0x299ad4299da5b2b93fba4c96967b040c7f611099",
+      "chain": "bsc",
+      "price_usd": "0.042834479914486266",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 18050699.91382939,
+      "liquidity_usd": 295581.9933631485,
+      "volume_24h": 13778717.890776338,
+      "holders": 15581,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/3syyibsfp1hank4mgq3pvfpiho9ycdfs72fyk92tayrz",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "DOS",
+      "name": "",
+      "address": "0xb0f09ea9ae0515c3551080d4a745c8115aa30e37",
+      "chain": "bsc",
+      "price_usd": "0.2635535498331838",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 8610314.990689188,
+      "liquidity_usd": 956362.1807038311,
+      "volume_24h": 8145149.511147881,
+      "holders": 27488,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/hjdcgv88eduth7bhrkem1xxzc4xbuh5thw6qpzvndiaj",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "DGAI",
+      "name": "",
+      "address": "0x10d4183389e99233db3cc981c43443ebd28ebd5e",
+      "chain": "bsc",
+      "price_usd": "0.8505493338004589",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 850549333.763968,
+      "liquidity_usd": 2954445.3347779918,
+      "volume_24h": 6453537.518234765,
+      "holders": 11821,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/bsc/0x0e6e1f47c64f517fc9dc35698718c7dfc708d534",
+      "buy_pct": 49.1,
+      "liq_ratio": 43.2
+    },
+    {
+      "symbol": "TAKE",
+      "name": "",
+      "address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+      "chain": "bsc",
+      "price_usd": "0.06851469002294584",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 11361662.609903902,
+      "liquidity_usd": 477412.5462789954,
+      "volume_24h": 5271469.519621126,
+      "holders": 21271,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/gedqhrmhvksdbjzgdw8fucdkfpgdx6bxzukffp6ribyu",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "XDP",
+      "name": "",
+      "address": "0x07b3d902783c3c12b077508c3b5c00113d1291d0",
+      "chain": "base",
+      "price_usd": "0.01811421063961981",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 181142106.2916527,
+      "liquidity_usd": 2860564.987371716,
+      "volume_24h": 29659657.36689214,
+      "holders": 15686,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/2zwvblx1uvre4xdpsmcgbjz6vsjqnexhhaacgiqd6etf",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "JCT",
+      "name": "",
+      "address": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707",
+      "chain": "bsc",
+      "price_usd": "0.006897855584715507",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 71172779.0217368,
+      "liquidity_usd": 1158474.60874289,
+      "volume_24h": 28317579.163894605,
+      "holders": 15730,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 17.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/ccq9god5x4rzhkr3pj4sy4e2acqdekygh7gxdnh2qtim",
+      "buy_pct": 0.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "UP",
+      "name": "",
+      "address": "0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
+      "chain": "bsc",
+      "price_usd": "0.1680487779527831",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 151932850.95696944,
+      "liquidity_usd": 1321931.5313587363,
+      "volume_24h": 9841781.352321701,
+      "holders": 20075,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 17.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/robinhood/0x23d641feccd207e8794c593e8240444a0674c4ba",
+      "buy_pct": 28.3,
+      "liq_ratio": 5.0
+    },
+    {
+      "symbol": "NES",
+      "name": "",
+      "address": "0x097acf27503753e77bca940277806156c5925b81",
+      "chain": "bsc",
+      "price_usd": "0.11291932510844177",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 2010381.020369474,
+      "liquidity_usd": 976534.6894409854,
+      "volume_24h": 5451092.263115513,
+      "holders": 31494,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 17.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/hyperevm/0x535f30f50ebda33575242c38b976e681d13db6fa",
+      "buy_pct": 11.9,
+      "liq_ratio": 5.1
+    },
+    {
+      "symbol": "SOL",
+      "name": "",
+      "address": "0x311935cd80b76769bf2ecc9d8ab7635b2139cf82",
+      "chain": "base",
+      "price_usd": "101.71776794160914",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 28882347.633188076,
+      "liquidity_usd": 2659074.7482597157,
+      "volume_24h": 11248698.532762362,
+      "holders": 29460,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "AERO",
+      "name": "",
+      "address": "0x3f5bf3edac59d650d8fdf9657a71f2f904a3a4ee",
+      "chain": "base",
+      "price_usd": "0.6976874568812349",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1484969118.9292588,
+      "liquidity_usd": 38002092.24642528,
+      "volume_24h": 11021833.551760344,
+      "holders": 745191,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "AXIS",
+      "name": "",
+      "address": "0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea",
+      "chain": "base",
+      "price_usd": "0.26105975996140157",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 43074860.39363126,
+      "liquidity_usd": 2825890.2042034604,
+      "volume_24h": 10419103.370373104,
+      "holders": 8014,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "VVV",
+      "name": "",
+      "address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+      "chain": "base",
+      "price_usd": "25.438896285523004",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 2065108003.181618,
+      "liquidity_usd": 43022787.79901537,
+      "volume_24h": 5296573.506056375,
+      "holders": 157245,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "ELSA",
+      "name": "",
+      "address": "0x29cc30f9d113b356ce408667aa6433589cecbdca",
+      "chain": "base",
+      "price_usd": "0.07801567900538921",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 78015679.00538921,
+      "liquidity_usd": 544205.2134156813,
+      "volume_24h": 5273593.427389239,
+      "holders": 241356,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "STONK",
+      "name": "",
+      "address": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+      "chain": "solana",
+      "price_usd": "0.13554554897515425",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 106344046.36344342,
+      "liquidity_usd": 7915411.072548021,
+      "volume_24h": 12844613.660302823,
+      "holders": 101672,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "ZEC",
+      "name": "",
+      "address": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
+      "chain": "solana",
+      "price_usd": "1229.3438221842646",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 126742299.00402471,
+      "liquidity_usd": 11438795.66227521,
+      "volume_24h": 12545455.250885127,
+      "holders": 140504,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "BIRB",
+      "name": "",
+      "address": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+      "chain": "solana",
+      "price_usd": "0.07715036582141492",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 77150295.50526188,
+      "liquidity_usd": 1469778.8273427712,
+      "volume_24h": 9545153.026727486,
+      "holders": 16238,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "TTWO",
+      "name": "",
+      "address": "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo",
+      "chain": "solana",
+      "price_usd": "204.64922626768447",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 3102448.015416656,
+      "liquidity_usd": 3088608.653551208,
+      "volume_24h": 7985153.671260125,
+      "holders": 75146,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "DJT",
+      "name": "",
+      "address": "DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF",
+      "chain": "solana",
+      "price_usd": "6.372742881480832",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1294552.978924914,
+      "liquidity_usd": 1019655.8468960535,
+      "volume_24h": 6811193.804889602,
+      "holders": 57634,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    }
+  ],
+  "twitter": {
+    "general_sentiment": [
+      {
+        "text": "What #Solana memecoin will do 100x ? \n\nShill me a ticker 👇 https://t.co/Px1vpJc4Rt",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "I’m putting $10k into one memecoin \n\nNeed something with actual 100x potential \n\nDrop me a ticker https://t.co/C1W910xfsr",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Next 100x solana memecoin… \n\nwhat’s the ticker? 👀👇 https://t.co/VRQwIiUWgF",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Today is the launch day, so be ready.\n\n#solana #memecoin #100x #launch",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Will be dropping the CA as early as I can\n\nGot a feeling we’re due another 100x",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Documenting my journey. https://t.co/IxkG7l5QyK",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Oh yeah… we launched the coin.\n\nNo big announcement.\nNo celebrity endorsements.\nNo paid hype.\nNo countdown.\nNo promises of 100x.\nWe just made a little robot, gave him a coin, and let him loose on Solana. 💀\nThat's it. That's the launch.\nA meme. A coin. And the people.\nHere's the CA. Have fun. 😂👇\n\nAcPrKywtzWxLydbPXG9N3G6FUtpe99o1VpEcS3Qmpump\n\nTiny bot. Big chaos.\n\nStay $Kryptic 👾\n\n#Solana #Memecoin",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Official YON 🌍 WORLD 100X Memecoin Community\n\n#1 @Solana Memecoin Community on @Telegram using A.I. Technology.\n\nPowered by @Stripe\n\nTelegram - https://t.co/IeUDJFe1D0\n\nWebsite - https://t.co/pwpnIzsxnZ",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Next 100x Solana memecoin… \n\nwhat’s the ticker? 👀👇 https://t.co/cImWkbmiWl",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "Make my day better by shilling me the next 100x #memecoin \n\n#MEMECOİNS #Solana #pepe #DOGE #WIF",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "What’s the next 100x solana memecoin",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      },
+      {
+        "text": "🚀 WHICH MEME WILL PUMP NEXT? 👀\n\n🐱 CAT\n🐶 DOG\n🐸 FROG\n❓ HIDDEN GEM?\n\nWho’s the next 100x contender? 🔥\n\n👇 Drop your ticker + CA!\n\n#Solana #Memecoin #PumpFun #100x https://t.co/QmdJM0658B",
+        "likes": 0,
+        "retweets": 0,
+        "author": "unknown",
+        "author_followers": 0,
+        "engagement": 0
+      }
+    ],
+    "token_intel": {
+      "PUMP": {
+        "tweets": [
+          {
+            "text": "Just closed my $PUMP SHORT trade with over $200K in profit.\n\nThis is my biggest profit from a single trade this year.\n\nNo other job can make you this much money.\n\nCrypto is really crazy, guys🔥 https://t.co/4whyimQYQZ",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          },
+          {
+            "text": "_ $PUMP vs $HYPE is actually crazy discovery for me tbh.\n\n$PUMP did $196M in 30-day fees while $HYPE did $83M.\n\nTake note as both are basically making money from degens doing degen things \n\nOne side is launching random memecoins, praying for the next 100x and refreshing the chart every 2 minutes\n\nThe other side is opening 20x leverage, getting liquidated, depositing again and convincing themselves the next trade will fix everything\n\nWe all know how this movie goes\n\nEvery single time\n\nBut jokes aside, there’s something genuinely interesting here\n\nEveryone in crypto wants to find the next big coin and want to catch the next narrative before CT starts screaming about it\n\nVery few people stop and look at who’s actually collecting the money while all of this is happening\n\nImo, You don’t need every memecoin to pump and guess whether BTC goes up or down\n\nYou just need people to keep showing up and using your platform\n\nOf course, fees can drop just as quickly when the hype disappears\n\nCan $PUMP keep the trenches alive when nobody is launching the next 100x?\n\nCan $HYPE keep traders hooked when the market gets boring?\n\nBecause making money when everyone is euphoric is the easy part i think\n\nKeeping people around when they’re getting absolutely cooked is the real test\n\nIn Crypto, degens are chasing the money, and the platforms are charging them for the privilege.\n\nSimple as that",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          },
+          {
+            "text": "Uniswap launching a launchpad on Robinhood Chain may be the most bullish thing that has ever happened to $PONS\n\nbecause it just killed the biggest bear case against Pons\n\n$PONS currently trades at just a 0.83x revenue multiple\n\ncompare that to:\n\n• 2.7x for $PUMP\n• 8.2x for $RAY\n• 10.3x for $AERO\n• 28.8x for $UNI\n• 31.5x for $HYPE\n\nso why is $PONS valued so cheaply?\n\ni believe a major reason was fear that a bigger, better-funded competitor could enter Robinhood Chain and eventually displace Pons\n\nthen the biggest possible competitor showed up\n\nUniswap\n\nthe world's largest DEX and one of the largest DeFi projects in crypto launched a highly anticipated launchpad to compete directly with Pons\n\nand what happened?\n\n$PONS barely budged\n\nmore importantly, its fundamentals actually improved after Uniswap entered\n\nread that again\n\nthe market was afraid a major competitor could come in and kill Pons\n\nthe biggest competitor imaginable came in\n\nand Pons got stronger\n\nthat is an incredibly powerful validation of the thesis\n\nif Uniswap couldn't displace Pons' lead, the argument that Pons is merely a temporary first mover becomes much harder to defend\n\ninstead, the market now has evidence that Pons may have established a durable moat at the center of the Robinhood Chain launchpad ecosystem\n\nand yet $PONS is still trading at just 0.83x revenue\n\nthat disconnect is what makes this so interesting\n\nthe biggest competitive threat has arrived\n\nPons survived\n\nPons strengthened\n\nand the valuation barely reflects it\n\nif the market starts valuing $PONS based on the durability of its position rather than the fear that someone might eventually replace it...\n\nthe repricing could be violent\n\ni think new ATHs are only the beginning",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          },
+          {
+            "text": "💰 https://t.co/djGwWVTpyJ Burn Beats The Unlock\n\nThe PUMP token fell hard, and that made the https://t.co/djGwWVTpyJ buyback stronger than the insider unlock. Half of the revenue buys PUMP and burns it, about $29 million a month at…\n\n$PUMP #crypto #pumpfun\n\nTry Premium for 7 days:\nhttps://t.co/AyA0EjsUf6",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          }
+        ],
+        "total_engagement": 0
+      },
+      "利他主义者": {
+        "tweets": [
+          {
+            "text": "I implore @cz_binance, a great crypto contributor, to follow #BitcoinEcosystem.\n\nAn Analysis of the Necessity of Building the Bitcoin Mainnet Ecosystem\n\nAn Analysis of the Necessity of Building the Bitcoin Mainnet Ecosystem. Building the Bitcoin Mainnet (i.e., Layer 1) ecosystem primarily involves expanding its functionality through protocols such as Ordinals (non-fungible tokens/NFTs) and Runes (fungible tokens) to support applications like DeFi, NFTs, and Runes.\n\nThese protocols leverage Bitcoin's UTXO model and OP_RETURN field to inject new functionality without changing the core consensus. This analysis is based on current Bitcoin community discussions and research data and represents diverse perspectives, including developers, miners, and traditional \"Bitcoin maximalists\" (maxis).\n\nDoes the Bitcoin Mainnet need ecosystem development?\n\nBitcoin's core design is to serve as a peer-to-peer electronic cash system and store of value. However, with the block reward halving (which occurs every four years), miners' income will gradually shift to transaction fees. By 2140, all 21 million Bitcoins will have been mined, and new coin issuance will cease. At this point, network security depends on sufficient transaction volume and fees.\n\nWithout ecosystem development, Bitcoin risks miner withdrawal, leading to a decline in network security. The necessity supports the view that ecosystem development can increase on-chain activity and boost transaction fee revenue. For example, Ordinals and Runes have proven effective in attracting more users and developers, enabling the creation of NFTs, meme coins, and DeFi applications. This not only utilizes Bitcoin's unused block space but also inherits its security (without the trust assumptions of sidechains or Layer 2). Data shows that after the introduction of Ordinals, Bitcoin transaction volume surged, with miner fees at one point accounting for over 50% of total revenue. This is crucial for long-term sustainability, especially after halvings (such as the one in April 2024, which will reduce the reward from 6.25 BTC to 3.125 BTC).\n\nOverall, the mainnet requires ecosystem development to maintain its vitality and miner incentives. Without it, Bitcoin could stagnate as \"digital gold,\" but with it, it can evolve into a full-fledged economy.\n\nIs the existence of an on-chain Bitcoin ecosystem a good or bad thing? After all Bitcoin is mined, can we expect the ecosystem to rise and become active?\n\nFrom a balanced perspective, the overall benefits of the ecosystem outweigh the disadvantages: it expands Bitcoin's application scenarios, similar to the NFT/DeFi craze on Ethereum, but with a greater emphasis on security and immutability. Currently, optimizations like Runes are alleviating early pain points. If the ecosystem, including Ordinals/Runes, continues to develop, Bitcoin will transform from a \"store of value\" to a vibrant economy!\n\n\"Users always want fairness, fairness, and damn fairness.\"\n\nThe fairest ecosystem currently is the bottom-up Bitcoin ecosystem!\n\nNot one where a few leading companies collude to manipulate the market and exploit retail investors!\n\nAnd certainly not a token called MEME that goes to zero in an hour or a few days!\n\nTry to understand the Bitcoin ecosystem!\n\nTry searching for the development story of $DOG!\n\nTry posting $DOG and see how many likes and reposts it gets!\n\nThis is a global consensus that has endured 700 days of testing and cohesion!\nI honestly can't think of many other memecoins whose narratives and origins are as fair and just as $DOG's!\n\nNot even a single chain is as secure and reliable as Bitcoin's mainnet!\n\nIt can't be tampered with or issued at will!\n\nSo, can anyone tell me what's wrong with the #Bitcoin ecosystem? ???\n\nThis is why the community has been releasing numerous introductions to $DOG daily for over a year:\n\n✅ #1 Bitcoin Memecoin\n✅ 100% free and fair airdrops\n✅ Completely open source and CC0\n✅ No CEX listing fees\n✅ No team allocations or pre-sales\n✅ No paid influencers for posts\n✅ Organic, decentralized community\n\n恳请加密伟大的贡献者 @cz_binance 可以关注一下 #比特币生态 \n比特币主网生态构建的必要性分析\n比特币主网的 #memecoin \n\n比特币主网生态构建的必要性分析比特币主网（即Layer 1）的生态构建主要指通过协议如Ordinals（非同质化代币/NFT标准）和Runes（同质化代币标准）等扩展其功能，使其支持DeFi、NFT、RUNES等应用。\n\n这些协议利用比特币的UTXO模型和OP_RETURN字段，在不改变核心共识的情况下注入新功能。分析基于当前比特币社区讨论和研究数据，代表多方观点，包括开发者、矿工和传统“比特币至上主义者”（maxis）。\n\n比特币主网是否需要生态构建？\n比特币的核心设计是作为点对点电子现金系统和价值存储工具，但随着区块奖励减半（每四年一次），矿工收入将逐步转向交易费。到2140年，所有2100万枚比特币将被挖完，新币发行停止，此时网络安全依赖于足够的交易量和费用。\n\n如果没有生态构建，比特币可能面临矿工退出风险，导致网络安全性下降。必要性支持观点：生态构建能增加链上活动，提升交易费收入。例如，Ordinals和Runes已证明能吸引更多用户和开发者，创建NFT、meme币和DeFi应用。这不仅利用比特币的闲置块空间，还继承其安全性（无需侧链或Layer 2的信任假设）。数据显示，Ordinals引入后，比特币交易量激增，矿工费一度占总收入的50%以上。这对长期可持续性至关重要，尤其在减半后（如2024年4月减半，奖励从6.25 BTC降至3.125 BTC）。\n\n总体而言，主网需要生态构建来维持活力和矿工激励。没有它，比特币可能停滞为“数字黄金”，但有它，能演变为完整经济体。\n\n比特币链上生态存在是好还是坏？比特币全部挖完后，生态能否看好崛起活跃？\n\n从平衡视角看，生态存在整体利大于弊：它扩展了比特币的应用场景，类似于以太坊的NFT/DeFi热潮，但更注重安全和不变性。目前，Runes等优化正缓解早期痛点。如果Ordinals/Runes等生态持续发展，比特币将从“价值存储”转型为活跃经济体！\n\n“用户想要的永远是公平、公平，还是他妈的公平”。 \n当前最公平的生态是自下而上的比特币生态！\n 而不是靠着几个车头联合坐庄拿底部筹码收割散户！ \n更不是一个小时或者几天就归零的代币叫MEME币！ \n你试着了解一下比特币生态！\n试着搜索一下 $DOG 的发展故事！\n试着发一次 $DOG 看看转发点赞热度！ \n来自全球的共识，经历了700天的考验和凝聚力！ \n我实在是想不到还有几个模因币的叙事和诞生方式能有 $DOG 的公平公正！ \n甚至没有一条链有比特币的主网链安全可靠！\n也不能随意被篡改和增发！ \n所以谁能告诉我 #比特币生态 是差在哪里了？？？\n\n这就是为什么一年多以来社区每天都会发布大量关于  $DOG 的介绍：\n\n ✅  #1 比特币模因币\n ✅  100% 免费和公平的空投\n ✅  完全开源和 CC0\n ✅  不支付 CEX 上市费用\n ✅  没有团队分配或预售\n ✅  不付钱给有影响力的人发帖\n ✅  有机的去中心化社区\n\n@LeonidasNFT @C2Blockchain @binance @heyibinance",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          },
+          {
+            "text": "🚀 LEGENDARY  $利他主义者 (BNB call)  10x\nFrom $148K to $1.58M · Diamond Black call 💎\n\n0x3805e1ce7edde3eb2f3613485cc6f42a7a3d7777\n\n💎 FREE BNB Chain calls · link in bio\n#BNB #BSC #100x https://t.co/SDAGb61svA",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          },
+          {
+            "text": "The Story About Alexon&Ferryboat\n关于我和我们\n\nPreface\nHey there, It's Alexon here, and please feel free to call me Alex. I‘m happily married, living a loving family with our cutest Selkirk Rex cat recently(and she probably knows it).\n\nUnfortunately being the only social self-driven person from a team made up of few super social phobia geeks, I surely became the one to take the task, leveraging social networks and gaining industry influence over the past year.\n\nQuick facts about our team: Ferryboat Research is a crypto investment institutute founded by me and my childhood friend Majic. We were roomies back in the middle school, we read tons of online gaming novels like other school kids, had lots of debates about whether techniques like brain-computer interface would allow us to live inside of  virtual games forever after lights out. A dozen years later, a term called \"Metaverse\" emerged, and we are now partners in the Crypto world. \n\n前言\n\n我是 Alexon ，叫我 Alex 就好。已婚，有只可爱的塞尔凯特卷毛猫。一直以来，无论是社交暴露还是自我认同，都很难有多巴胺分泌，而不得不承认，为了这种沉浸的私人空间，我们错失了很多活跃在社交网络下可获得的资源。\n\n所以过去的一年多时间里，我和合伙人商量之后，我成为了 Ferryboat Research 里去社交网络里获取一些影响力的人。\n\nFerryboat Research 是我和小时候玩伴 Majic 共同成立的加密机构，中学时代我们住在同一个宿舍里，我们看网游小说，讨论着有了脑机接口是不是就可以一直活在虚拟游戏里了。十几年后，有了一个词叫 Metaverse ，而我们在 Crypto 里变成了搭档。\n\nFortunately, after persistently sharing perspectives that only professionals would accesse for over a hundred times, and without any referrals or sponsored, our audience now covers almost every VCs that contained Chinese GPs or Partners; also a large number of core Chinese professionals (Founders & Co-founders; Devs; Traders; Researchers; Product; Marketing) and KOLs.\n\nIn short, although the audience amount is still limited, this could be one of the channels with the highest density of core professionals among Chinese channels.\n\n幸运的是，在我执着的发了上百次只有从业者才会看的视角和内容后，在仅靠内容并没有任何Refer的情况下，我们观众覆盖了几乎所有有华人的VC的GP和Partner、大批量华人核心从业者（Founder&Co-founder；Devs；Traders;Researchers;Product;Marketing）、部分KOLs。\n\n简而言之，虽然受众非常少，但这可能是中文频道里核心从业者密度最高的频道之一。\n\nBefore Crypto\n\nThanks to algorithms for bringing us together, our upcoming endeavors may involve massive direct interactions with western founders. To save those western founders from unfamiliar questions about us, please allow me to introduce myself and where Ferryboat Research is headed.\n\nBefore embarking on the crypto journey, I care pretty much about and only about what’s cool and how to be cool. As a mattter of fact,I am an ethnic minority of Chinese, and if it weren't for the Chinese government's need for \"ethnic minority representatives\" to receive higher education and demonstrate unity among ethnic groups, I might have dropped out to become a novelist or musician.\n\nBy the way, thanks to Mises, Friedman, and Hayek, I would have turned into a hipster who only skiped classes and listened to rock music if I haven’t read them.\n\n感谢算法让我们相遇，我们接下来要做的事情，会大量接触西方Founder，为了节省西方Founder对我们陌生的问题，允许我介绍一下我自己，和Ferryboat Research将去的地方。\n\n在开启加密旅途之前，我几乎只关心什么是酷的。我是少数民族（这在美国应该算少数族裔？），如果不是因为中国政府需要“少数族裔代表”接受高等教育，以此来体现民族之间的团结，或许我早就辍学当个小说家或者音乐人去了。\n\n顺便感谢米塞斯、弗里德曼、哈耶克，他们让我没有变成一个只会逃课听摇滚乐的文艺青年。\n\nIn 2014, while crypto OGs were heavily buying BTC, I was still debating in a WeChat group for Austrian School enthusiasts about the legalization of prostitution due to the the  shut down issue of Dongguan city, known as the \"sex capital\" in Guangdong province by Chinese government that year.\n\nAs an outlier, I have always had a natural affinity for breaking rules. Coincidentally, I was preparing for the IELTS while I stumbled upon the fact that the Asia-Pacific region used the same set of questions, and with 'time differences' between countries, a loopholes of this system suddenly became apprarent, and I passionately embraced this challenge to authority. \n\nSo I began sending questions in advance to Chinese test-takers from South Korea and Australia and having them take exams in Thailand to gain a greater time difference and profit. By a twist of fate, I became the largest ‘time difference dealer’ in Asia. In 2015, due to our presence and that of another group, the Thai IELTS postponed all four exams throughout March, affecting the scores of everyone in the country.\n\n2014年，那时候加密OG们都开始大量购买BTC了，而我还停留在奥地利学派爱好者的微信群里争论“嫖娼是否应该合法化？”，因为那年中国政府查封了被誉为情色之都的东莞（DONGGUAN）。\n\n作为一个异常值，我总对打破规则的事情有天然的好感。恰逢当时在考雅思，也厌倦只能在纸面讨论问题。偶然间发现了亚太区使用了同一套题目，而各个国家之间有\"时差\"，我对这种挑战权威的事情充满了热情。于是开始从韩国、澳洲提前输送题目给中国考生，并让他们去泰国考试以求获得更大时差和利润。\n\n阴差阳错下，我成为了亚洲最大的时差贩卖者。2015年，泰国雅思因为我们和另一个团体的存在，连续整个3月的4场考试无限延期了整个国家的所有人的分数。\n\nInterestingly, due to the unregulated state of the law that time, this acting was not illegal. It wasn't until November 1, 2015, when the Chinese government revised the Criminal Law to set up a new policy called ‘Exam Malpractice Policy’, that we ceased this action and soon compensated for our ‘clients’(which was a huge sum for me at the time).\n\nIf you have seen the Thai movie: \"Bad Genius,\" we were the Chinese version of that movie. During my young, artsy days,a friend of mine who’s a non-fiction writer friend once record the entire story, however, it is in Chinese, and I have attached it here:\nhttps://t.co/S1SoHaiIG6\n\n有趣的是，当时由于法律的无监管状态，这在当时并不违法。这是我第一次意识到理解法律为何物的重要性。\n\n直到2015年11月1日，中国政府修订了刑法加入了考试舞弊罪，在此之前我们停止了这项行为并进行了赔付（这对当时的我来说是巨款）。\n\n如果你看过泰国电影：天才枪手（Bad Genius），我们就是那个电影的中国版。我文艺青年时期写非虚构的朋友来记录过整个故事，很精彩，不过它是中文的，我附在这里： https://t.co/S1SoHaiIG6\n\nAfter this, it made me reflect on many things: the boundaries of the law; deadweight loss in economics; speculation; and gave me a deeper sense of business. Subsequently, in 2016-2017, after experiencing the ICO craze, which briefly shattered my idealistic colors, I started re-engaging in cultural and artistic commercialization.\n\nDuring the period from 2018 to 2020, the long-haired version of Alex visited many talented Asia artists and musicians, commercialized their works, some of which were even plagiarized by Maison Margiela. And some collaborated artists has collaborated with LV on bags and Vans on annual designs after being marketed by us. \n\nOh, and I even wrote emails to Vitalik for half a year asking if he was interested in collaborating with a rapper named YiTai（same nick name with Eth in Chinese） on a song and releasing it on the blockchain. Unfortunately, he did not reply.\n\n这件事结束之后，让我反思了很多，对法律的边界；经济学中的deadweight loss；投机；以及对商业有了更多深层次的体感。\n\n随后2016-2017年在经历ICO风潮后，更短暂的让我理想主义色彩破灭，开始回到了在文化艺术商业化上的投入。\n\n2018-2020年这个时期，还是长发版本的Alex拜访了很多优秀的华裔艺术家和音乐人，将他们的作品消费品化，有趣的是，其中的概念还被 Maison Margiela抄袭过，也有合作的艺术家在被我们推向市场后和LV联名出了包袋、与Vans合作了年度款。\n\n对了，甚至我还给Vitalik写过半年邮件问他有没有兴趣和 Rapper王以太 做首歌，并发上链。可惜他并没有回复我。\n\nAll of this was quite fascinating, I managed dozens of colleagues but it was challenging to make a profit, and we often resulting in losses. \n\nLater, I became interested in the commercialization of traditional Chinese culture and invested a bit of money to bring some of my good friends into this field (who were my competitors at the time). Currently, they have an annual GMV of several hundred millions RMB, with not much net profit, yet becoming the top player in the field. \n\nThis might be the only thing during this period where I genuinely made a profitable move.\n\n这一切都有意思极了，管理了数十个与加密行业无关的同事，但很难盈利，经常亏损。后来，我对中国传统文化商业化产生了兴趣，并投资了一点我的好朋友进入这个领域（是我当时的竞争对手），目前他们有数亿RMB/年的GMV，净利润也并不算多，成为了领域的 top1。这可能是这个时期我唯一做过能真正盈利的事情。\n\nAlmost all in Crypto\n\nMy real involvement in Crypto began in 2016 when I was staying in countryside of the U.K (Probably the last UK city where Uber was introduced). \nI used to look forward to weekends where I could go to London's Jazz Cafe to play jazz with friends.\n\nMy neighbor's husband happened to be an early member of Wanxiang Blockchain (the predecessor of Hashkey) and had been involved in discussions about whether to invest in @VitalikButerin. \n\nHe sent me a lot of crypto-related content, which got me hooked on this new species with a high Austrian School content.\n\n接触Crypto是2016年，我在英国的乡下呆着，（可能是Uber最后一个开设的英国城市？），期盼到了周末就去伦敦的Jazz cafe找朋友学爵士乐。\n\n我邻居的丈夫恰好曾是万向区块链（Hashkey的前身）的早期成员，参与讨论过是否投资给 @VitalikButerin ， 他给我发了许多和Crypto相关的内容导致我迷上了这个奥地利学派含量很高的新物种。\n\n他两年前因为一些原因负债，至今没有重新回到市场，祝福他早日回到行业。\n\nIn 2017, during the ICO era, I was excited and made some money, which spurred me to enter the industry. My partner, Majic, had already started arbitrage trading across exchanges while studying in US during the same time. By the end of the year, both of us were back, ready to enter the industry. \n\nThat year, @DujunX established the earliest token fund, and Majic entered the Token Fund but left shortly after, as the market turned bearish within a couple of months, damaging his confidence and witnessed his left. Most of our altcoins were on the verge of hitting zero.\n\n2017年，ICO的年代我为此感到很兴奋，并因此赚了些钱，兴致勃勃的打算进入这个行业。而我的搭档 Majic 2017年已经在美国上学期间开始跨交易所套利，同年底，我们都回来打算进入这个行业。\n\n那年 @DujunX 建立了最早的token fund，Dylan早一步进入了Token Fund呆了没两个月市场走熊，信心受损就离开了，我们的altcoin多数都面临归零的状态。\n\nIt was not until 2020, after the DeFi summer, that we re-entered the industry. This resurgence allowed us to see new possibilities in finance, which excited us greatly.\n\nIn 2021, @AndreCronjeTech was a kingpin in our hearts. Under his influence, we also became one of the earliest Chinese organizations to conduct CEX/DEX arbitrage on the Fantom network, at one point occupying over 50% of on-chain transactions on Fantom. We also received support from Chinese OGs and friends, established and managed a crypto liquidity fund of nearly $30 million.\n\nIn 2022, with the frequent occurrence of black swan events, the collapse of FTX and Luna plunged the entire market into a quagmire. Due to black swan events, we too were on the brink of bankruptcy. After weighing our previous profits and savings against the losses caused by the black swan event, we chose to use our own funds to cover the losses and decided to shut off the fund. We preserved a basic sense of dignity in the process.\n\n直到2020年，Defi summer之后，我们开始重新回到这个行业。这重新让我们看到了金融的新可能，并为此十分兴奋。\n\n2021年，@AndreCronjeTech 是我们心中的王者，在受他的影响下，我们也成为了中国人里最早在Fantom网络中进行CEX/DEX套利的组织，并一度占据了Fantom超过50%的链上交易。同时我们收到了来自华人OG和朋友的资助，成立并管理了一支近3000万美元的加密流动性基金。\n\n2022年，黑天鹅频发，FTX和Luna的崩塌让整个市场陷入泥潭。同样因为黑天鹅濒临破产的也有我们，在盘算过我们自己的先前的盈利和积蓄还能还得上LP本金时，我们选择用自己的钱补齐了黑天 鹅带来的亏损，并选择关闭基金。保留了一个经营者基本的尊严。\n\nSince then, we took nearly a year off to contemplate new investment models and strategies. During this period, we also developed a product similar to @_kaitoai  , allowing AI to provide investment decisions for us, and that we still apply nowadays. Operating without LPs has allowed us with more flexibility in our investment activities.\n\nMore importantly, we began to doubt the fundamental nature of funds. During this time, I reread the history of venture capital and the failures of investment masters. From the formation history of Silicon Valley venture capital funds to Munger's bankruptcy in 1972 and subsequent questioning of the fund model's correctness, all point to the fact that perhaps Berkshire's structure is more suitable for the crypto industry.\n\nIssues with traditional funds:\n\n-Misalignment of funds: During a bear market, more funds are needed but are hard to get fundraise, while during a bull market, it is easy getfundraised but challenging to maintain high\n\n-Misalignment of domains: Crypto itself is an early industry, and most listed assets are still considered early projects. Therefore, separating VC and Liquid Fund creates a significant imbalance in the supply and demand of funds.\n\n-Lack of cash flow: Most funds are in a state of no cash flow, which is not commercially logical for a perennial organization.\n\n-Misalignment with community interests: As fund size grows, the requirements for allocation increase,which will indirectly raising prices for the actual community.\n\n自此以后，我们休息了接近一年，在思考新的投资模式和策略，期间还做了一个和Kaito很像的产品，让AI为我们提供投资决策，并沿用至今。无LP的方式让我们更灵活的进行投资活动。\n\n但更重要的是，我们对基金这种形式产生了本质性的怀疑。这个时期内，我们重读了风险投资历史和投资大师的失败案例。从硅谷的风投基金的形成历史到芒格1972年破产后质疑基金模式的正确性，都在指向或许伯克希尔的结构更适合加密行业。\n\n传统基金的问题：\n\n-资金的错配：熊市更需要钱但极难募资，牛市高潮极易募资但极难维持业绩。\n\n-场域的错配：Crypto本身是个早期行业，多数listing的标的本身依然属于早期项目。所以当分开VC和Liquid Fund之后，造成了极大资金供需的不平衡。\n\n-现金流匮乏：多数基金处于没有现金流的状态，这对一家常青的组织来说是不符合商业逻辑的。\n\n-和社区利益不一致：随着基金规模的扩大，对allocation的要求提高，变相推高了定价给实际的社区。\n\nof course, there are many institutions breaking these boundaries, whether it's @tangent_xyz or @primitivecrypto; these are excellent examples, but they still do not represent the organizational structure we aim to form.\n\nIf we were to start a new venture again, honestly, up to this day, we are still holding a vague idea (feel free to discuss). But that doesn't hinder us from hitting the road. \n\nHence, we plan to establish, in a more ’CRYPTO-WORLD’ manner, an investment-oriented community for practitioners using a more encrypted approach. The specific sales plan will be announced within the next two weeks. All funds raised within these plans will be used for investments in various aspects of the ecosystem we are currently researching.\n\n当然也有很多在突破这些边界的机构，无论是 @tangent_xyz 还是 @primitivecrypto ，这些都是非常好的案例，但依然不是我们想形成的组织结构。\n\n我们再一次创业的话，老实说，到今天为止我们也是一个模糊的想法（欢迎你找我讨论），尚未完整的形态，但不妨碍我们先上路。\n\n于是我们打算用更加密的方式先组建一个从业者的投资型社区，具体的发售方案在接下来的两周内我会公布出来。所有方案内筹集的资金，我们将会用于各种角度的投资在当期所研究的生态。\n\nAfter discussions with @hotpot_dao, we have decided to use @megaeth as the first content for this community. We will delve into the ecosystem for community members, review their documents, engage in discussions with @0xMegaMafia's founders, gain in-depth insights into their business ideas, provide clear viewpoints, and match the necessary individuals within the community.\n\nIt is important to note that we have currently reached a verbal agreement to invest in @megaeth, so there is a relevance of interest. However, compared to the investment share I proposed to @hotpot_dao, the actual allocation to me is less than one-tenth. In other words, if we find that the ecosystem project does not meet expectations, we will change our research ecosystem without hesitation since the share does not distract us.\n\nOn a side note, @hotpot_dao, wished for me to refrain from making this investment to maintain my neutrality.hhhh\n\nTherefore, the logic is that we first believe in its worth, as we would have delved into the research regardless of whether Ferryboat participated in the investment. This matter has always been under planning, just a matter of public or private disclosure.\n\n在和 @hotpot_dao 的讨论中，我们确定了用 @megaeth 作为这个社区的第一期内容。我们将替各位社区成员深入生态，阅读他们的Doc。\n\n我们将与@0xMegaMafia 的各位founder交谈，了解他们的商业想法并公开给出明确的观点，同时将该项目匹配给社区中所需要的人。\n\n这里有必要说明的是，我们目前达成了口头协定的投资 @megaeth ，所以利益相关。\n\n但比起我向 @hotpot_dao 提出希望投资的份额，实际分配给我的投资份额不到十分之一。换句话说，如果发现生态项目不及预期，下一分钟我们就会更换本期研究生态，也不会心疼，含泪喊单。\n\n顺便提一句， @hotpot_dao 为了让我保持中立，一度希望我别进行这笔投资。\n\n所以逻辑是：我们首先认为它好，本就会深入研究，无论Ferryboat是否有参与投资，这件事一直在规划上，只是公开或者私密罢了。\n\nEpilogue\n\nThis is our detailed introduction to help you understand me better. As you can see, we have failed numerous times and may continue to fail so, but the music never stops, and neither will us.\n\nEven in the darkest hours, Ferryboat has never doubted its destination. What initially drew us to crypto world as its bottom-up power, making us believe in people, data, vision, and heroes, regardless of their origins.\n\nAlas, there are no heroes in sight at this moment. R U\n\nWelcome to Asia bro.\n\n尾声\n\n这是我们详细的介绍方便你了解我。如你所见，我们失败过非常多次，可能还将继续失败，但音乐从未停止。\n\n在最惨淡的境遇里，Ferryboat也没有任何一刻质疑过要去的终点。加密最早吸引我们的是自下而上的力量，让我们相信人相信数据相信愿景，相信英雄不问出处背景。\n\n可好一个时无英雄啊。\n\n欢迎来到亚洲，哥们。",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          },
+          {
+            "text": "English version: \n 🚀🔥 CHALLENGE ACCEPTED 🚀🔥! Join the AI revolution with https://t.co/I4zkOsXIoc, the ultimate platform for creating, training, and deploying AI agents that will disrupt the status quo 🚀. With Tuggy Token, you'll unlock the power to create, innovate, and dominate the crypto markets 💻💸. Don't miss out, get your Tuggy Token now at: https://t.co/nGMkAGqHay #Tuggy #BTC\n\nChinese version: \n🚀🔥 选择挑战！ 🚀🔥 狒狒https://t.co/I4zkOsXIoc是人工智能的顶级平台，让您实现意想不到的颠覆力和领域力量！ 🚀 狒狒TOKEN持有者将实现无限的创造性潜力，并拥有竞争对手无法匹敌的利他主义力！🚀💻💸 不要错过这个机会，现在获取狒狒TOKEN：https://t.co/nGMkAGqHay #狒狒TOKEN #比特币",
+            "likes": 0,
+            "retweets": 0,
+            "author": "unknown",
+            "author_followers": 0,
+            "engagement": 0
+          }
+        ],
+        "total_engagement": 0
+      },
+      "USDG": {
+        "tweets": [],
+        "total_engagement": 0
+      },
+      "ZIG": {
+        "tweets": [],
+        "total_engagement": 0
+      },
+      "DNA": {
+        "tweets": [],
+        "total_engagement": 0
+      }
+    }
+  },
+  "news": {
+    "articles": [],
+    "total_count": 0
+  },
+  "ai_report": "⚠️ AI报告生成失败: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions",
+  "data_sources": {
+    "binance_meme_rush": true,
+    "binance_market_rank": true,
+    "okx_onchainos": true,
+    "dexscreener": true,
+    "twitter": true,
+    "news": true
+  }
+}
