@@ -1,30 +1,53 @@
 {
-  "timestamp": "2026-11-13T18:11:21.259831+00:00",
+  "timestamp": "2026-11-13T23:57:59.579023+00:00",
   "tokens": [
     {
       "symbol": "Jacket",
       "name": "",
       "address": "0xb82535e74b03ffe4910efea1c759b6bbbf0a7777",
       "chain": "bsc",
-      "price_usd": "0.001583091330755992",
-      "price_change_24h": 22.98,
+      "price_usd": "0.001875261766414856",
+      "price_change_24h": 35.67,
       "price_change_1h": 0.0,
-      "market_cap": 1583091.2818823308,
-      "liquidity_usd": 272741.6465331381,
-      "volume_24h": 5072032.881305513,
-      "holders": 3709,
+      "market_cap": 1875261.7085212227,
+      "liquidity_usd": 258342.60180925648,
+      "volume_24h": 5397818.82399589,
+      "holders": 3769,
       "source": "binance_unified_rank",
       "sources": [
-        "binance_unified_rank",
-        "binance_topic_rush"
+        "binance_topic_rush",
+        "binance_unified_rank"
       ],
       "kol_holders": 2,
       "topic_name": "何一穿皮衣",
-      "score": 38.3,
+      "score": 40.7,
       "score_label": "🔥 关注",
       "dex_url": "https://dexscreener.com/bsc/0x29dcd29f4ec9f08485f87e7777bc463f2b1e1ebf",
-      "buy_pct": 55.8,
-      "liq_ratio": 10.0,
+      "buy_pct": 55.7,
+      "liq_ratio": 10.9,
+      "ai_analysis": ""
+    },
+    {
+      "symbol": "USDG",
+      "name": "",
+      "address": "0xe343167631d89b6ffc58b88d6b7fb0228795491d",
+      "chain": "ethereum",
+      "price_usd": "1.0011248211035446",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 313779799.14803976,
+      "liquidity_usd": 4650703.645551686,
+      "volume_24h": 9835181.803390672,
+      "holders": 10250,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/solana/9rqdtfwcx2sgxsvkpspqhc38huo3b6hrd3or9jr966ps",
+      "buy_pct": 83.6,
+      "liq_ratio": 0.6,
       "ai_analysis": ""
     },
     {
@@ -32,13 +55,13 @@
       "name": "",
       "address": "0x2c3a8ee94ddd97244a93bc48298f97d2c412f7db",
       "chain": "bsc",
-      "price_usd": "0.011614159450420887",
+      "price_usd": "0.012297805486222621",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 1161415944.5163767,
-      "liquidity_usd": 2446651.861838261,
-      "volume_24h": 108928321.3700518,
-      "holders": 43771,
+      "market_cap": 1229780548.0656052,
+      "liquidity_usd": 2503017.3521379163,
+      "volume_24h": 145129016.48353437,
+      "holders": 43794,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -55,13 +78,13 @@
       "name": "",
       "address": "0xa991f61940095aea0724ef54077223b048c5cf7b",
       "chain": "bsc",
-      "price_usd": "0.16527151492379819",
+      "price_usd": "0.15792279635873563",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 165271514.88380253,
-      "liquidity_usd": 1809996.1400352933,
-      "volume_24h": 37165761.27609556,
-      "holders": 14180,
+      "market_cap": 157922796.32051834,
+      "liquidity_usd": 1794866.2351032563,
+      "volume_24h": 35362476.34541571,
+      "holders": 14189,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -70,21 +93,64 @@
       "score_label": "🔥 关注",
       "dex_url": "https://dexscreener.com/base/0x5342ba76e37055fa6f889c32ffe0226b5bc52ebfa891aa66a9457d6f3cf9fd82",
       "buy_pct": 100.0,
-      "liq_ratio": 1.0,
-      "ai_analysis": ""
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "ZIG",
+      "name": "",
+      "address": "0x8c907e0a72c3d55627e853f4ec6a96b0c8771145",
+      "chain": "bsc",
+      "price_usd": "0.03499592203875124",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 69991843.12097046,
+      "liquidity_usd": 1057036.038076716,
+      "volume_24h": 24956778.120330043,
+      "holders": 210026,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/ethereum/0x0c75d8d604e118976fc6198aa36c03ce0ab8f702",
+      "buy_pct": 100.0,
+      "liq_ratio": 2.0
+    },
+    {
+      "symbol": "JCT",
+      "name": "",
+      "address": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707",
+      "chain": "bsc",
+      "price_usd": "0.002066544639374964",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 21248547.65276752,
+      "liquidity_usd": 707202.3334039174,
+      "volume_24h": 13674065.804525323,
+      "holders": 18161,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/ethereum/0xb6bf232806705851644c54ff70f0020bf3b22158",
+      "buy_pct": 66.7,
+      "liq_ratio": 1.3
     },
     {
       "symbol": "DGAI",
       "name": "",
       "address": "0x10d4183389e99233db3cc981c43443ebd28ebd5e",
       "chain": "bsc",
-      "price_usd": "0.7323556301201816",
+      "price_usd": "0.7200553097682924",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 732355630.0887614,
-      "liquidity_usd": 2716355.3810517895,
-      "volume_24h": 12590053.293339094,
-      "holders": 12035,
+      "market_cap": 720055309.7373999,
+      "liquidity_usd": 2693160.6448003417,
+      "volume_24h": 12574532.643981121,
+      "holders": 12040,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -92,7 +158,7 @@
       "score": 33.0,
       "score_label": "🔥 关注",
       "dex_url": "https://dexscreener.com/solana/b6trqc564jstdvcwta7mqtvz5arefdckpepqhzph3yyw",
-      "buy_pct": 84.0,
+      "buy_pct": 87.9,
       "liq_ratio": 1.0
     },
     {
@@ -100,13 +166,13 @@
       "name": "",
       "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
       "chain": "ethereum",
-      "price_usd": "5.744023284398329",
+      "price_usd": "5.736848579577329",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 5088804950.760546,
-      "liquidity_usd": 113926759.2724215,
-      "volume_24h": 10702233.99754355,
-      "holders": 404036,
+      "market_cap": 5082425714.123369,
+      "liquidity_usd": 113393954.73024212,
+      "volume_24h": 11135429.81716131,
+      "holders": 404062,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -122,13 +188,13 @@
       "name": "",
       "address": "0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf",
       "chain": "bsc",
-      "price_usd": "0.001660928743574057",
+      "price_usd": "0.001660692301661686",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 1315886.8085487,
-      "liquidity_usd": 1429194.5607230454,
-      "volume_24h": 123035457.20828474,
-      "holders": 53126,
+      "market_cap": 1315699.4851643099,
+      "liquidity_usd": 1429395.7754990035,
+      "volume_24h": 123227660.87672818,
+      "holders": 53128,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -144,12 +210,12 @@
       "name": "",
       "address": "0x5dbde81fce337ff4bcaaee4ca3466c00aecae274",
       "chain": "bsc",
-      "price_usd": "0.04992518458818764",
+      "price_usd": "0.049727914709348925",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 249625915.79649067,
-      "liquidity_usd": 2208001.683301349,
-      "volume_24h": 62014621.97898779,
+      "market_cap": 248639566.43052703,
+      "liquidity_usd": 2195174.868631067,
+      "volume_24h": 48577402.22169058,
       "holders": 190549,
       "source": "binance_unified_rank",
       "sources": [
@@ -157,29 +223,7 @@
       ],
       "score": 25.0,
       "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/solana/587dgwnxft4up4jhcqjzr195weiagtyr3vnbf1zppcxc",
-      "buy_pct": 47.6,
-      "liq_ratio": 1.0
-    },
-    {
-      "symbol": "ARIA",
-      "name": "",
-      "address": "0x5d3a12c42e5372b2cc3264ab3cdcf660a1555238",
-      "chain": "bsc",
-      "price_usd": "0.21745852312300698",
-      "price_change_24h": 0.0,
-      "price_change_1h": 0.0,
-      "market_cap": 217458522.6262341,
-      "liquidity_usd": 2127223.1094735553,
-      "volume_24h": 50817167.10957463,
-      "holders": 80274,
-      "source": "binance_unified_rank",
-      "sources": [
-        "binance_unified_rank"
-      ],
-      "score": 25.0,
-      "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/solana/extzxtgcatah263zydvhnjmydzpvyngh2fctnp7yd6fd",
+      "dex_url": "https://dexscreener.com/solana/5hdcrmtxt4siqplfevsbxnagsxyyvrqmmyotpnupcjzr",
       "buy_pct": 50.0,
       "liq_ratio": 1.0
     },
@@ -188,13 +232,13 @@
       "name": "",
       "address": "0x3b4de3c7855c03bb9f50ea252cd2c9fa1125ab07",
       "chain": "bsc",
-      "price_usd": "0.019342538130288203",
+      "price_usd": "0.020302924680724893",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 92221922.41561884,
-      "liquidity_usd": 1134263.3033115899,
-      "volume_24h": 28990467.65401514,
-      "holders": 315540,
+      "market_cap": 96800881.66837005,
+      "liquidity_usd": 1158423.8994196209,
+      "volume_24h": 39512432.47068793,
+      "holders": 315548,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -206,46 +250,24 @@
       "liq_ratio": 1.0
     },
     {
-      "symbol": "ZIG",
+      "symbol": "ARIA",
       "name": "",
-      "address": "0x8c907e0a72c3d55627e853f4ec6a96b0c8771145",
+      "address": "0x5d3a12c42e5372b2cc3264ab3cdcf660a1555238",
       "chain": "bsc",
-      "price_usd": "0.03487600036175995",
+      "price_usd": "0.19707114262552353",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 69751999.77026567,
-      "liquidity_usd": 1054656.4018545263,
-      "volume_24h": 17448403.696593214,
-      "holders": 206117,
+      "market_cap": 197071142.1753246,
+      "liquidity_usd": 2069261.6739460859,
+      "volume_24h": 39185143.56803479,
+      "holders": 80272,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
       ],
       "score": 25.0,
       "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/solana/8wqqpuivsymrmceckxa3ttql9hqzfkstjtdbm7tbpgcq",
-      "buy_pct": 50.0,
-      "liq_ratio": 1.0
-    },
-    {
-      "symbol": "JCT",
-      "name": "",
-      "address": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707",
-      "chain": "bsc",
-      "price_usd": "0.002204456734383172",
-      "price_change_24h": 0.0,
-      "price_change_1h": 0.0,
-      "market_cap": 22676844.397177733,
-      "liquidity_usd": 727500.731300223,
-      "volume_24h": 13612552.951745896,
-      "holders": 18078,
-      "source": "binance_unified_rank",
-      "sources": [
-        "binance_unified_rank"
-      ],
-      "score": 25.0,
-      "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/solana/4vuedvz9nri7ua7vq87bwkdxvbgj5vj3mou7xa9bscp4",
+      "dex_url": "https://dexscreener.com/solana/extzxtgcatah263zydvhnjmydzpvyngh2fctnp7yd6fd",
       "buy_pct": 50.0,
       "liq_ratio": 1.0
     },
@@ -254,13 +276,13 @@
       "name": "",
       "address": "0x0e63b9c287e32a05e6b9ab8ee8df88a2760225a9",
       "chain": "bsc",
-      "price_usd": "1.6644464802979462",
+      "price_usd": "1.6324215064769667",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 150949519.06857663,
-      "liquidity_usd": 2498664.304708411,
-      "volume_24h": 8508581.001911748,
-      "holders": 348696,
+      "market_cap": 148045157.49631673,
+      "liquidity_usd": 2480672.253031392,
+      "volume_24h": 8688446.06952117,
+      "holders": 348697,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -276,13 +298,13 @@
       "name": "",
       "address": "0xf3d5b4c34ed623478cc5141861776e6cf7ae3a1e",
       "chain": "bsc",
-      "price_usd": "0.08036257328934442",
+      "price_usd": "0.07912817353896824",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 5226085.870378015,
-      "liquidity_usd": 634280.5049787943,
-      "volume_24h": 7217369.867543691,
-      "holders": 22756,
+      "market_cap": 5144959.355035887,
+      "liquidity_usd": 631822.60982562,
+      "volume_24h": 7312966.725555796,
+      "holders": 22740,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -290,65 +312,87 @@
       "score": 25.0,
       "score_label": "❄️ 冷淡",
       "dex_url": "https://dexscreener.com/base/0x7ddb31846c8bdf9272f4ca1f6e2d3c6cce273527",
-      "buy_pct": 49.0,
+      "buy_pct": 49.9,
       "liq_ratio": 6.8
+    },
+    {
+      "symbol": "TAC",
+      "name": "",
+      "address": "0xb305e6954e4e0cd021c06ec355681abc8a00dbd7",
+      "chain": "bsc",
+      "price_usd": "0.001170695153419686",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1502826.1765602445,
+      "liquidity_usd": 527466.5752288968,
+      "volume_24h": 7242554.107056114,
+      "holders": 2891,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/aydprrj77zpjzfpjbjukk1j8zfj5ll4wy9kfcuyhozpf",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
     },
     {
       "symbol": "ZEC",
       "name": "",
       "address": "0x1ba42e5193dfa8b03d15dd1b86a3113bbbef8eeb",
       "chain": "bsc",
-      "price_usd": "943.4977010866962",
+      "price_usd": "931.8414026185968",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 207569450.7512781,
-      "liquidity_usd": 9780489.67051102,
-      "volume_24h": 22442406.212687254,
-      "holders": 145353,
+      "market_cap": 205005065.62555957,
+      "liquidity_usd": 9700746.35217476,
+      "volume_24h": 21492521.55899963,
+      "holders": 145149,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
       ],
       "score": 25.0,
       "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/solana/hx39gcpsdrdfvt776d7qa1wahnz1tf5ma8zgqkbibsgr",
+      "dex_url": "https://dexscreener.com/solana/erzgcpkg1mc8swuitx6fjzerk7styss3kfubst6ttxul",
       "buy_pct": 50.0,
-      "liq_ratio": 1.0
+      "liq_ratio": 25.0
     },
     {
       "symbol": "NES",
       "name": "",
       "address": "0x097acf27503753e77bca940277806156c5925b81",
       "chain": "bsc",
-      "price_usd": "0.14122578187287527",
+      "price_usd": "0.13813754999690034",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 2357296.51742285,
-      "liquidity_usd": 1100034.9896697733,
-      "volume_24h": 5562703.36031185,
-      "holders": 31545,
+      "market_cap": 2305748.718220131,
+      "liquidity_usd": 1088733.3451075724,
+      "volume_24h": 5447336.952076271,
+      "holders": 31544,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
       ],
       "score": 25.0,
       "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/hyperevm/0x535f30f50ebda33575242c38b976e681d13db6fa",
-      "buy_pct": 63.5,
-      "liq_ratio": 5.0
+      "dex_url": "https://dexscreener.com/solana/hytgmpgatnyqf2ph1rvz3jsk3efnessb66ctprls1va5",
+      "buy_pct": 52.2,
+      "liq_ratio": 639962.1
     },
     {
       "symbol": "Claude",
       "name": "",
       "address": "0x06f9d7c1408872341e3d2c3445698d3d243ddb07",
       "chain": "base",
-      "price_usd": "0.000102010330633761",
+      "price_usd": "0.000102027044321768",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 10201033.063376112,
-      "liquidity_usd": 10269020.62483147,
-      "volume_24h": 40564327.64001155,
-      "holders": 3813,
+      "market_cap": 10202704.432176827,
+      "liquidity_usd": 10270654.742268588,
+      "volume_24h": 40564463.93631167,
+      "holders": 3824,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -356,7 +400,7 @@
       "score": 25.0,
       "score_label": "❄️ 冷淡",
       "dex_url": "https://dexscreener.com/base/0xaf2533edc39790340b8084f990bca5e2aaf2e24b",
-      "buy_pct": 50.6,
+      "buy_pct": 50.7,
       "liq_ratio": 1.0
     },
     {
@@ -364,13 +408,13 @@
       "name": "",
       "address": "0x3f5bf3edac59d650d8fdf9657a71f2f904a3a4ee",
       "chain": "base",
-      "price_usd": "0.4779400380886877",
+      "price_usd": "0.4678092425009861",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 1023098739.0299762,
-      "liquidity_usd": 34651524.09095351,
-      "volume_24h": 32181711.82402036,
-      "holders": 733182,
+      "market_cap": 1001506269.5949029,
+      "liquidity_usd": 35554804.837601565,
+      "volume_24h": 32631481.611108143,
+      "holders": 733122,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -378,67 +422,21 @@
       "score": 25.0,
       "score_label": "❄️ 冷淡",
       "dex_url": "https://dexscreener.com/base/0x42609aa1e58c5dd7e5a012dc74118fff975f0eac",
-      "buy_pct": 42.1,
-      "liq_ratio": 675.1
-    },
-    {
-      "symbol": "Shitcoin",
-      "address": "8p7GCo3fWJ55LFQbhkBd8hCpw3ACk98PgK7Lsd6Upump",
-      "chain": "solana",
-      "price_change_24h": 531.34,
-      "market_cap": 257049.87476782274,
-      "liquidity_usd": 53130.72491278699,
-      "net_inflow_1h": 0.0,
-      "net_inflow_total": 16916.82503168029,
-      "kol_holders": 41,
-      "smart_money_holders": 2,
-      "holders": 879,
-      "topic_name": "Ryan评论FOMO将低市值代币归类为“Shitcoin”",
-      "topic_inflow_1h": "-774.8322366036938",
-      "source": "binance_topic_rush",
-      "sources": [
-        "binance_topic_rush"
-      ],
-      "score": 22.0,
-      "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/solana/5zrgotmnv4mrhanegc77ylu5vhjyu7m8hj5salc38rr2",
-      "buy_pct": 0.0,
-      "liq_ratio": 0.6
-    },
-    {
-      "symbol": "USDG",
-      "name": "",
-      "address": "0xe343167631d89b6ffc58b88d6b7fb0228795491d",
-      "chain": "ethereum",
-      "price_usd": "0.9997646858454716",
-      "price_change_24h": 0.0,
-      "price_change_1h": 0.0,
-      "market_cap": 301952372.84993696,
-      "liquidity_usd": 3939161.9697033274,
-      "volume_24h": 10555299.335644122,
-      "holders": 10238,
-      "source": "binance_unified_rank",
-      "sources": [
-        "binance_unified_rank"
-      ],
-      "score": 17.0,
-      "score_label": "❄️ 冷淡",
-      "dex_url": "https://dexscreener.com/robinhood/0xdcbaa80b34223189fa016bc38f1170113f4adcbe",
-      "buy_pct": 33.3,
-      "liq_ratio": 1.1
+      "buy_pct": 41.5,
+      "liq_ratio": 817.9
     },
     {
       "symbol": "UP",
       "name": "",
       "address": "0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
       "chain": "bsc",
-      "price_usd": "0.15681594890469452",
+      "price_usd": "0.18497354596215299",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 141777286.667633,
-      "liquidity_usd": 1249660.6447578743,
-      "volume_24h": 15002495.213537097,
-      "holders": 10677,
+      "market_cap": 167234567.8802296,
+      "liquidity_usd": 1368473.6229927312,
+      "volume_24h": 17177345.62890443,
+      "holders": 10710,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -446,21 +444,21 @@
       "score": 17.0,
       "score_label": "❄️ 冷淡",
       "dex_url": "https://dexscreener.com/robinhood/0x23d641feccd207e8794c593e8240444a0674c4ba",
-      "buy_pct": 15.2,
-      "liq_ratio": 5.2
+      "buy_pct": 19.1,
+      "liq_ratio": 5.1
     },
     {
       "symbol": "SOL",
       "name": "",
       "address": "0x311935cd80b76769bf2ecc9d8ab7635b2139cf82",
       "chain": "base",
-      "price_usd": "79.9585477228741",
+      "price_usd": "78.00393193985126",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 25460241.0489758,
-      "liquidity_usd": 2144779.8871450583,
-      "volume_24h": 19107034.58553939,
-      "holders": 31472,
+      "market_cap": 27522843.86354176,
+      "liquidity_usd": 2247379.001002462,
+      "volume_24h": 20775468.801959567,
+      "holders": 31503,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -473,13 +471,13 @@
       "name": "",
       "address": "0x07b3d902783c3c12b077508c3b5c00113d1291d0",
       "chain": "base",
-      "price_usd": "0.01737167585302432",
+      "price_usd": "0.017040069320615057",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 173716758.40360284,
-      "liquidity_usd": 2164701.4165605525,
-      "volume_24h": 10873604.836897844,
-      "holders": 15898,
+      "market_cap": 170400693.08192763,
+      "liquidity_usd": 2164335.523410418,
+      "volume_24h": 10749229.378889896,
+      "holders": 15895,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -492,13 +490,13 @@
       "name": "",
       "address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
       "chain": "base",
-      "price_usd": "19.062333121362737",
+      "price_usd": "18.94102697046504",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 1548660755.2607183,
-      "liquidity_usd": 34440102.64531282,
-      "volume_24h": 8694290.390449455,
-      "holders": 158819,
+      "market_cap": 1538824089.163638,
+      "liquidity_usd": 32405239.431419127,
+      "volume_24h": 10356396.894764084,
+      "holders": 158841,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -511,13 +509,32 @@
       "name": "",
       "address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
       "chain": "base",
-      "price_usd": "1.0210543832964807",
+      "price_usd": "1.0081757466207564",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 157640376.7240929,
-      "liquidity_usd": 1081879.6089890972,
-      "volume_24h": 7009321.215388528,
-      "holders": 62607,
+      "market_cap": 156001225.9531689,
+      "liquidity_usd": 1116371.3315033223,
+      "volume_24h": 7364066.398421337,
+      "holders": 62627,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "grix",
+      "name": "",
+      "address": "Dp8GKKcM99qiWZibxaPVY3rEYSjhfpqYV3hvMyDVpump",
+      "chain": "solana",
+      "price_usd": "0.03184088759832617",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 30055878.475993518,
+      "liquidity_usd": 7648314.442797308,
+      "volume_24h": 60840325.30760189,
+      "holders": 9,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -530,13 +547,13 @@
       "name": "",
       "address": "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g",
       "chain": "solana",
-      "price_usd": "72.37195794084782",
+      "price_usd": "71.52253220285724",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 47299682.35358468,
-      "liquidity_usd": 11830798.978685563,
-      "volume_24h": 15297138.38294595,
-      "holders": 87190,
+      "market_cap": 46729081.69619686,
+      "liquidity_usd": 11734498.858112367,
+      "volume_24h": 16282434.52532096,
+      "holders": 86941,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -549,51 +566,13 @@
       "name": "",
       "address": "FTu55MyigXns96jz4nTCDDiTCjYJjyrHSceCgG9Upump",
       "chain": "solana",
-      "price_usd": "0.001117308711510621",
+      "price_usd": "0.001053489577196123",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 1083261.9800365083,
-      "liquidity_usd": 242288.2945532498,
-      "volume_24h": 12997134.37773537,
-      "holders": 7172,
-      "source": "binance_unified_rank",
-      "sources": [
-        "binance_unified_rank"
-      ],
-      "score": 25.0,
-      "score_label": "❄️ 冷淡"
-    },
-    {
-      "symbol": "TTWO",
-      "name": "",
-      "address": "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo",
-      "chain": "solana",
-      "price_usd": "229.05702203400065",
-      "price_change_24h": 0.0,
-      "price_change_1h": 0.0,
-      "market_cap": 4195076.638847419,
-      "liquidity_usd": 2263999.75236491,
-      "volume_24h": 12112759.707146658,
-      "holders": 129475,
-      "source": "binance_unified_rank",
-      "sources": [
-        "binance_unified_rank"
-      ],
-      "score": 25.0,
-      "score_label": "❄️ 冷淡"
-    },
-    {
-      "symbol": "mihao",
-      "name": "",
-      "address": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
-      "chain": "solana",
-      "price_usd": "0.016785089698813618",
-      "price_change_24h": 0.0,
-      "price_change_1h": 0.0,
-      "market_cap": 15791962.208305152,
-      "liquidity_usd": 1232477.7292202308,
-      "volume_24h": 11158767.985050498,
-      "holders": 31657,
+      "market_cap": 1021386.6775649918,
+      "liquidity_usd": 207221.9582287186,
+      "volume_24h": 13471260.0667438,
+      "holders": 7065,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -606,13 +585,13 @@
       "name": "",
       "address": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
       "chain": "solana",
-      "price_usd": "0.00347990086001519",
+      "price_usd": "0.003440259380125515",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 2863828939.1827826,
-      "liquidity_usd": 32585072.53676576,
-      "volume_24h": 11062905.606602447,
-      "holders": 441934,
+      "market_cap": 2831012350.5407596,
+      "liquidity_usd": 32302535.489606418,
+      "volume_24h": 12878910.794584556,
+      "holders": 441949,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -621,17 +600,36 @@
       "score_label": "❄️ 冷淡"
     },
     {
-      "symbol": "NVDA",
+      "symbol": "TTWO",
       "name": "",
-      "address": "NVDAVuiB7hwd3m5Wa1JuHNovPaPG6BH1QNztbKFxNjv",
+      "address": "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo",
       "chain": "solana",
-      "price_usd": "160.75852649726482",
+      "price_usd": "227.92658302294626",
       "price_change_24h": 0.0,
       "price_change_1h": 0.0,
-      "market_cap": 2712626.278153142,
-      "liquidity_usd": 2418425.4458439224,
-      "volume_24h": 10087005.609368198,
-      "holders": 17221,
+      "market_cap": 4326222.5016787145,
+      "liquidity_usd": 2407029.23995086,
+      "volume_24h": 11369343.792010767,
+      "holders": 131744,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "mihao",
+      "name": "",
+      "address": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
+      "chain": "solana",
+      "price_usd": "0.014500190494545512",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 13642243.4240454,
+      "liquidity_usd": 1285088.3265162883,
+      "volume_24h": 10762285.62181907,
+      "holders": 32179,
       "source": "binance_unified_rank",
       "sources": [
         "binance_unified_rank"
@@ -641,188 +639,25 @@
     }
   ],
   "twitter": {
-    "general_sentiment": [
-      {
-        "text": "gm friends\n\nwhat's the next 100x memecoin on solana? https://t.co/qogNqd01lq",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "What #Solana memecoin will do 100x ? \n\nShill me a ticker 👇 https://t.co/tTLV9SbzCp",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "Which memecoin has the potential to pull a 100X? 👀\n\nDrop your ticker below! 👇\n\n#Solana #Memecoin #100x https://t.co/4zB75wEIpj",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "👑 PUSSY Life is LIVE on Solana! 🚀\n\nMissed the original 3M MCAP run? $PUSSY Life is your second chance! Sitting at a tiny 10k MCAP floor—built for huge low-cap explosions. 🔥\n\nCA: 7mX3wUTXr6ZyifhE1BSDGGcb6CFp2fF1zwXDwiwWM54V\n\nBuy on PumpSwap, Phantom, BullX, Photon & Trojan NOW! 💎\n\nIf you missed the initial wave that took the original $PUSSY straight to a $3M market cap before the retracement, this is your prime opportunity to get in at ground level. We are running back the exact same setup for low-cap traders hunting 100x potential.\n\nThe liquidity is seeded, momentum is building across all trading terminals, and the algorithm is indexing high engagement. Early buyers are already positioning before the next parabolic leg up.\n\nDon't wait until this is trending on the front page—load up your Phantom wallet, trade via your favorite bot, and hold on tight. FOMO is real, and the journey back to millions starts right now! 📈🔥🚀\n\n#MemeCoin #Crypto #Altcoins #100xGem #SolanaGems #Solana #SOL #CryptoSignal $VIRTUAL $VVV $PONS $CARDS $NVDA $AXIS $MSTR $AERO $ZRO $ZEC $SNDK $CRCL $ICNT $SPCXC $MU $STONK $JITOSOL $SKY",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "swordfrog is a cool frog.\n\n$SWORDFROG 🐸🗡\n\nDSBpCSRLhuhTWjNvMFqQWztEhnL4B3M2YTKCuTBhpump\n\nDEV IS LIVE 🐸 ⚔️ ✊️\n\n#Crypto #Meme #MEMECOIN #Solana #Pumpfun #Sol #Livestream #PumpFunLaunch #100x #SWORDFROG\n\nhttps://t.co/bwkrC7GMZc https://t.co/iidFc5xF8x",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "What's the next 100x memecoin on Solana? 👀 https://t.co/WBPMXaQ6Ro",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "I begged you to buy $TRUMP - it did 3000X\n\nI begged you to buy $ANSEM - it did 7000X\n\nI begged you to buy $CASHCAT - it did 700X\n\nI begged you to buy $Manifest - it did 2500x\n\nI begged you to buy $punch - it did 2000x\n\nI begged you to buy $Fartcoin - it did 10,000\n\nI begged you to buy $Worldcup - it did 2000X\n\nI don't make too many calls, but when I do, those who listen to me make that much money 💰\n\nI just found another low market cap, billion-dollar runner meme, it has 100x potential It's currently trading at 100k market cap\n\nI'll send its CA to those who like, follow me, retweet, and comment *ME*",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "Elon Musk posts his current favorite meme and this memecoin ROCKETS to $2.6m (322x) 🤯\n\nit’s crazy how within seconds one X post can change people’s lives\n\ncoin: solana:5NRzuqfyd4r7dHHKDpMY9HdGM2BMgSQhcZAbXTcfLoat Be like José https://t.co/hZwgR3yakq",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "What memecoin will 100x soon? https://t.co/9rMFC9uWrw",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "Faded the $3M Solana run? Foodcoin Aura is live on SOL at a $10k micro-cap! 🍔🚀\n\nCA: BjQq6iRQPZxDYBm3Vy97Ma2sr3re2YpH7DirVjyUnexC\n\nThe original \"FOOD\" on Solana surged to a $3M market cap before pulling back—now is your second shot at catching the ground floor before the next massive leg up. Built specifically for trench traders and early buyers hunting explosive low-cap gems with real 100x potential.\n\nLiquidity is live on PumpSwap right now, fueled by an active, relentless community pushing the chart and dominating the feed. While everyone else waits for confirmation at higher caps, smart money locks in their entry at 10k before the volume floods in! 📈\n\nGrab your entry now on: • Phantom • BullX • Photon • Trojan • FOMO\n\nDo not sit on the sidelines for this second wave. Load your bags, join the raids, secure your spot early, and let's send Foodcoin Aura straight back to multi-millions! 🍽️💎\n\n#Solana #Memecoins #100xGem #MemeCoin #Crypto #Altcoins #100xGem #SolanaGems #Solana #SOL #CryptoSignal $mihao $FOOD $STONK $CARDS $CASHCAT $GTA6 $AI $DaCityCoin $ANSEM $FLOAT $MASK $Dacity $GATO $PENGU $CLAUDIA $XMR $Jimothy $PAID",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "GM, crypto fam! ☀️🐸\n\nNew week. New opportunities.\n\nThe memecoin market never sleeps, and neither does our research. 🔍\n\nWe’re hunting for early entries, strong narratives and real momentum.\n\nWho’s ready to find the next 100x? 👀🚀\n\n#Solana #Memecoins #Crypto",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      },
-      {
-        "text": "a simple guide on how to find 100x memecoins before everyone else\n\nyou might wanna bookmark this!! https://t.co/ieL1IAZImD",
-        "likes": 0,
-        "retweets": 0,
-        "author": "unknown",
-        "author_followers": 0,
-        "engagement": 0
-      }
-    ],
+    "general_sentiment": [],
     "token_intel": {
       "Jacket": {
-        "tweets": [
-          {
-            "text": "Crypto traders, what's harder: Taking profits when you're up or accepting a loss when you're wrong?  $JACKET? https://t.co/WAhykWg7Vs",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          },
-          {
-            "text": "Crypto traders, what's harder: Taking profits when you're up or accepting a loss when you're wrong?  $JACKET? https://t.co/BIHI2zUUpg",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          },
-          {
-            "text": "Looks like the first ever indices from $INDEX are officially live.\n\nStepping in and bidding $Jacket at 25k right now. \n\nGetting crypto rewards backed by $NVDA stock movement is a pretty cool concept.\n\nCA: 0x47be2c84a30d921bfcac1a1a3fdf8f082e274c41\n\nLink: https://t.co/kfDqj9tlzT https://t.co/QSycFl1alk",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          },
-          {
-            "text": "A few wallet numbers caught my attention on $JACKET (BSC).\n\nThere are 16 wallets labeled smart and 11 fresh wallets.\nSniper wallets hold 43.30% of supply, a potential concentration risk.\n\nCA: 0xbfc906aa9b0b94d98bb0e4b5caa2bbba00ad7777",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          }
-        ],
+        "tweets": [],
+        "total_engagement": 0
+      },
+      "USDG": {
+        "tweets": [],
         "total_engagement": 0
       },
       "AKE": {
-        "tweets": [
-          {
-            "text": "Looking for a low-cap crypto with high potential? ($AKE) is your pick! At ~$0.0009, this AI-driven platform for game creation is making waves in Web3. Stake $AKE for rewards, trade on top exchanges, or hold for long-term growth. Don’t sleep on this innovative project\n@akedofun https://t.co/te2LC06TkD",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          },
-          {
-            "text": "Gm💫\nCrypto feels like an arcade flashy, loud, and draining. Akedo flips that script. $AKE isn’t hype, it’s infrastructure: play, publish, unlock, all powered by $AKE. Real demand, real utility, $20M cap. Arcades run out of tokens @akedofun prints its own.\nhttps://t.co/reTS3OTS5M https://t.co/vQFW91tV6F",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          },
-          {
-            "text": "$AKE\n\nWhat the hell is this 🚀🚀🚀🚀🚀\n\n11 targets done and dusted 🚀🚀🚀🚀🚀\n\nShow max love ❤️ 😍 https://t.co/qe0cWu5WfX",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          },
-          {
-            "text": "$AKE USDT SHORT setup \n\nBearish setup active — follow the signal and secure profits at targets.\n\nNot a financial advice \n\nApply risk management \n#AKEUSDT\n#Crypto https://t.co/NyGD0BcGks",
-            "likes": 0,
-            "retweets": 0,
-            "author": "unknown",
-            "author_followers": 0,
-            "engagement": 0
-          }
-        ],
+        "tweets": [],
         "total_engagement": 0
       },
       "DNA": {
         "tweets": [],
         "total_engagement": 0
       },
-      "DGAI": {
-        "tweets": [],
-        "total_engagement": 0
-      },
-      "UNI": {
+      "ZIG": {
         "tweets": [],
         "total_engagement": 0
       }
