@@ -1,0 +1,685 @@
+{
+  "timestamp": "2026-11-18T01:23:18.328392+00:00",
+  "tokens": [
+    {
+      "symbol": "GTAVI",
+      "name": "",
+      "address": "ERiM8NiCanarGEnWMnURAoxTuTvUXZbtJsPTirnHpump",
+      "chain": "solana",
+      "price_usd": "0.001234122213126521",
+      "price_change_24h": 6143.68,
+      "price_change_1h": 0.0,
+      "market_cap": 1208693.7094068793,
+      "liquidity_usd": 245376.34755853805,
+      "volume_24h": 6213455.514343852,
+      "holders": 9916,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_topic_rush",
+        "binance_unified_rank"
+      ],
+      "net_inflow_1h": 33754.784275751306,
+      "topic_name": "GTA发布预测标普牛市",
+      "kol_holders": 893,
+      "smart_money_holders": 12,
+      "score": 59.0,
+      "score_label": "🔥🔥 热门",
+      "dex_url": "https://dexscreener.com/ethereum/0x75d5fe72db6e0fec7703e8806b61f6db08d2037e",
+      "buy_pct": 52.5,
+      "liq_ratio": 31.3,
+      "ai_analysis": ""
+    },
+    {
+      "symbol": "KATIA",
+      "address": "5xhuX8VK8k8wGDdfFniWUzUQUSHjzKARosCGtEZypump",
+      "chain": "solana",
+      "price_change_24h": 790.19,
+      "market_cap": 798007.0723668813,
+      "liquidity_usd": 65601.45423728297,
+      "net_inflow_1h": 28273.82563740956,
+      "net_inflow_total": 28022.087482338906,
+      "kol_holders": 88,
+      "smart_money_holders": 2,
+      "holders": 1515,
+      "topic_name": "星舰42",
+      "topic_inflow_1h": "28032.230912500523",
+      "source": "binance_topic_rush",
+      "sources": [
+        "binance_topic_rush"
+      ],
+      "score": 43.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/solana/hwpngws3mk3ar8ncapxzqlzqkpylcqaegfrqryexvcoj",
+      "buy_pct": 69.4,
+      "liq_ratio": 11.3,
+      "ai_analysis": ""
+    },
+    {
+      "symbol": "PIKA",
+      "address": "0xe7ce643ab94d87c7509a53cd06cf92e947096666",
+      "chain": "bsc",
+      "price_change_24h": 10111.9,
+      "market_cap": 307061.3794281118,
+      "liquidity_usd": 71203.4808192417,
+      "net_inflow_1h": 0.0,
+      "net_inflow_total": 20973.247308210473,
+      "kol_holders": 4,
+      "smart_money_holders": 1,
+      "holders": 1533,
+      "topic_name": "PIKA",
+      "topic_inflow_1h": "-9459.50464476866",
+      "source": "binance_topic_rush",
+      "sources": [
+        "binance_topic_rush"
+      ],
+      "score": 38.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/optimism/0x4533bad2dc588f0fadf8d2e72386d4cd6a19b519",
+      "buy_pct": 100.0,
+      "liq_ratio": 7.3,
+      "ai_analysis": ""
+    },
+    {
+      "symbol": "Moolah",
+      "name": "",
+      "address": "0xbab528425edb1e0e36d3719bc3307d9c8cce8888",
+      "chain": "bsc",
+      "price_usd": "0.06628510214702904",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 66285102.14699014,
+      "liquidity_usd": 2505141.3569366983,
+      "volume_24h": 9134392.434014231,
+      "holders": 47775,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/bsc/0x0459f493ae6ce91953012097ce24f7c851a697c9",
+      "buy_pct": 87.5,
+      "liq_ratio": 44.6
+    },
+    {
+      "symbol": "BREV",
+      "name": "",
+      "address": "0x086f405146ce90135750bbec9a063a8b20a8bffb",
+      "chain": "bsc",
+      "price_usd": "0.11337203322176279",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1963254.979666739,
+      "liquidity_usd": 418608.3034003478,
+      "volume_24h": 9053889.001979178,
+      "holders": 4812,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/ethereum/0x32aa94ec738df50f6bc72cbdf4b9f037d77bd98f",
+      "buy_pct": 75.0,
+      "liq_ratio": 2.0
+    },
+    {
+      "symbol": "DNA",
+      "name": "",
+      "address": "0xa991f61940095aea0724ef54077223b048c5cf7b",
+      "chain": "bsc",
+      "price_usd": "0.16350187524134374",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 163501875.20177633,
+      "liquidity_usd": 1802031.7180778196,
+      "volume_24h": 8746752.051596584,
+      "holders": 13620,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 33.0,
+      "score_label": "🔥 关注",
+      "dex_url": "https://dexscreener.com/base/0x5342ba76e37055fa6f889c32ffe0226b5bc52ebfa891aa66a9457d6f3cf9fd82",
+      "buy_pct": 100.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "USDG",
+      "name": "",
+      "address": "0xe343167631d89b6ffc58b88d6b7fb0228795491d",
+      "chain": "ethereum",
+      "price_usd": "0.9997093536866657",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 328781440.34832525,
+      "liquidity_usd": 4145684.539654231,
+      "volume_24h": 9957991.63631399,
+      "holders": 10291,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/9rqdtfwcx2sgxsvkpspqhc38huo3b6hrd3or9jr966ps",
+      "buy_pct": 38.9,
+      "liq_ratio": 0.6
+    },
+    {
+      "symbol": "UNI",
+      "name": "",
+      "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "chain": "ethereum",
+      "price_usd": "5.225875506013871",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 4628957287.915352,
+      "liquidity_usd": 106967357.38299666,
+      "volume_24h": 9724412.432101285,
+      "holders": 404767,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/6botnazs5mjpiewgdbe42jhzqsazevknbd98cmaagbya",
+      "buy_pct": 50.0,
+      "liq_ratio": 2.3
+    },
+    {
+      "symbol": "quq",
+      "name": "",
+      "address": "0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf",
+      "chain": "bsc",
+      "price_usd": "0.001717875098019731",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1361003.1068245387,
+      "liquidity_usd": 1421981.0141516447,
+      "volume_24h": 120795057.18926547,
+      "holders": 53137,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/9xyigqzwyvnm2cxusdzfeldseapwcwzqqtui2kgxslyl",
+      "buy_pct": 50.0,
+      "liq_ratio": 2.0
+    },
+    {
+      "symbol": "ZIG",
+      "name": "",
+      "address": "0x8c907e0a72c3d55627e853f4ec6a96b0c8771145",
+      "chain": "bsc",
+      "price_usd": "0.03413190403072789",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 68263807.12853968,
+      "liquidity_usd": 864877.7742412026,
+      "volume_24h": 51656434.778401814,
+      "holders": 246523,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/8wqqpuivsymrmceckxa3ttql9hqzfkstjtdbm7tbpgcq",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "AKE",
+      "name": "",
+      "address": "0x2c3a8ee94ddd97244a93bc48298f97d2c412f7db",
+      "chain": "bsc",
+      "price_usd": "0.00997192001599756",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 997192001.1483078,
+      "liquidity_usd": 2172810.444830993,
+      "volume_24h": 34212760.655333266,
+      "holders": 43868,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/3r5tglhnzvy5sbm2hzjcn26ddmny3g522ufztymdikha",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "BANANAS31",
+      "name": "",
+      "address": "0x3d4f0513e8a29669b960f9dbca61861548a9a760",
+      "chain": "bsc",
+      "price_usd": "0.005254061813887881",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 52248227.78052296,
+      "liquidity_usd": 3116810.949344496,
+      "volume_24h": 23669225.665944647,
+      "holders": 179676,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/fwnnufcl9gzlkzdbhn6z79v7puthmjhgxwpkjb3m8ykh",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "ARIA",
+      "name": "",
+      "address": "0x5d3a12c42e5372b2cc3264ab3cdcf660a1555238",
+      "chain": "bsc",
+      "price_usd": "0.23201394209876564",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 232013941.56874165,
+      "liquidity_usd": 2150447.227477808,
+      "volume_24h": 21536029.421904963,
+      "holders": 80450,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/cktu776fz7vbwrdz5avrghcbasmauwpadc9pbz2aszhm",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "CROSS",
+      "name": "",
+      "address": "0x6bf62ca91e397b5a7d1d6bce97d9092065d7a510",
+      "chain": "bsc",
+      "price_usd": "0.14597213431657508",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 143815083.6644425,
+      "liquidity_usd": 1262618.6458359074,
+      "volume_24h": 17210418.34506557,
+      "holders": 82107,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/bsc/0xe6e51ea572502dbdf8b40834d0619f9a9144d3a5",
+      "buy_pct": 45.5,
+      "liq_ratio": 65.1
+    },
+    {
+      "symbol": "PIEVERSE",
+      "name": "",
+      "address": "0x0e63b9c287e32a05e6b9ab8ee8df88a2760225a9",
+      "chain": "bsc",
+      "price_usd": "2.092629424747327",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 189798260.00078535,
+      "liquidity_usd": 2713414.4110669764,
+      "volume_24h": 13342518.487171402,
+      "holders": 348674,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/hnuy9rq5xf4xtgzp8mg74cnokjxbhevevq87v1d3mv6z",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "DGAI",
+      "name": "",
+      "address": "0x10d4183389e99233db3cc981c43443ebd28ebd5e",
+      "chain": "bsc",
+      "price_usd": "0.6843541129538466",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 684354112.9244859,
+      "liquidity_usd": 2628055.18039136,
+      "volume_24h": 13159252.904189587,
+      "holders": 12102,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/bsc/0x0e6e1f47c64f517fc9dc35698718c7dfc708d534",
+      "buy_pct": 47.8,
+      "liq_ratio": 39.1
+    },
+    {
+      "symbol": "BTW",
+      "name": "",
+      "address": "0x444045b0ee1ee319a660a5e3d604ca0ffa35acaa",
+      "chain": "bsc",
+      "price_usd": "0.45356281014132077",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 4535628004.822631,
+      "liquidity_usd": 2066014.1585047517,
+      "volume_24h": 12775286.840965765,
+      "holders": 43852,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/ftwckpc5qomnbhej8g6rdk37hpjffsj7tuftef9nwdvf",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "AIOT",
+      "name": "",
+      "address": "0x55ad16bd573b3365f43a9daeb0cc66a73821b4a5",
+      "chain": "bsc",
+      "price_usd": "0.07940626073906316",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 79406260.72885713,
+      "liquidity_usd": 2228894.7139437106,
+      "volume_24h": 8919206.457771566,
+      "holders": 677586,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/bsc/0xe6908e9a94a1c6cd71583832734703521577cdbd",
+      "buy_pct": 53.8,
+      "liq_ratio": 7.0
+    },
+    {
+      "symbol": "AGT",
+      "name": "",
+      "address": "0x5dbde81fce337ff4bcaaee4ca3466c00aecae274",
+      "chain": "bsc",
+      "price_usd": "0.026551729288559277",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 132758642.64316224,
+      "liquidity_usd": 1594526.194239673,
+      "volume_24h": 8642476.754556855,
+      "holders": 190742,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/solana/5hdcrmtxt4siqplfevsbxnagsxyyvrqmmyotpnupcjzr",
+      "buy_pct": 50.0,
+      "liq_ratio": 1.0
+    },
+    {
+      "symbol": "UP",
+      "name": "",
+      "address": "0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
+      "chain": "bsc",
+      "price_usd": "0.18340856677873862",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 165819670.28960583,
+      "liquidity_usd": 1314448.2713040332,
+      "volume_24h": 29914433.54093656,
+      "holders": 10700,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 17.0,
+      "score_label": "❄️ 冷淡",
+      "dex_url": "https://dexscreener.com/robinhood/0x23d641feccd207e8794c593e8240444a0674c4ba",
+      "buy_pct": 22.1,
+      "liq_ratio": 5.3
+    },
+    {
+      "symbol": "EVAA",
+      "name": "",
+      "address": "0xaa036928c9c0df07d525b55ea8ee690bb5a628c1",
+      "chain": "bsc",
+      "price_usd": "3.187946280929991",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 95638388.38584793,
+      "liquidity_usd": 520374.70561934245,
+      "volume_24h": 8593615.827280883,
+      "holders": 26423,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "ASTER",
+      "name": "",
+      "address": "0x000ae314e2a2172a039b26378814c252734f556a",
+      "chain": "bsc",
+      "price_usd": "0.5743422324230828",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 4470578462.277703,
+      "liquidity_usd": 4043246.976262957,
+      "volume_24h": 8368979.204135877,
+      "holders": 255285,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "SPACE",
+      "name": "",
+      "address": "0x87acfa3fd7a6e0d48677d070644d76905c2bdc00",
+      "chain": "bsc",
+      "price_usd": "0.003307698431287493",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1316226.1164904153,
+      "liquidity_usd": 977063.2805041271,
+      "volume_24h": 6482119.230776987,
+      "holders": 34654,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "Claude",
+      "name": "",
+      "address": "0xd962f48c071ad5db617b5cb3c48e22e3fa61bda5",
+      "chain": "base",
+      "price_usd": "0.000102002510433575",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 10200251.043357484,
+      "liquidity_usd": 10268081.758690747,
+      "volume_24h": 27893731.170537405,
+      "holders": 5246,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "SOL",
+      "name": "",
+      "address": "0x311935cd80b76769bf2ecc9d8ab7635b2139cf82",
+      "chain": "base",
+      "price_usd": "74.68755589518543",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 24093098.115202095,
+      "liquidity_usd": 1978710.551361033,
+      "volume_24h": 19059633.9155243,
+      "holders": 31791,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "AERO",
+      "name": "",
+      "address": "0x3f5bf3edac59d650d8fdf9657a71f2f904a3a4ee",
+      "chain": "base",
+      "price_usd": "0.44286231269554494",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 949780010.3932292,
+      "liquidity_usd": 31161451.993903495,
+      "volume_24h": 13276543.562821751,
+      "holders": 732736,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "XDP",
+      "name": "",
+      "address": "0x07b3d902783c3c12b077508c3b5c00113d1291d0",
+      "chain": "base",
+      "price_usd": "0.017173699709818194",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 171736996.97298482,
+      "liquidity_usd": 1285595.7666022875,
+      "volume_24h": 13222673.272249898,
+      "holders": 15941,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "PHAROS",
+      "name": "",
+      "address": "0x8b7dde054be9d180c1be7fae0874697374a49832",
+      "chain": "base",
+      "price_usd": "0.5312474155998015",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 2072237.5311480197,
+      "liquidity_usd": 855471.6322141141,
+      "volume_24h": 8487530.629838217,
+      "holders": 4256,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "VVV",
+      "name": "",
+      "address": "0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf",
+      "chain": "base",
+      "price_usd": "21.002621809369675",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 1706676892.7737844,
+      "liquidity_usd": 33561293.393563025,
+      "volume_24h": 7697370.784380224,
+      "holders": 159166,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    },
+    {
+      "symbol": "ZEC",
+      "name": "",
+      "address": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
+      "chain": "solana",
+      "price_usd": "962.862691972446",
+      "price_change_24h": 0.0,
+      "price_change_1h": 0.0,
+      "market_cap": 105058286.42653494,
+      "liquidity_usd": 10774959.90656623,
+      "volume_24h": 26379551.50205729,
+      "holders": 145578,
+      "source": "binance_unified_rank",
+      "sources": [
+        "binance_unified_rank"
+      ],
+      "score": 25.0,
+      "score_label": "❄️ 冷淡"
+    }
+  ],
+  "twitter": {
+    "general_sentiment": [],
+    "token_intel": {
+      "GTAVI": {
+        "tweets": [],
+        "total_engagement": 0
+      },
+      "KATIA": {
+        "tweets": [],
+        "total_engagement": 0
+      },
+      "PIKA": {
+        "tweets": [],
+        "total_engagement": 0
+      },
+      "Moolah": {
+        "tweets": [],
+        "total_engagement": 0
+      },
+      "BREV": {
+        "tweets": [],
+        "total_engagement": 0
+      }
+    }
+  },
+  "news": {
+    "articles": [],
+    "total_count": 0
+  },
+  "ai_report": "⚠️ AI报告生成失败: 401 Client Error: Unauthorized for url: https://openrouter.ai/api/v1/chat/completions",
+  "data_sources": {
+    "binance_meme_rush": true,
+    "binance_market_rank": true,
+    "okx_onchainos": true,
+    "dexscreener": true,
+    "twitter": true,
+    "news": true
+  }
+}
